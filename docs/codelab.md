@@ -17,12 +17,13 @@ In this codelab, You can make a application that exports Gmail messages to Googl
 
 You need own Gmail or G Suite account.
 
+Negative
 : If you use Gmail for the first time, you need to do below
 
 ### 1. Open mail-to-me application
 
 Open the application in your browser.
-https://script.google.com/d/1p2B0NwXg3APMc-nh-fRWuMX6P_W5eQijsi4CVEHLOOq7_zJmQbWyZAWl/edit?usp=sharing
+[mail-to-me](https://script.google.com/d/1p2B0NwXg3APMc-nh-fRWuMX6P_W5eQijsi4CVEHLOOq7_zJmQbWyZAWl/edit?usp=sharing)
 
 ### 2. Make a copy
 
@@ -34,11 +35,17 @@ Select **Run** button.
 
 ### 4. Confirm your mail
 
-Open Gmail in your browser.
-https://mail.google.com
+Open [Gmail](https://mail.google.com) in your browser and confirm to receiving emails.
 
-## Coding
+## Create Apps Script project
 
-- aaaaa
-- bbbbb
-- ccccc
+First, create a Apps Script project. Visit [script.google.com](https://script.google.com/home) to open the script editor. Click **+ New Project** to proceed to the script editor. Click **Untitled Project** and input your project name. Then it appears toast and it complete to save when the toast disappears.
+
+## Run script
+
+## GmailApp class
+
+Next, understand GmailApp class. Confirm Google apps classes in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can confirm GmailApp classes (ex. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and methods (ex. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) 
+
+we use [getInboxThreads](https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max) method for Retrieving emails in this time.
+

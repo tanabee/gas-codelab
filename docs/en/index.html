@@ -35,25 +35,34 @@
     
       <google-codelab-step label="Preparation" duration="0">
         <p>You need own Gmail or G Suite account.</p>
-<p>If you use Gmail for the first time, you need to do below</p>
+<aside class="warning"><p>If you use Gmail for the first time, you need to do below</p>
+</aside>
 <h2 is-upgraded>1. Open mail-to-me application</h2>
-<p>Open the application in your browser.<br>https://script.google.com/d/1p2B0NwXg3APMc-nh-fRWuMX6P_W5eQijsi4CVEHLOOq7_zJmQbWyZAWl/edit?usp=sharing</p>
+<p>Open the application in your browser.<br><a href="https://script.google.com/d/1p2B0NwXg3APMc-nh-fRWuMX6P_W5eQijsi4CVEHLOOq7_zJmQbWyZAWl/edit?usp=sharing" target="_blank">mail-to-me</a></p>
 <h2 is-upgraded>2. Make a copy</h2>
 <p>Select <strong>File</strong> &gt; <strong>Make a Copy</strong>.</p>
 <h2 is-upgraded>3. Run mail-to-me</h2>
 <p>Select <strong>Run</strong> button.</p>
 <h2 is-upgraded>4. Confirm your mail</h2>
-<p>Open Gmail in your browser.<br>https://mail.google.com</p>
+<p>Open <a href="https://mail.google.com" target="_blank">Gmail</a> in your browser and confirm to receiving emails.</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Coding" duration="0">
-        <ul>
-<li>aaaaa</li>
-<li>bbbbb</li>
-<li>ccccc</li>
-</ul>
+      <google-codelab-step label="Create Apps Script project" duration="0">
+        <p>First, create a Apps Script project. Visit <a href="https://script.google.com/home" target="_blank">script.google.com</a> to open the script editor. Click <strong>+ New Project</strong> to proceed to the script editor. Click <strong>Untitled Project</strong> and input your project name. Then it appears toast and it complete to save when the toast disappears.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Run script" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="GmailApp class" duration="0">
+        <p>Next, understand GmailApp class. Confirm Google apps classes in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can confirm GmailApp classes (ex. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and methods (ex. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>)</p>
+<p>we use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max" target="_blank">getInboxThreads</a> method for Retrieving emails in this time.</p>
 
 
       </google-codelab-step>
