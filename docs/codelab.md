@@ -61,3 +61,16 @@ Next, understand GmailApp class. Confirm Google apps classes in [official refere
 
 we use [getInboxThreads](https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max) method for Retrieving emails in this time.
 
+## Fetch emails
+
+
+## SpreadsheetApp class
+
+
+## Save emails to Spreadsheet
+
+
+## Spreadsheet Custom Menu
+
+
+## 
