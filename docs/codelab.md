@@ -43,6 +43,18 @@ First, create a Apps Script project. Visit [script.google.com](https://script.go
 
 ## Run script
 
+Add a row below and Click **Run** button. `Logger.log()` is logging function in Google Apps Script.
+
+```JavaScript
+function myFunction() {
+  Logger.log('Hello Apps Script');
+}
+```
+
+You can confirm logs when you select **View** > **Logs** in the menu.
+
+You can alse use `console.log()`, but we use `Logger.log()` in this Hands-on because you need additional process to use `console.log()`. 
+
 ## GmailApp class
 
 Next, understand GmailApp class. Confirm Google apps classes in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can confirm GmailApp classes (ex. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and methods (ex. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) 
