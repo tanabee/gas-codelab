@@ -69,28 +69,151 @@
     
       <google-codelab-step label="GmailApp class" duration="0">
         <p>Next, understand GmailApp class. Confirm Google apps classes in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can confirm GmailApp classes (ex. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and methods (ex. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>)</p>
-<p>we use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max" target="_blank">getInboxThreads</a> method for Retrieving emails in this time.</p>
+<p>We use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max" target="_blank">getInboxThreads()</a> method for Retrieving emails in this time.</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Fetch emails" duration="0">
-        
+        <pre><code>function main() {
+  var threads = GmailApp.getInboxThreads(0, 100);
+  var messages = [];
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    messages.push([
+      message.getSubject(),
+      message.getFrom(),
+      message.getTo(),
+      message.getPlainBody(),
+      message.getDate(),
+    ]);
+  });
+  Logger.log(messages);
+}
+</code></pre>
+
 
       </google-codelab-step>
     
       <google-codelab-step label="SpreadsheetApp class" duration="0">
-        
+        <pre><code>function insertSpreadSheet() {
+  var data = [
+    [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
+    [&#39;d&#39;, &#39;e&#39;, &#39;f&#39;],
+  ];
+  SpreadsheetApp
+    .getActiveSheet()
+    .getRange(&#34;A1:B2&#34;)
+    .setValues(data);
+}
+</code></pre>
+
 
       </google-codelab-step>
     
       <google-codelab-step label="Save emails to Spreadsheet" duration="0">
-        
+        <pre><code>function main() {
+  var threads = GmailApp.getInboxThreads(0, 200);
+  var messages = [];
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    if (message.getPlainBody().length &gt; 10000) {
+      return;
+    }
+    messages.push([
+      message.getSubject(),
+      message.getFrom(),
+      message.getTo(),
+      message.getPlainBody(),
+      message.getDate(),
+    ]);
+  });
+  insertSpreadSheet(messages);
+}
+
+function insertSpreadSheet(data) {
+  SpreadsheetApp
+    .getActiveSheet()
+    .getRange(&#34;A1:E&#34; + data.length)
+    .setValues(data);
+}
+</code></pre>
+
 
       </google-codelab-step>
     
       <google-codelab-step label="Spreadsheet Custom Menu" duration="0">
-        
+        <pre><code>function onOpen() {
+  SpreadsheetApp
+    .getActiveSpreadsheet()
+    .addMenu(&#39;Gmail&#39;, [
+      {name: &#39;Fetch&#39;, functionName: &#39;main&#39;},
+    ]);
+}
+</code></pre>
+<pre><code>function onOpen() {
+  SpreadsheetApp
+    .getActiveSpreadsheet()
+    .addMenu(&#39;Gmail&#39;, [
+      {name: &#39;Fetch&#39;, functionName: &#39;main&#39;},
+      {name: &#39;Clear sheet&#39;, functionName: &#39;clearSheet&#39;},
+    ]);
+}
+
+function clearSheet() {
+  SpreadsheetApp
+    .getActiveSheet()
+    .clear();
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Congrats" duration="0">
+        <pre><code>function onOpen() {
+  SpreadsheetApp
+    .getActiveSpreadsheet()
+    .addMenu(&#39;Gmail&#39;, [
+      {name: &#39;Fetch&#39;, functionName: &#39;main&#39;},
+      {name: &#39;Clear sheet&#39;, functionName: &#39;clearSheet&#39;},
+    ]);
+}
+
+function main() {
+  var threads = GmailApp.getInboxThreads(0, 200);
+  var messages = [[&#39;Subject&#39;, &#39;From&#39;, &#39;To&#39;, &#39;Body&#39;, &#39;Date&#39;]];
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    if (message.getPlainBody().length &gt; 10000) {
+      return;
+    }
+    messages.push([
+      message.getSubject(),
+      message.getFrom(),
+      message.getTo(),
+      message.getPlainBody(),
+      message.getDate(),
+    ]);
+  });
+  insertSpreadSheet(messages);
+}
+
+function insertSpreadSheet(data) {
+	clearSheet();
+  SpreadsheetApp
+    .getActiveSheet()
+    .getRange(&#34;A1:E&#34; + data.length)
+    .setValues(data);
+}
+
+function clearSheet() {
+  SpreadsheetApp
+    .getActiveSheet()
+    .clear();
+}
+</code></pre>
+
 
       </google-codelab-step>
     

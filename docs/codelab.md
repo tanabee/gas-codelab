@@ -59,18 +59,144 @@ You can alse use `console.log()`, but we use `Logger.log()` in this Hands-on bec
 
 Next, understand GmailApp class. Confirm Google apps classes in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can confirm GmailApp classes (ex. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and methods (ex. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) 
 
-we use [getInboxThreads](https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max) method for Retrieving emails in this time.
+We use [getInboxThreads()](https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max) method for Retrieving emails in this time.
 
 ## Fetch emails
 
+```JavaScript
+function main() {
+  var threads = GmailApp.getInboxThreads(0, 100);
+  var messages = [];
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    messages.push([
+      message.getSubject(),
+      message.getFrom(),
+      message.getTo(),
+      message.getPlainBody(),
+      message.getDate(),
+    ]);
+  });
+  Logger.log(messages);
+}
+```
 
 ## SpreadsheetApp class
 
+```JavaScript
+function insertSpreadSheet() {
+  var data = [
+    ['a', 'b', 'c'],
+    ['d', 'e', 'f'],
+  ];
+  SpreadsheetApp
+    .getActiveSheet()
+    .getRange("A1:B2")
+    .setValues(data);
+}
+```
 
 ## Save emails to Spreadsheet
 
+```JavaScript
+function main() {
+  var threads = GmailApp.getInboxThreads(0, 200);
+  var messages = [];
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    if (message.getPlainBody().length > 10000) {
+      return;
+    }
+    messages.push([
+      message.getSubject(),
+      message.getFrom(),
+      message.getTo(),
+      message.getPlainBody(),
+      message.getDate(),
+    ]);
+  });
+  insertSpreadSheet(messages);
+}
+
+function insertSpreadSheet(data) {
+  SpreadsheetApp
+    .getActiveSheet()
+    .getRange("A1:E" + data.length)
+    .setValues(data);
+}
+```
 
 ## Spreadsheet Custom Menu
 
+```JavaScript
+function onOpen() {
+  SpreadsheetApp
+    .getActiveSpreadsheet()
+    .addMenu('Gmail', [
+      {name: 'Fetch', functionName: 'main'},
+    ]);
+}
+```
 
-## 
+```JavaScript
+function onOpen() {
+  SpreadsheetApp
+    .getActiveSpreadsheet()
+    .addMenu('Gmail', [
+      {name: 'Fetch', functionName: 'main'},
+      {name: 'Clear sheet', functionName: 'clearSheet'},
+    ]);
+}
+
+function clearSheet() {
+  SpreadsheetApp
+    .getActiveSheet()
+    .clear();
+}
+```
+
+## Congrats
+
+```JavaScript
+function onOpen() {
+  SpreadsheetApp
+    .getActiveSpreadsheet()
+    .addMenu('Gmail', [
+      {name: 'Fetch', functionName: 'main'},
+      {name: 'Clear sheet', functionName: 'clearSheet'},
+    ]);
+}
+
+function main() {
+  var threads = GmailApp.getInboxThreads(0, 200);
+  var messages = [['Subject', 'From', 'To', 'Body', 'Date']];
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    if (message.getPlainBody().length > 10000) {
+      return;
+    }
+    messages.push([
+      message.getSubject(),
+      message.getFrom(),
+      message.getTo(),
+      message.getPlainBody(),
+      message.getDate(),
+    ]);
+  });
+  insertSpreadSheet(messages);
+}
+
+function insertSpreadSheet(data) {
+	clearSheet();
+  SpreadsheetApp
+    .getActiveSheet()
+    .getRange("A1:E" + data.length)
+    .setValues(data);
+}
+
+function clearSheet() {
+  SpreadsheetApp
+    .getActiveSheet()
+    .clear();
+}
+```
