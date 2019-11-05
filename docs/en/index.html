@@ -71,21 +71,44 @@
 <p class="image-container"><img alt="Run script" src="img/d9d39332483e1626.png"></p>
 <p><code>Logger.log()</code> is logging function in Google Apps Script.</p>
 <p><img alt="View the script logs" src="img/340da3e798aac65a.png"><br>You can view logs when you select <strong>View</strong> &gt; <strong>Logs</strong> in the menu.</p>
-<p><img alt="log viewer" src="img/19ffc24655f971b.png"><br>We can find the text <code>Hello Google Apps Script</code>.</p>
-<p>You can alse use <code>console.log()</code>, but we use <code>Logger.log()</code> in this Hands-on because you need additional process to use <code>console.log()</code>.</p>
+<p><img alt="log viewer" src="img/19ffc24655f971b.png"><br>We can find the text <code>Hello Google Apps Script!</code> in Log Viewer.</p>
+<p>We can alse use <code>console.log()</code>, but we use <code>Logger.log()</code> in this Hands-on because you need additional process to use <code>console.log()</code>.</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="GmailApp class" duration="0">
-        <p>Next, understand GmailApp class. Confirm Google apps classes in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can confirm GmailApp classes (ex. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and methods (ex. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>)</p>
-<p>We use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max" target="_blank">getInboxThreads()</a> method for Retrieving emails in this time.</p>
+        <p>Next, understand GmailApp class. Confirm GmailApp classes and methods in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can see GmailApp classes (ex. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and methods (ex. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>)</p>
+<p class="image-container"><img alt="GmailApp reference" src="img/e0328ecf0ef098ab.png"></p>
+<p>We use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max" target="_blank">getInboxThreads()</a> method for retrieving emails in this time.</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Fetch emails" duration="0">
         <pre><code>function main() {
+  var threads = GmailApp.getInboxThreads(0, 100);
+  Logger.log(threads);
+}
+</code></pre>
+<pre><code>function main() {
+  var threads = GmailApp.getInboxThreads(0, 100);
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    Logger.log(message);
+  });
+}
+</code></pre>
+<pre><code>function main() {
+  var threads = GmailApp.getInboxThreads(0, 100);
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    Logger.log(message);
+    Logger.log(message.getSubject());
+  });
+}
+</code></pre>
+<pre><code>function main() {
   var threads = GmailApp.getInboxThreads(0, 100);
   var messages = [];
   threads.forEach(function (thread) {

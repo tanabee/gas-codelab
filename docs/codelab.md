@@ -80,17 +80,49 @@ function main() {
 You can view logs when you select **View** > **Logs** in the menu.
 
 ![log viewer](img/log-viewer.png)
-We can find the text `Hello Google Apps Script`.
+We can find the text `Hello Google Apps Script!` in Log Viewer.
 
-You can alse use `console.log()`, but we use `Logger.log()` in this Hands-on because you need additional process to use `console.log()`. 
+We can alse use `console.log()`, but we use `Logger.log()` in this Hands-on because you need additional process to use `console.log()`. 
 
 ## GmailApp class
 
-Next, understand GmailApp class. Confirm Google apps classes in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can confirm GmailApp classes (ex. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and methods (ex. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) 
+Next, understand GmailApp class. Confirm GmailApp classes and methods in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can see GmailApp classes (ex. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and methods (ex. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) 
 
-We use [getInboxThreads()](https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max) method for Retrieving emails in this time.
+![GmailApp reference](img/reference-gmailapp.png)
+
+We use [getInboxThreads()](https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max) method for retrieving emails in this time.
 
 ## Fetch emails
+
+
+
+```JavaScript
+function main() {
+  var threads = GmailApp.getInboxThreads(0, 100);
+  Logger.log(threads);
+}
+```
+
+```JavaScript
+function main() {
+  var threads = GmailApp.getInboxThreads(0, 100);
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    Logger.log(message);
+  });
+}
+```
+
+```JavaScript
+function main() {
+  var threads = GmailApp.getInboxThreads(0, 100);
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    Logger.log(message);
+    Logger.log(message.getSubject());
+  });
+}
+```
 
 ```JavaScript
 function main() {
