@@ -49,19 +49,29 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Create Apps Script project" duration="0">
-        <p>First, create a Apps Script project. Visit <a href="https://script.google.com/home" target="_blank">script.google.com</a> to open the script editor. Click <strong>+ New Project</strong> to proceed to the script editor. Click <strong>Untitled Project</strong> and input your project name. Then it appears toast and it complete to save when the toast disappears.</p>
+      <google-codelab-step label="Create project" duration="0">
+        <p>Let&#39;s create a Apps Script project. First, visit <a href="https://drive.google.com" target="_blank">drive.google.com</a> and create a Spreadsheet file.</p>
+<p><img alt="Create a new drive file" src="img/20cf609cb24e5367.png"><br>Click <strong>New</strong></p>
+<p><img alt="Create a new Spreadsheet file" src="img/8cffacf23c92b025.png"><br>Click <strong>Google Sheets</strong> and Spreadsheet file will be created.</p>
+<p><img alt="Rename Spreadsheet file" src="img/8cffacf23c92b025.png"><br>Click project name area, and input project name. (ex. gmail-to-spreadsheet)</p>
+<p><img alt="Select Script editor menu" src="img/788bb99d22ce17be.png"><br>Select <strong>Tools</strong> &gt; <strong>Script editor</strong> menu, and Google Apps Script file will be created.</p>
+<p><img alt="Rename Google Apps Script project" src="img/b39d9ba12ad5e311.png"><br>Click project name area, and input project name. (ex. gmail-to-spreadsheet)</p>
+<p><img alt="Input Google Apps Script project name" src="img/f1c2de0caf46b50e.png"><br>After inputting project name, Click <strong>OK</strong> and it will be saved. Then it appears toast and it complete to save when the toast disappears.</p>
+<p>Now, we can run the script! we will run script in next section.</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Run script" duration="0">
-        <p>Add a row below and Click <strong>Run</strong> button. <code>Logger.log()</code> is logging function in Google Apps Script.</p>
-<pre><code>function myFunction() {
-  Logger.log(&#39;Hello Apps Script&#39;);
+        <p>Copy the script below and paste to the Script editor, and click <strong>Run</strong> button.</p>
+<pre><code>function main() {
+  Logger.log(&#39;Hello Google Apps Script!&#39;);
 }
 </code></pre>
-<p>You can confirm logs when you select <strong>View</strong> &gt; <strong>Logs</strong> in the menu.</p>
+<p class="image-container"><img alt="Run script" src="img/d9d39332483e1626.png"></p>
+<p><code>Logger.log()</code> is logging function in Google Apps Script.</p>
+<p><img alt="View the script logs" src="img/340da3e798aac65a.png"><br>You can view logs when you select <strong>View</strong> &gt; <strong>Logs</strong> in the menu.</p>
+<p><img alt="log viewer" src="img/19ffc24655f971b.png"><br>We can find the text <code>Hello Google Apps Script</code>.</p>
 <p>You can alse use <code>console.log()</code>, but we use <code>Logger.log()</code> in this Hands-on because you need additional process to use <code>console.log()</code>.</p>
 
 
@@ -103,7 +113,7 @@
   ];
   SpreadsheetApp
     .getActiveSheet()
-    .getRange(&#34;A1:B2&#34;)
+    .getRange(&#34;A1:C2&#34;)
     .setValues(data);
 }
 </code></pre>

@@ -37,21 +37,50 @@ Select **Run** button.
 
 Open [Gmail](https://mail.google.com) in your browser and confirm to receiving emails.
 
-## Create Apps Script project
+## Create project
 
-First, create a Apps Script project. Visit [script.google.com](https://script.google.com/home) to open the script editor. Click **+ New Project** to proceed to the script editor. Click **Untitled Project** and input your project name. Then it appears toast and it complete to save when the toast disappears.
+Let's create a Apps Script project. First, visit [drive.google.com](https://drive.google.com) and create a Spreadsheet file.
+
+![Create a new drive file](img/create-drive-file.png)
+Click **New**
+
+![Create a new Spreadsheet file](img/create-spreadsheet-file.png)
+Click **Google Sheets** and Spreadsheet file will be created.
+
+![Rename Spreadsheet file](img/create-spreadsheet-file.png)
+Click project name area, and input project name. (ex. gmail-to-spreadsheet)
+
+![Select Script editor menu](img/select-script-editor.png)
+Select **Tools** > **Script editor** menu, and Google Apps Script file will be created.
+
+![Rename Google Apps Script project](img/rename-gas-project.png)
+Click project name area, and input project name. (ex. gmail-to-spreadsheet)
+
+![Input Google Apps Script project name](img/input-project-name.png)
+After inputting project name, Click **OK** and it will be saved. Then it appears toast and it complete to save when the toast disappears.
+
+Now, we can run the script! we will run script in next section.
+
 
 ## Run script
 
-Add a row below and Click **Run** button. `Logger.log()` is logging function in Google Apps Script.
+Copy the script below and paste to the Script editor, and click **Run** button.
 
 ```JavaScript
-function myFunction() {
-  Logger.log('Hello Apps Script');
+function main() {
+  Logger.log('Hello Google Apps Script!');
 }
 ```
 
-You can confirm logs when you select **View** > **Logs** in the menu.
+![Run script](img/run-script.png)
+
+`Logger.log()` is logging function in Google Apps Script.
+
+![View the script logs](img/view-logs.png)
+You can view logs when you select **View** > **Logs** in the menu.
+
+![log viewer](img/log-viewer.png)
+We can find the text `Hello Google Apps Script`.
 
 You can alse use `console.log()`, but we use `Logger.log()` in this Hands-on because you need additional process to use `console.log()`. 
 
@@ -91,7 +120,7 @@ function insertSpreadSheet() {
   ];
   SpreadsheetApp
     .getActiveSheet()
-    .getRange("A1:B2")
+    .getRange("A1:C2")
     .setValues(data);
 }
 ```
