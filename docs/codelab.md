@@ -19,7 +19,7 @@ In this codelab, you can make a application that exports Gmail messages to Googl
 You need own Gmail or G Suite account.
 
 Negative
-: If you use Gmail for the first time, you need to do below
+: If you use Gmail for the first time, you need to follow below
 
 ### 1. Open mail-to-me application
 
@@ -34,9 +34,9 @@ Select **File** > **Make a Copy**.
 
 Select **Run** button.
 
-### 4. Confirm your mail
+### 4. Confirm your Gmail
 
-Open [Gmail](https://mail.google.com) in your browser and confirm to receiving emails.
+Open [Gmail](https://mail.google.com) in your browser and confirm to receiv emails.
 
 ## Create project
 
@@ -49,19 +49,18 @@ Click **New**
 Click **Google Sheets** and Spreadsheet file will be created.
 
 ![Rename Spreadsheet file](img/create-spreadsheet-file.png)
-Click project name area, and input project name. (ex. gmail-to-spreadsheet)
+Click project name area, and input project name. (e.g. gmail-to-spreadsheet)
 
 ![Select Script editor menu](img/select-script-editor.png)
 Select **Tools** > **Script editor** menu, and Google Apps Script file will be created.
 
 ![Rename Google Apps Script project](img/rename-gas-project.png)
-Click project name area, and input project name. (ex. gmail-to-spreadsheet)
+Click project name area, and input project name. (e.g. gmail-to-spreadsheet)
 
 ![Input Google Apps Script project name](img/input-project-name.png)
-After inputting project name, Click **OK** and it will be saved. Then it appears toast and it complete to save when the toast disappears.
+After inputting project name, Click OK and it will be saved. Then a toast appears. the project will be saved when the toast disappears.
 
-Now, we can run the script! we will run script in next section.
-
+Now, we can run the script! we will run script in the next section.
 
 ## Run script
 
@@ -87,7 +86,7 @@ We can alse use `console.log()`, but we use `Logger.log()` in this Hands-on beca
 
 ## GmailApp class
 
-Next, understand GmailApp class. Confirm GmailApp classes and methods in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can see GmailApp classes (ex. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and methods (ex. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) 
+Next, understand GmailApp class. Confirm GmailApp classes and methods in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can see GmailApp classes (e.g. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and methods (e.g. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) 
 
 ![GmailApp reference](img/reference-gmailapp.png)
 
