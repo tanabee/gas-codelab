@@ -65,7 +65,7 @@ Click project name area, and input project name. (e.g. gmail-to-spreadsheet)
 ![Input Google Apps Script project name](img/input-project-name.png)
 After inputting project name, Click OK and it will be saved. Then a toast appears. the project will be saved when the toast disappears.
 
-Now, we can run the script! we will run script in the next section.
+Now, we can run the script! We will run the script in the next section.
 
 ## Run script
 
@@ -97,7 +97,7 @@ Next, understand GmailApp class. Confirm GmailApp classes and methods in [offici
 
 We use [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max) method for retrieving emails in this time.
 
-## Fetch emails
+## Retrieve Gmail threads
 
 Let's implement the script. Use `GmailApp.search` method and retrieve Gmail threads.
 
@@ -124,8 +124,20 @@ To verify this app, click **Advanced** and click bottom link **Go to ...**. If i
 ![Allow authentication](img/allow-auth.png)
 Then the scope you need to allow is displayed. Click **Allow** button. it will go back to Script editor and run the script.
 
-![Allow authentication](img/gmail-treads.png)
-See the logs. Then you can see Array of GmailTread. You succeeded to retrieve emails for only 5 rows code! Because of this popup authentication flow, you don't need to implement authentication codes and you can make it easy.
+![Allow authentication](img/gmail-threads.png)
+See the logs. Then you can see Array of GmailThread. You succeeded to retrieve emails for only 5 rows code! Because of this popup authentication flow, you don't need to implement authentication codes and you can make it easy.
+
+## Parse Gmail messages
+
+In the previous section, we could retrieve Gmail threads. We'd like message subject, body, from, to, date in this time. So, we need to get messages from `GmailThread`.
+
+![GmailThread.getMessages reference](img/reference-getmessages.png)
+Visit Apps Script reference. GmailThread class has [getMessages()](https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages) method and it returns Array of GmailMessage. Click **GmailMessagge** link and see the methods.
+
+![GmailMessage reference](img/reference-gmailmessage.png)
+it has getSubject, getBody, getFrom, getTo, getDate and many retrieving methods. We can get values we want using `GmailThread.getMessages()`.
+
+In this time, we use the first message of the threads. Retrieve message and show logs.
 
 ```JavaScript
 function main() {
@@ -138,36 +150,28 @@ function main() {
 }
 ```
 
+![GmailMessage log](img/gmail-messages.png)
+You can see the text **GmailMessage** in log viewer.
+
+Finaly, get values to call methods.
+
 ```JavaScript
 function main() {
   var searchText = '';
   var threads = GmailApp.search(searchText, 0, 5);
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
-    Logger.log(message);
     Logger.log(message.getSubject());
+    Logger.log(message.getFrom());
+    Logger.log(message.getTo());
+    Logger.log(message.getPlainBody());
+    Logger.log(message.getDate());
   });
 }
 ```
 
-```JavaScript
-function main() {
-  var searchText = '';
-  var threads = GmailApp.search(searchText, 0, 5);
-  var messages = [];
-  threads.forEach(function (thread) {
-    var message = thread.getMessages()[0];
-    messages.push([
-      message.getSubject(),
-      message.getFrom(),
-      message.getTo(),
-      message.getPlainBody(),
-      message.getDate(),
-    ]);
-  });
-  Logger.log(messages);
-}
-```
+![Get Gmail message values](img/get-message-values.png)
+Run the script and See the logs. You succeeded to retrieve Gmail message values! From Next section, we will insert these values to Spreadsheet.
 
 ## SpreadsheetApp class
 

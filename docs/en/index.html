@@ -62,7 +62,7 @@
 <p><img alt="Select Script editor menu" src="img/788bb99d22ce17be.png"><br>Select <strong>Tools</strong> &gt; <strong>Script editor</strong> menu, and Google Apps Script file will be created.</p>
 <p><img alt="Rename Google Apps Script project" src="img/b39d9ba12ad5e311.png"><br>Click project name area, and input project name. (e.g. gmail-to-spreadsheet)</p>
 <p><img alt="Input Google Apps Script project name" src="img/f1c2de0caf46b50e.png"><br>After inputting project name, Click OK and it will be saved. Then a toast appears. the project will be saved when the toast disappears.</p>
-<p>Now, we can run the script! we will run script in the next section.</p>
+<p>Now, we can run the script! We will run the script in the next section.</p>
 
 
       </google-codelab-step>
@@ -90,7 +90,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Fetch emails" duration="0">
+      <google-codelab-step label="Retrieve Gmail threads" duration="0">
         <p>Let&#39;s implement the script. Use <code>GmailApp.search</code> method and retrieve Gmail threads.</p>
 <pre><code>function main() {
   var searchText = &#39;&#39;;// You can set value.
@@ -103,7 +103,16 @@
 <p><img alt="Choose a account" src="img/9e8f390a572f4bee.png"><br>Choose a account that you are using in this codelab.</p>
 <p><img alt="Application verification" src="img/560aec6856abd7cf.png"><img alt="Application verification advanced" src="img/d2ad75b68cfc9af3.png"><br>To verify this app, click <strong>Advanced</strong> and click bottom link <strong>Go to ...</strong>. If it doesn&#39;t be displayed, skip this step.</p>
 <p><img alt="Allow authentication" src="img/540547e167502a58.png"><br>Then the scope you need to allow is displayed. Click <strong>Allow</strong> button. it will go back to Script editor and run the script.</p>
-<p><img alt="Allow authentication" src="img/5be1979211c8f557.png"><br>See the logs. Then you can see Array of GmailTread. You succeeded to retrieve emails for only 5 rows code! Because of this popup authentication flow, you don&#39;t need to implement authentication codes and you can make it easy.</p>
+<p><img alt="Allow authentication" src="img/5be1979211c8f557.png"><br>See the logs. Then you can see Array of GmailThread. You succeeded to retrieve emails for only 5 rows code! Because of this popup authentication flow, you don&#39;t need to implement authentication codes and you can make it easy.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Parse Gmail messages" duration="0">
+        <p>In the previous section, we could retrieve Gmail threads. We&#39;d like message subject, body, from, to, date in this time. So, we need to get messages from <code>GmailThread</code>.</p>
+<p><img alt="GmailThread.getMessages reference" src="img/a0af6ab48051acaa.png"><br>Visit Apps Script reference. GmailThread class has <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages" target="_blank">getMessages()</a> method and it returns Array of GmailMessage. Click <strong>GmailMessagge</strong> link and see the methods.</p>
+<p><img alt="GmailMessage reference" src="img/a636968464c90ec8.png"><br>it has getSubject, getBody, getFrom, getTo, getDate and many retrieving methods. We can get values we want using <code>GmailThread.getMessages()</code>.</p>
+<p>In this time, we use the first message of the threads. Retrieve message and show logs.</p>
 <pre><code>function main() {
   var searchText = &#39;&#39;;
   var threads = GmailApp.search(searchText, 0, 5);
@@ -113,33 +122,22 @@
   });
 }
 </code></pre>
+<p><img alt="GmailMessage log" src="img/74d764298536638b.png"><br>You can see the text <strong>GmailMessage</strong> in log viewer.</p>
+<p>Finaly, get values to call methods.</p>
 <pre><code>function main() {
   var searchText = &#39;&#39;;
   var threads = GmailApp.search(searchText, 0, 5);
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
-    Logger.log(message);
     Logger.log(message.getSubject());
+    Logger.log(message.getFrom());
+    Logger.log(message.getTo());
+    Logger.log(message.getPlainBody());
+    Logger.log(message.getDate());
   });
 }
 </code></pre>
-<pre><code>function main() {
-  var searchText = &#39;&#39;;
-  var threads = GmailApp.search(searchText, 0, 5);
-  var messages = [];
-  threads.forEach(function (thread) {
-    var message = thread.getMessages()[0];
-    messages.push([
-      message.getSubject(),
-      message.getFrom(),
-      message.getTo(),
-      message.getPlainBody(),
-      message.getDate(),
-    ]);
-  });
-  Logger.log(messages);
-}
-</code></pre>
+<p><img alt="Get Gmail message values" src="img/a3500ea8c3d3d9aa.png"><br>Run the script and See the logs. You succeeded to retrieve Gmail message values! From Next section, we will insert these values to Spreadsheet.</p>
 
 
       </google-codelab-step>
