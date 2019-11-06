@@ -11,7 +11,8 @@ feedback link: https://github.com/tanabee/gas-codelab/issues
 
 ## Intro
 
-In this codelab, You can make a application that exports Gmail messages to Google Spreadsheet.
+In this codelab, you can make a application that exports Gmail messages to Google Spreadsheet.
+![Output](img/output.png)
 
 ## Preparation
 
