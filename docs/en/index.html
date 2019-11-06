@@ -29,13 +29,18 @@
     
       <google-codelab-step label="Intro" duration="0">
         <p>In this codelab, you can make a application that exports Gmail messages to Google Spreadsheet.<br><img alt="Output" src="img/6ec36db583a97561.png"></p>
+<h2 is-upgraded>Target</h2>
+<ul>
+<li>Beginner of Apps Script</li>
+<li>Have experience of JavaScript</li>
+</ul>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Preparation" duration="0">
-        <p>You need own Gmail or G Suite account.</p>
-<aside class="warning"><p>If you use Gmail for the first time, you need to do below</p>
+        <p>You need own Gmail or G Suite account. Please create Gmail account if you don&#39;t have.</p>
+<aside class="warning"><p>If you use Gmail for the first time, you need to follow below</p>
 </aside>
 <h2 is-upgraded>1. Open mail-to-me application</h2>
 <p>Open the application in your browser.<br><a href="https://script.google.com/d/1p2B0NwXg3APMc-nh-fRWuMX6P_W5eQijsi4CVEHLOOq7_zJmQbWyZAWl/edit?usp=sharing" target="_blank">mail-to-me</a></p>
@@ -43,8 +48,8 @@
 <p>Select <strong>File</strong> &gt; <strong>Make a Copy</strong>.</p>
 <h2 is-upgraded>3. Run mail-to-me</h2>
 <p>Select <strong>Run</strong> button.</p>
-<h2 is-upgraded>4. Confirm your mail</h2>
-<p>Open <a href="https://mail.google.com" target="_blank">Gmail</a> in your browser and confirm to receiving emails.</p>
+<h2 is-upgraded>4. Confirm your Gmail</h2>
+<p>Open <a href="https://mail.google.com" target="_blank">Gmail</a> in your browser and confirm to receiv emails.</p>
 
 
       </google-codelab-step>
@@ -53,11 +58,11 @@
         <p>Let&#39;s create a Apps Script project. First, visit <a href="https://drive.google.com" target="_blank">drive.google.com</a> and create a Spreadsheet file.</p>
 <p><img alt="Create a new drive file" src="img/20cf609cb24e5367.png"><br>Click <strong>New</strong></p>
 <p><img alt="Create a new Spreadsheet file" src="img/8cffacf23c92b025.png"><br>Click <strong>Google Sheets</strong> and Spreadsheet file will be created.</p>
-<p><img alt="Rename Spreadsheet file" src="img/8cffacf23c92b025.png"><br>Click project name area, and input project name. (ex. gmail-to-spreadsheet)</p>
+<p><img alt="Rename Spreadsheet file" src="img/8cffacf23c92b025.png"><br>Click project name area, and input project name. (e.g. gmail-to-spreadsheet)</p>
 <p><img alt="Select Script editor menu" src="img/788bb99d22ce17be.png"><br>Select <strong>Tools</strong> &gt; <strong>Script editor</strong> menu, and Google Apps Script file will be created.</p>
-<p><img alt="Rename Google Apps Script project" src="img/b39d9ba12ad5e311.png"><br>Click project name area, and input project name. (ex. gmail-to-spreadsheet)</p>
-<p><img alt="Input Google Apps Script project name" src="img/f1c2de0caf46b50e.png"><br>After inputting project name, Click <strong>OK</strong> and it will be saved. Then it appears toast and it complete to save when the toast disappears.</p>
-<p>Now, we can run the script! we will run script in next section.</p>
+<p><img alt="Rename Google Apps Script project" src="img/b39d9ba12ad5e311.png"><br>Click project name area, and input project name. (e.g. gmail-to-spreadsheet)</p>
+<p><img alt="Input Google Apps Script project name" src="img/f1c2de0caf46b50e.png"><br>After inputting project name, Click OK and it will be saved. Then a toast appears. the project will be saved when the toast disappears.</p>
+<p>Now, we can run the script! we will run script in the next section.</p>
 
 
       </google-codelab-step>
@@ -78,7 +83,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="GmailApp class" duration="0">
-        <p>Next, understand GmailApp class. Confirm GmailApp classes and methods in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can see GmailApp classes (ex. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and methods (ex. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>)</p>
+        <p>Next, understand GmailApp class. Confirm GmailApp classes and methods in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can see GmailApp classes (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and methods (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>)</p>
 <p class="image-container"><img alt="GmailApp reference" src="img/e0328ecf0ef098ab.png"></p>
 <p>We use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a> method for retrieving emails in this time.</p>
 
@@ -86,13 +91,19 @@
       </google-codelab-step>
     
       <google-codelab-step label="Fetch emails" duration="0">
-        <p>Let&#39;s implement the script.</p>
+        <p>Let&#39;s implement the script. Use <code>GmailApp.search</code> method and retrieve Gmail threads.</p>
 <pre><code>function main() {
-  var searchText = &#39;&#39;;
+  var searchText = &#39;&#39;;// You can set value.
   var threads = GmailApp.search(searchText, 0, 5);
   Logger.log(threads);
 }
 </code></pre>
+<p>If you would like to apply search filter, you can assign value to searchText. You can confirm search operators <a href="https://support.google.com/mail/answer/7190?hl=en" target="_blank">here</a>. Click <strong>Run</strong> button.</p>
+<p><img alt="Authorization popup" src="img/1a57d3b6918ab32b.png"><br>Then authentication popup will be shown. You need to allow this project to access Gmail resources. Click <strong>Review Permissions</strong>.</p>
+<p><img alt="Choose a account" src="img/9e8f390a572f4bee.png"><br>Choose a account that you are using in this codelab.</p>
+<p><img alt="Application verification" src="img/560aec6856abd7cf.png"><img alt="Application verification advanced" src="img/d2ad75b68cfc9af3.png"><br>To verify this app, click <strong>Advanced</strong> and click bottom link <strong>Go to ...</strong>. If it doesn&#39;t be displayed, skip this step.</p>
+<p><img alt="Allow authentication" src="img/540547e167502a58.png"><br>Then the scope you need to allow is displayed. Click <strong>Allow</strong> button. it will go back to Script editor and run the script.</p>
+<p><img alt="Allow authentication" src="img/5be1979211c8f557.png"><br>See the logs. Then you can see Array of GmailTread. You succeeded to retrieve emails for only 5 rows code! Because of this popup authentication flow, you don&#39;t need to implement authentication codes and you can make it easy.</p>
 <pre><code>function main() {
   var searchText = &#39;&#39;;
   var threads = GmailApp.search(searchText, 0, 5);

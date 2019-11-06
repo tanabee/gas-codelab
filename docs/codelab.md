@@ -14,9 +14,14 @@ feedback link: https://github.com/tanabee/gas-codelab/issues
 In this codelab, you can make a application that exports Gmail messages to Google Spreadsheet.
 ![Output](img/output.png)
 
+### Target
+
+- Beginner of Apps Script
+- Have experience of JavaScript
+
 ## Preparation
 
-You need own Gmail or G Suite account.
+You need own Gmail or G Suite account. Please create Gmail account if you don't have.
 
 Negative
 : If you use Gmail for the first time, you need to follow below
@@ -94,15 +99,33 @@ We use [search](https://developers.google.com/apps-script/reference/gmail/gmail-
 
 ## Fetch emails
 
-Let's implement the script. 
+Let's implement the script. Use `GmailApp.search` method and retrieve Gmail threads.
 
 ```JavaScript
 function main() {
-  var searchText = '';
+  var searchText = '';// You can set value.
   var threads = GmailApp.search(searchText, 0, 5);
   Logger.log(threads);
 }
 ```
+
+If you would like to apply search filter, you can assign value to searchText. You can confirm search operators [here](https://support.google.com/mail/answer/7190?hl=en). Click **Run** button.
+
+![Authorization popup](img/authorization-required.png)
+Then authentication popup will be shown. You need to allow this project to access Gmail resources. Click **Review Permissions**.
+
+![Choose a account](img/choose-account.png)
+Choose a account that you are using in this codelab.
+
+![Application verification](img/verify-app.png)
+![Application verification advanced](img/verify-app-advanced.png)
+To verify this app, click **Advanced** and click bottom link **Go to ...**. If it doesn't be displayed, skip this step.
+
+![Allow authentication](img/allow-auth.png)
+Then the scope you need to allow is displayed. Click **Allow** button. it will go back to Script editor and run the script.
+
+![Allow authentication](img/gmail-treads.png)
+See the logs. Then you can see Array of GmailTread. You succeeded to retrieve emails for only 5 rows code! Because of this popup authentication flow, you don't need to implement authentication codes and you can make it easy.
 
 ```JavaScript
 function main() {
