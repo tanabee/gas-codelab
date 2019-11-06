@@ -80,19 +80,22 @@
       <google-codelab-step label="GmailApp class" duration="0">
         <p>Next, understand GmailApp class. Confirm GmailApp classes and methods in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can see GmailApp classes (ex. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and methods (ex. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>)</p>
 <p class="image-container"><img alt="GmailApp reference" src="img/e0328ecf0ef098ab.png"></p>
-<p>We use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max" target="_blank">getInboxThreads()</a> method for retrieving emails in this time.</p>
+<p>We use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a> method for retrieving emails in this time.</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Fetch emails" duration="0">
-        <pre><code>function main() {
-  var threads = GmailApp.getInboxThreads(0, 100);
+        <p>Let&#39;s implement the script.</p>
+<pre><code>function main() {
+  var searchText = &#39;&#39;;
+  var threads = GmailApp.search(searchText, 0, 5);
   Logger.log(threads);
 }
 </code></pre>
 <pre><code>function main() {
-  var threads = GmailApp.getInboxThreads(0, 100);
+  var searchText = &#39;&#39;;
+  var threads = GmailApp.search(searchText, 0, 5);
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
     Logger.log(message);
@@ -100,7 +103,8 @@
 }
 </code></pre>
 <pre><code>function main() {
-  var threads = GmailApp.getInboxThreads(0, 100);
+  var searchText = &#39;&#39;;
+  var threads = GmailApp.search(searchText, 0, 5);
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
     Logger.log(message);
@@ -109,7 +113,8 @@
 }
 </code></pre>
 <pre><code>function main() {
-  var threads = GmailApp.getInboxThreads(0, 100);
+  var searchText = &#39;&#39;;
+  var threads = GmailApp.search(searchText, 0, 5);
   var messages = [];
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
@@ -146,7 +151,8 @@
     
       <google-codelab-step label="Save emails to Spreadsheet" duration="0">
         <pre><code>function main() {
-  var threads = GmailApp.getInboxThreads(0, 200);
+  var searchText = &#39;&#39;;
+  var threads = GmailApp.search(searchText, 0, 5);
   var messages = [];
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
@@ -214,7 +220,8 @@ function clearSheet() {
 }
 
 function main() {
-  var threads = GmailApp.getInboxThreads(0, 200);
+  var searchText = &#39;&#39;;
+  var threads = GmailApp.search(searchText, 0, 5);
   var messages = [[&#39;Subject&#39;, &#39;From&#39;, &#39;To&#39;, &#39;Body&#39;, &#39;Date&#39;]];
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];

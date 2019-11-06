@@ -91,22 +91,24 @@ Next, understand GmailApp class. Confirm GmailApp classes and methods in [offici
 
 ![GmailApp reference](img/reference-gmailapp.png)
 
-We use [getInboxThreads()](https://developers.google.com/apps-script/reference/gmail/gmail-app#getinboxthreadsstart,-max) method for retrieving emails in this time.
+We use [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max) method for retrieving emails in this time.
 
 ## Fetch emails
 
-
+Let's implement the script. 
 
 ```JavaScript
 function main() {
-  var threads = GmailApp.getInboxThreads(0, 100);
+  var searchText = '';
+  var threads = GmailApp.search(searchText, 0, 5);
   Logger.log(threads);
 }
 ```
 
 ```JavaScript
 function main() {
-  var threads = GmailApp.getInboxThreads(0, 100);
+  var searchText = '';
+  var threads = GmailApp.search(searchText, 0, 5);
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
     Logger.log(message);
@@ -116,7 +118,8 @@ function main() {
 
 ```JavaScript
 function main() {
-  var threads = GmailApp.getInboxThreads(0, 100);
+  var searchText = '';
+  var threads = GmailApp.search(searchText, 0, 5);
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
     Logger.log(message);
@@ -127,7 +130,8 @@ function main() {
 
 ```JavaScript
 function main() {
-  var threads = GmailApp.getInboxThreads(0, 100);
+  var searchText = '';
+  var threads = GmailApp.search(searchText, 0, 5);
   var messages = [];
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
@@ -162,7 +166,8 @@ function insertSpreadSheet() {
 
 ```JavaScript
 function main() {
-  var threads = GmailApp.getInboxThreads(0, 200);
+  var searchText = '';
+  var threads = GmailApp.search(searchText, 0, 5);
   var messages = [];
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
@@ -230,7 +235,8 @@ function onOpen() {
 }
 
 function main() {
-  var threads = GmailApp.getInboxThreads(0, 200);
+  var searchText = '';
+  var threads = GmailApp.search(searchText, 0, 5);
   var messages = [['Subject', 'From', 'To', 'Body', 'Date']];
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
