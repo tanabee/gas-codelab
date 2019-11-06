@@ -19,6 +19,10 @@ In this codelab, you can make a application that exports Gmail messages to Googl
 - Beginner of Apps Script
 - Have experience of JavaScript
 
+### Usecase
+
+// TODO
+
 ## Preparation
 
 You need own Gmail or G Suite account. Please create Gmail account if you don't have.
@@ -91,7 +95,7 @@ We can alse use `console.log()`, but we use `Logger.log()` in this Hands-on beca
 
 ## GmailApp class
 
-Next, understand GmailApp class. Confirm GmailApp classes and methods in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can see GmailApp classes (e.g. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and methods (e.g. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) 
+Next, let's understand GmailApp class. Confirm GmailApp classes and methods in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can see GmailApp classes (e.g. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and methods (e.g. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) 
 
 ![GmailApp reference](img/reference-gmailapp.png)
 
@@ -174,6 +178,21 @@ function main() {
 Run the script and See the logs. You succeeded to retrieve Gmail message values! From Next section, we will insert these values to Spreadsheet.
 
 ## SpreadsheetApp class
+
+Next, let's understand SpreadsheetApp class. Visit [SpreadsheetApp reference](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app) and see [getActiveSheet](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet) method section. You can access the Spreadsheet you created to use this method.
+
+Run this method below. You need to allow the authentication just like in Gmail.
+
+```JavaScript
+function insertIntoSpreadSheet() {
+  Logger.log(SpreadsheetApp.getActiveSheet().getName());
+}
+```
+
+![Logging Spreadsheet tab name](img/log-getactivesheet.png)
+![Spreadsheet tab name](img/spreadsheet-tabname.png)
+You can see the Spreadsheet tab name in the log viewer.
+
 
 ```JavaScript
 function insertSpreadSheet() {

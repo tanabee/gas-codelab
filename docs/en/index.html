@@ -34,6 +34,8 @@
 <li>Beginner of Apps Script</li>
 <li>Have experience of JavaScript</li>
 </ul>
+<h2 is-upgraded>Usecase</h2>
+<p>// TODO</p>
 
 
       </google-codelab-step>
@@ -83,7 +85,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="GmailApp class" duration="0">
-        <p>Next, understand GmailApp class. Confirm GmailApp classes and methods in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can see GmailApp classes (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and methods (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>)</p>
+        <p>Next, let&#39;s understand GmailApp class. Confirm GmailApp classes and methods in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can see GmailApp classes (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and methods (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>)</p>
 <p class="image-container"><img alt="GmailApp reference" src="img/e0328ecf0ef098ab.png"></p>
 <p>We use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a> method for retrieving emails in this time.</p>
 
@@ -143,7 +145,14 @@
       </google-codelab-step>
     
       <google-codelab-step label="SpreadsheetApp class" duration="0">
-        <pre><code>function insertSpreadSheet() {
+        <p>Next, let&#39;s understand SpreadsheetApp class. Visit <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app" target="_blank">SpreadsheetApp reference</a> and see <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet" target="_blank">getActiveSheet</a> method section. You can access the Spreadsheet you created to use this method.</p>
+<p>Run this method below. You need to allow the authentication just like in Gmail.</p>
+<pre><code>function insertIntoSpreadSheet() {
+  Logger.log(SpreadsheetApp.getActiveSheet().getName());
+}
+</code></pre>
+<p><img alt="Logging Spreadsheet tab name" src="img/e795ba69053654fc.png"><img alt="Spreadsheet tab name" src="img/cefdc34f0f07c135.png"><br>You can see the Spreadsheet tab name in the log viewer.</p>
+<pre><code>function insertSpreadSheet() {
   var data = [
     [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
     [&#39;d&#39;, &#39;e&#39;, &#39;f&#39;],
