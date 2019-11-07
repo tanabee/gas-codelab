@@ -271,6 +271,10 @@ function clearSheet() {
 }
 ```
 
+## Automation
+
+// TODO: Trigger
+
 ## Congrats
 
 ```JavaScript
@@ -317,3 +321,7 @@ function clearSheet() {
     .clear();
 }
 ```
+
+### Next Action
+- Retrieve Over 500 Gmail threads 
+- Daily fetch (using Trigger) 
