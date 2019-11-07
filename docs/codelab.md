@@ -329,7 +329,33 @@ You can see **Clear sheet** sub menu and run it.
 
 ## Automation
 
-// TODO: Trigger
+You can also configure automation to this project using [Trigger](https://developers.google.com/apps-script/guides/triggers/installable). Let's try setting [Time-driven trigger](https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers) to run the `main` function once a minute.
+
+Follow below.
+
+![Current project's triggers](img/current-project-triggers.png)
+Select **Edit** > **Current project's trigger**
+
+![Add triggers](img/add-trigger.png)
+Select **Add Trigger**
+
+![Trigger settings](img/trigger-settings.png)
+Then it will be displayed the popup of trigger settings. Select as screenshot and Click Save.
+
+![Trigger is created](img/trigger-is-created.png)
+Then the trigger is created. Click the dot icon.
+
+![Select executions menu](img/select-executions.png)
+Select **Executions**.
+
+![Executions](img/executions.png)
+You can see that function is called once a minute. If you caught new message, you can keep up-to-date.
+
+![Delete trigger](img/delete-trigger.png)
+You can delete trigger to select the dot icon and **Delete trigger**.
+
+![Triggers](img/triggers.png)
+Google Apps Script has many types of triggers. You can improve the projects more convenient.
 
 ## Congrats!
 
