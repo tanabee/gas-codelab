@@ -165,6 +165,26 @@
 }
 </code></pre>
 <p><img alt="Range.setValues" src="img/d845168e2d88f825.png"><br>Run this method and See the Spreadsheet. You can see the value is inserted into the sheet. Note that the argument must be a two-dimensional array.</p>
+<p>Then, update this method to set data as argument of this method. We&#39;d like to insert 5 type of values, so we set the last column to &#34;E&#34;.</p>
+<pre><code>function insertMessages(data) {
+  SpreadsheetApp
+    .getActiveSheet()
+    .getRange(&#34;A1:E&#34; + data.length)
+    .setValues(data);
+}
+</code></pre>
+<p>Add test method and Run it.</p>
+<pre><code>function test() {
+  var data = [
+    [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;],
+    [&#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;j&#39;],
+    [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;],
+    [&#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;],
+  ];
+  insertMessages(data);
+}
+</code></pre>
+<p><img alt="set data as argument" src="img/398f7f8a7668eb9a.png"><br>Done! Now, you can delete test method. We will call <code>insertMessages function</code> from <code>main function</code> from the next section.</p>
 
 
       </google-codelab-step>

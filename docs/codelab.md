@@ -211,6 +211,34 @@ function insertMessages() {
 ![Range.setValues](img/range-setvalues.png)
 Run this method and See the Spreadsheet. You can see the value is inserted into the sheet. Note that the argument must be a two-dimensional array.
 
+Then, update this method to set data as argument of this method. We'd like to insert 5 type of values, so we set the last column to "E".
+
+```JavaScript
+function insertMessages(data) {
+  SpreadsheetApp
+    .getActiveSheet()
+    .getRange("A1:E" + data.length)
+    .setValues(data);
+}
+```
+
+Add test method and Run it.
+
+```JavaScript
+function test() {
+  var data = [
+    ['a', 'b', 'c', 'd', 'e'],
+    ['f', 'g', 'h', 'i', 'j'],
+    ['A', 'B', 'C', 'D', 'E'],
+    ['F', 'G', 'H', 'I', 'J'],
+  ];
+  insertMessages(data);
+}
+```
+
+![set data as argument](img/data-argument.png)
+Done! Now, you can delete test method. We will call `insertMessages function` from `main function` from the next section.
+
 ## Save emails to Spreadsheet
 
 ```JavaScript
@@ -323,5 +351,6 @@ function clearSheet() {
 ```
 
 ### Next Action
+
 - Retrieve Over 500 Gmail threads 
 - Daily fetch (using Trigger) 
