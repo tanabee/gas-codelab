@@ -269,7 +269,7 @@ function clearSheet() {
 
       </google-codelab-step>
     
-      <google-codelab-step label="Congrats" duration="0">
+      <google-codelab-step label="Congrats!" duration="0">
         <pre><code>function onOpen() {
   SpreadsheetApp
     .getActiveSpreadsheet()
@@ -281,7 +281,7 @@ function clearSheet() {
 
 function main() {
   var searchText = &#39;&#39;;
-  var threads = GmailApp.search(searchText, 0, 5);
+  var threads = GmailApp.search(searchText, 0, 500);
   var messages = [[&#39;Subject&#39;, &#39;From&#39;, &#39;To&#39;, &#39;Body&#39;, &#39;Date&#39;]];
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
@@ -296,11 +296,11 @@ function main() {
       message.getDate(),
     ]);
   });
-  insertSpreadSheet(messages);
+  saveMessages(messages);
 }
 
-function insertSpreadSheet(data) {
-	clearSheet();
+function saveMessages(data) {
+  clearSheet();
   SpreadsheetApp
     .getActiveSheet()
     .getRange(&#34;A1:E&#34; + data.length)
@@ -314,8 +314,11 @@ function clearSheet() {
 }
 </code></pre>
 <h2 is-upgraded>Next Action</h2>
+<p>You can improve this project. I&#39;ll show you some examples.</p>
 <ul>
-<li>Retrieve Over 500 Gmail threads</li>
+<li>Retrieve Over 500 Gmail threads (Using for statement)</li>
+<li>Not overwrite but add the messages</li>
+<li>Visualize the data using <a href="https://datastudio.google.com" target="_blank">Data Studio</a></li>
 </ul>
 
 
