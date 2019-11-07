@@ -190,7 +190,8 @@
       </google-codelab-step>
     
       <google-codelab-step label="Save emails to Spreadsheet" duration="0">
-        <pre><code>function main() {
+        <p>Update main function to call <code>saveMessages</code> function. Make messages variable as two-dimensional array.</p>
+<pre><code>function main() {
   var searchText = &#39;&#39;;
   var threads = GmailApp.search(searchText, 0, 5);
   var messages = [];
@@ -207,21 +208,28 @@
       message.getDate(),
     ]);
   });
-  insertSpreadSheet(messages);
+  saveMessages(messages);
 }
 
-function insertSpreadSheet(data) {
+function saveMessages(data) {
   SpreadsheetApp
     .getActiveSheet()
     .getRange(&#34;A1:E&#34; + data.length)
     .setValues(data);
 }
 </code></pre>
+<p>Run <code>main</code> function and see the Spreadsheet.</p>
+<p class="image-container"><img alt="save gmail messages to Spreadsheet" src="img/9cfdb1ebbc26bba5.png"></p>
+<p>You can see the messages data in Spreadsheet! Although, it is better that the first row is filled column name. Replace 4th row as below and run the script.</p>
+<pre><code>  var messages = [[&#39;Subject&#39;, &#39;From&#39;, &#39;To&#39;, &#39;Body&#39;, &#39;Date&#39;]];
+</code></pre>
+<p class="image-container"><img alt="add column names" src="img/a3981b72cd4c5644.png"></p>
+<p>We can understand the column means well. Now, we can make the application that can connect Gmail and Spreadsheet, and it is only -30 lines of code.</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Spreadsheet Custom Menu" duration="0">
+      <google-codelab-step label="Custom Menu of Spreadsheet" duration="0">
         <pre><code>function onOpen() {
   SpreadsheetApp
     .getActiveSpreadsheet()

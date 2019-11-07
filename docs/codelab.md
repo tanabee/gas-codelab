@@ -241,6 +241,8 @@ Done! Now, you can delete test method. We will call `saveMessages function` from
 
 ## Save emails to Spreadsheet
 
+Update main function to call `saveMessages` function. Make messages variable as two-dimensional array.
+
 ```JavaScript
 function main() {
   var searchText = '';
@@ -259,10 +261,10 @@ function main() {
       message.getDate(),
     ]);
   });
-  insertSpreadSheet(messages);
+  saveMessages(messages);
 }
 
-function insertSpreadSheet(data) {
+function saveMessages(data) {
   SpreadsheetApp
     .getActiveSheet()
     .getRange("A1:E" + data.length)
@@ -270,7 +272,21 @@ function insertSpreadSheet(data) {
 }
 ```
 
-## Spreadsheet Custom Menu
+Run `main` function and see the Spreadsheet.
+
+![save gmail messages to Spreadsheet](img/save-gmail-messages.png)
+
+You can see the messages data in Spreadsheet! Although, it is better that the first row is filled column name. Replace 4th row as below and run the script.
+
+```JavaScript
+  var messages = [['Subject', 'From', 'To', 'Body', 'Date']];
+```
+
+![add column names](img/add-column-names.png)
+
+We can understand the column means well. Now, we can make the application that can connect Gmail and Spreadsheet, and it is only -30 lines of code.
+
+## Custom Menu of Spreadsheet
 
 ```JavaScript
 function onOpen() {
