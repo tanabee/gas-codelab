@@ -145,14 +145,15 @@
       </google-codelab-step>
     
       <google-codelab-step label="SpreadsheetApp class" duration="0">
-        <p>Next, let&#39;s understand SpreadsheetApp class. Visit <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app" target="_blank">SpreadsheetApp reference</a> and see <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet" target="_blank">getActiveSheet</a> method section. You can access the Spreadsheet you created to use this method.</p>
+        <p>// TODO: Graph: Spreadsheet &gt; Sheet &gt; Range</p>
+<p>Next, let&#39;s understand SpreadsheetApp class. Visit <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app" target="_blank">SpreadsheetApp reference</a> and see <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet" target="_blank">getActiveSheet</a> method section. You can access the Spreadsheet you created to use this method.</p>
 <p>Run this method below. You need to allow the authentication just like in Gmail.</p>
-<pre><code>function insertIntoSpreadSheet() {
+<pre><code>function insertMessages() {
   Logger.log(SpreadsheetApp.getActiveSheet().getName());
 }
 </code></pre>
-<p><img alt="Logging Spreadsheet tab name" src="img/e795ba69053654fc.png"><img alt="Spreadsheet tab name" src="img/cefdc34f0f07c135.png"><br>You can see the Spreadsheet tab name in the log viewer.</p>
-<pre><code>function insertSpreadSheet() {
+<p><img alt="Logging Spreadsheet tab name" src="img/e795ba69053654fc.png"><img alt="Spreadsheet tab name" src="img/cefdc34f0f07c135.png"><br>You can see the Spreadsheet tab name in the log viewer. You need to access <a href="https://developers.google.com/apps-script/reference/spreadsheet/range" target="_blank">Range</a> class to insert data into the sheet. Use <a href="https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues" target="_blank">Range.setValues()</a> to insert messages.</p>
+<pre><code>function insertMessages() {
   var data = [
     [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
     [&#39;d&#39;, &#39;e&#39;, &#39;f&#39;],
@@ -163,6 +164,7 @@
     .setValues(data);
 }
 </code></pre>
+<p><img alt="Range.setValues" src="img/d845168e2d88f825.png"><br>Run this method and See the Spreadsheet. You can see the value is inserted into the sheet. Note that the argument must be a two-dimensional array.</p>
 
 
       </google-codelab-step>

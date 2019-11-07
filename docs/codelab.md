@@ -179,23 +179,24 @@ Run the script and See the logs. You succeeded to retrieve Gmail message values!
 
 ## SpreadsheetApp class
 
+// TODO: Graph: Spreadsheet > Sheet > Range 
+
 Next, let's understand SpreadsheetApp class. Visit [SpreadsheetApp reference](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app) and see [getActiveSheet](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet) method section. You can access the Spreadsheet you created to use this method.
 
 Run this method below. You need to allow the authentication just like in Gmail.
 
 ```JavaScript
-function insertIntoSpreadSheet() {
+function insertMessages() {
   Logger.log(SpreadsheetApp.getActiveSheet().getName());
 }
 ```
 
 ![Logging Spreadsheet tab name](img/log-getactivesheet.png)
 ![Spreadsheet tab name](img/spreadsheet-tabname.png)
-You can see the Spreadsheet tab name in the log viewer.
-
+You can see the Spreadsheet tab name in the log viewer. You need to access [Range](https://developers.google.com/apps-script/reference/spreadsheet/range) class to insert data into the sheet. Use [Range.setValues()](https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues) to insert messages.
 
 ```JavaScript
-function insertSpreadSheet() {
+function insertMessages() {
   var data = [
     ['a', 'b', 'c'],
     ['d', 'e', 'f'],
@@ -206,6 +207,9 @@ function insertSpreadSheet() {
     .setValues(data);
 }
 ```
+
+![Range.setValues](img/range-setvalues.png)
+Run this method and See the Spreadsheet. You can see the value is inserted into the sheet. Note that the argument must be a two-dimensional array.
 
 ## Save emails to Spreadsheet
 
