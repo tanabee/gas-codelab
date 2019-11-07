@@ -186,7 +186,7 @@ Next, let's understand SpreadsheetApp class. Visit [SpreadsheetApp reference](ht
 Run this method below. You need to allow the authentication just like in Gmail.
 
 ```JavaScript
-function insertMessages() {
+function saveMessages() {
   Logger.log(SpreadsheetApp.getActiveSheet().getName());
 }
 ```
@@ -196,7 +196,7 @@ function insertMessages() {
 You can see the Spreadsheet tab name in the log viewer. You need to access [Range](https://developers.google.com/apps-script/reference/spreadsheet/range) class to insert data into the sheet. Use [Range.setValues()](https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues) to insert messages.
 
 ```JavaScript
-function insertMessages() {
+function saveMessages() {
   var data = [
     ['a', 'b', 'c'],
     ['d', 'e', 'f'],
@@ -214,7 +214,7 @@ Run this method and See the Spreadsheet. You can see the value is inserted into 
 Then, update this method to set data as argument of this method. We'd like to insert 5 type of values, so we set the last column to "E".
 
 ```JavaScript
-function insertMessages(data) {
+function saveMessages(data) {
   SpreadsheetApp
     .getActiveSheet()
     .getRange("A1:E" + data.length)
@@ -232,12 +232,12 @@ function test() {
     ['A', 'B', 'C', 'D', 'E'],
     ['F', 'G', 'H', 'I', 'J'],
   ];
-  insertMessages(data);
+  saveMessages(data);
 }
 ```
 
 ![set data as argument](img/data-argument.png)
-Done! Now, you can delete test method. We will call `insertMessages function` from `main function` from the next section.
+Done! Now, you can delete test method. We will call `saveMessages function` from `main function` from the next section.
 
 ## Save emails to Spreadsheet
 
