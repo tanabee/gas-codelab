@@ -91,7 +91,7 @@ You can view logs when you select **View** > **Logs** in the menu.
 ![log viewer](img/log-viewer.png)
 We can find the text `Hello Google Apps Script!` in Log Viewer.
 
-We can alse use `console.log()`, but we use `Logger.log()` in this Hands-on because you need additional process to use `console.log()`. 
+We can also use `console.log()`, but we use `Logger.log()` in this Hands-on because you need an additional process to use `console.log()`.
 
 ## GmailApp class
 
@@ -113,27 +113,29 @@ function main() {
 }
 ```
 
-If you would like to apply search filter, you can assign value to searchText. You can confirm search operators [here](https://support.google.com/mail/answer/7190?hl=en). Click **Run** button.
+If you would like to apply search filters, you can assign value to searchText. You can confirm search operators [here](https://support.google.com/mail/answer/7190?hl=en).
+
+Click **Run** button.
 
 ![Authorization popup](img/authorization-required.png)
-Then authentication popup will be shown. You need to allow this project to access Gmail resources. Click **Review Permissions**.
+Then an authentication popup will be shown. You need to allow this project to access Gmail resources. Click **Review Permissions**.
 
 ![Choose a account](img/choose-account.png)
-Choose a account that you are using in this codelab.
+Choose an account that you are using in this codelab.
 
 ![Application verification](img/verify-app.png)
 ![Application verification advanced](img/verify-app-advanced.png)
-To verify this app, click **Advanced** and click bottom link **Go to ...**. If it doesn't be displayed, skip this step.
+To verify this app, click **Advanced** and click the bottom link **Go to ...**. If it doesn't be displayed, skip this step.
 
 ![Allow authentication](img/allow-auth.png)
-Then the scope you need to allow is displayed. Click **Allow** button. it will go back to Script editor and run the script.
+Then the scope you need to allow is displayed. Click **Allow** button. It will go back to Script editor and run the script.
 
 ![Allow authentication](img/gmail-threads.png)
-See the logs. Then you can see Array of GmailThread. You succeeded to retrieve emails for only 5 rows code! Because of this popup authentication flow, you don't need to implement authentication codes and you can make it easy.
+See the logs. Then you can see Array of GmailThread. You succeeded to retrieve emails for only 5 lines of code! Because of this popup authentication flow, you don't need to implement authentication codes and you can make it easier than ever.
 
 ## Parse Gmail messages
 
-In the previous section, we could retrieve Gmail threads. We'd like message subject, body, from, to, date in this time. So, we need to get messages from `GmailThread`.
+In the previous section, we could retrieve Gmail threads. We'd like to retrieve the message subject, body, from, to, and date in this time. So, we need to get messages from `GmailThread`.
 
 ![GmailThread.getMessages reference](img/reference-getmessages.png)
 Visit Apps Script reference. GmailThread class has [getMessages()](https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages) method and it returns Array of GmailMessage. Click **GmailMessagge** link and see the methods.
