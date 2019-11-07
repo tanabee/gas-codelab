@@ -284,9 +284,11 @@ You can see the messages data in Spreadsheet! Although, it is better that the fi
 
 ![add column names](img/add-column-names.png)
 
-We can understand the column means well. Now, we can make the application that can connect Gmail and Spreadsheet, and it is only -30 lines of code.
+We can understand the column means well. Now, we succeeded to make the application that can connect Gmail and Spreadsheet, and it is only -30 lines of code.
 
 ## Custom Menu of Spreadsheet
+
+The application we made works well, but we can make it more convenient. We will add custom menu on Spreadsheet. Add the `onOpen` function below and Run it. The name `onOpen` is reserved and will be called when the Spreadsheet is opened. You can confirm in the [document](https://developers.google.com/apps-script/guides/triggers#onopene).
 
 ```JavaScript
 function onOpen() {
@@ -297,6 +299,12 @@ function onOpen() {
     ]);
 }
 ```
+
+![Spreadsheet custom menu](img/spreadsheet-custom-menu.png)
+
+See the Spreadsheet. The custom menu will be displayed. Click **Gmail** > **Fetch**.
+
+It's better that it can be operated to reset the sheet values. Add `clearSheet` function and add menu.
 
 ```JavaScript
 function onOpen() {
@@ -314,6 +322,8 @@ function clearSheet() {
     .clear();
 }
 ```
+
+You can see **Clear sheet** sub menu and run it.
 
 ## Automation
 
@@ -369,4 +379,3 @@ function clearSheet() {
 ### Next Action
 
 - Retrieve Over 500 Gmail threads 
-- Daily fetch (using Trigger) 
