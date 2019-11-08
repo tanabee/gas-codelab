@@ -1,0 +1,351 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Apps Script Hands-on</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-141719032-2"
+                  id="ja"
+                  title="Apps Script Hands-on"
+                  environment="web"
+                  feedback-link="https://github.com/tanabee/gas-codelab/issues">
+    
+      <google-codelab-step label="Intro" duration="0">
+        <p>この Codelab では、 Google Apps Script を用いて Gmail のメッセージ一覧を Google Spreadsheet に抽出するアプリケーションを作成します。<br><img alt="Output" src="img/6ec36db583a97561.png"></p>
+<h2 is-upgraded>対象者</h2>
+<ul>
+<li>Google Apps Script 初心者</li>
+<li>JavaScript 経験者</li>
+</ul>
+<h2 is-upgraded>ユースケース</h2>
+<p>この Codelab は以下のようなケースを想定しています。</p>
+<ul>
+<li>特定のメーリス、もしくはメールアドレスへのユーザーからの問い合わせの集計、分析</li>
+<li>REST API は提供していないがメール通知機能を提供しているアプリケーションとのシステム連携</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="準備" duration="0">
+        <p>Gmail もしくは G Suite のアカウントが必要です。もしまだアカウントがない場合には <a href="https://accounts.google.com/signup" target="_blank">Gmail アカウントを作成</a>してください。</p>
+<aside class="warning"><p>Gmail アカウントを作成した場合には、以下の手順に沿ってください。</p>
+</aside>
+<h2 is-upgraded>1. mail-to-me アプリケーションを開く</h2>
+<p><a href="https://script.google.com/d/1p2B0NwXg3APMc-nh-fRWuMX6P_W5eQijsi4CVEHLOOq7_zJmQbWyZAWl/edit?usp=sharing" target="_blank">mail-to-me</a> アプリケーションをブラウザで開く。</p>
+<h2 is-upgraded>2. コピーを作成</h2>
+<p><strong>File</strong> &gt; <strong>Make a Copy</strong> を選択。</p>
+<h2 is-upgraded>3. mail-to-me の実行</h2>
+<p><strong>Run</strong> ボタンをクリック。</p>
+<h2 is-upgraded>4. Gmail を確認</h2>
+<p><a href="https://mail.google.com" target="_blank">Gmail</a> をブラウザで開き、メールが受信されていることを確認する。以上で準備は完了です。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="プロジェクトの作成" duration="0">
+        <p>Apps Script のプロジェクトを作成しましょう。まず <a href="https://drive.google.com" target="_blank">drive.google.com</a> にアクセスし、スプレッドシートファイルを作成します。</p>
+<p><img alt="Create a new drive file" src="img/20cf609cb24e5367.png"><strong>New</strong> をクリック</p>
+<p><img alt="Create a new Spreadsheet file" src="img/8cffacf23c92b025.png"><strong>Google Sheets</strong> を選択するとスプレッドシートファイルが作成されます。</p>
+<p><img alt="Rename Spreadsheet file" src="img/8cffacf23c92b025.png"><br>ファイル名を選択し、ファイル名（gmail-to-spreadsheet など）を入力します。</p>
+<p><img alt="Select Script editor menu" src="img/788bb99d22ce17be.png"><strong>Tools</strong> &gt; <strong>Script editor</strong> メニューを選択すると Google Apps Script プロジェクトが作成されます。</p>
+<p><img alt="Rename Google Apps Script project" src="img/b39d9ba12ad5e311.png"><br>プロジェクト名を選択し、プロジェクト名（gmail-to-spreadsheet など）を入力します。</p>
+<p><img alt="Input Google Apps Script project name" src="img/f1c2de0caf46b50e.png"><br>プロジェクト名を入力して OK ボタンをクリックするとプロジェクトが保存されます。トーストが表示されてから、非表示になったところで保存が完了します。</p>
+<p>これでスクリプトを実行できるようになりました。次のセクションでスクリプトを実行していきます。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="スクリプトの実行" duration="0">
+        <p>Copy the script below and paste to the Script editor, and click <strong>Run</strong> button.</p>
+<pre><code>function main() {
+  Logger.log(&#39;Hello Google Apps Script!&#39;);
+}
+</code></pre>
+<p class="image-container"><img alt="Run script" src="img/d9d39332483e1626.png"></p>
+<p><code>Logger.log()</code> is logging function in Google Apps Script.</p>
+<p><img alt="View the script logs" src="img/340da3e798aac65a.png"><br>You can view logs when you select <strong>View</strong> &gt; <strong>Logs</strong> in the menu.</p>
+<p><img alt="log viewer" src="img/19ffc24655f971b.png"><br>We can find the text <code>Hello Google Apps Script!</code> in Log Viewer.</p>
+<p>We can also use <code>console.log()</code>, but we use <code>Logger.log()</code> in this Hands-on because you need an additional process to use <code>console.log()</code>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="GmailApp class" duration="0">
+        <p>Next, let&#39;s understand GmailApp class. Confirm GmailApp classes and methods in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can see GmailApp classes (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and methods (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>)</p>
+<p class="image-container"><img alt="GmailApp reference" src="img/e0328ecf0ef098ab.png"></p>
+<p>We use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a> method for retrieving emails in this time.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Retrieve Gmail threads" duration="0">
+        <p>Let&#39;s implement the script. Use <code>GmailApp.search</code> method and retrieve Gmail threads.</p>
+<pre><code>function main() {
+  var searchText = &#39;&#39;;// You can set value.
+  var threads = GmailApp.search(searchText, 0, 5);
+  Logger.log(threads);
+}
+</code></pre>
+<p>If you would like to apply search filters, you can assign value to searchText. You can confirm search operators <a href="https://support.google.com/mail/answer/7190?hl=en" target="_blank">here</a>.</p>
+<p>Click <strong>Run</strong> button.</p>
+<p><img alt="Authorization popup" src="img/1a57d3b6918ab32b.png"><br>Then an authentication popup will be shown. You need to allow this project to access Gmail resources. Click <strong>Review Permissions</strong>.</p>
+<p><img alt="Choose a account" src="img/9e8f390a572f4bee.png"><br>Choose an account that you are using in this codelab.</p>
+<p><img alt="Application verification" src="img/560aec6856abd7cf.png"><img alt="Application verification advanced" src="img/d2ad75b68cfc9af3.png"><br>To verify this app, click <strong>Advanced</strong> and click the bottom link <strong>Go to ...</strong>. If it doesn&#39;t be displayed, skip this step.</p>
+<p><img alt="Allow authentication" src="img/540547e167502a58.png"><br>Then the scope you need to allow is displayed. Click <strong>Allow</strong> button. It will go back to Script editor and run the script.</p>
+<p><img alt="Allow authentication" src="img/5be1979211c8f557.png"><br>See the logs. Then you can see Array of GmailThread. You succeeded to retrieve emails for only 5 lines of code! Because of this popup authentication flow, you don&#39;t need to implement authentication codes and you can make it easier than ever.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Parse Gmail messages" duration="0">
+        <p>In the previous section, we could retrieve Gmail threads. We&#39;d like to retrieve the message subject, body, from, to, and date in this time. So, we need to get messages from <code>GmailThread</code>.</p>
+<p><img alt="GmailThread.getMessages reference" src="img/a0af6ab48051acaa.png"><br>Visit Apps Script reference. GmailThread class has <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages" target="_blank">getMessages()</a> method and it returns Array of GmailMessage. Click <strong>GmailMessagge</strong> link and see the methods.</p>
+<p><img alt="GmailMessage reference" src="img/a636968464c90ec8.png"><br>it has getSubject, getBody, getFrom, getTo, getDate and many retrieving methods. We can get values we want using <code>GmailThread.getMessages()</code>.</p>
+<p>In this time, we use the first message of the threads. Retrieve message and show logs.</p>
+<pre><code>function main() {
+  var searchText = &#39;&#39;;
+  var threads = GmailApp.search(searchText, 0, 5);
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    Logger.log(message);
+  });
+}
+</code></pre>
+<p><img alt="GmailMessage log" src="img/74d764298536638b.png"><br>You can see the text <strong>GmailMessage</strong> in log viewer.</p>
+<p>Finaly, get values to call methods.</p>
+<pre><code>function main() {
+  var searchText = &#39;&#39;;
+  var threads = GmailApp.search(searchText, 0, 5);
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    Logger.log(message.getSubject());
+    Logger.log(message.getFrom());
+    Logger.log(message.getTo());
+    Logger.log(message.getPlainBody());
+    Logger.log(message.getDate());
+  });
+}
+</code></pre>
+<p><img alt="Get Gmail message values" src="img/a3500ea8c3d3d9aa.png"><br>Run the script and See the logs. You succeeded to retrieve Gmail message values! From Next section, we will insert these values to Spreadsheet.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="SpreadsheetApp class" duration="0">
+        <p>// TODO: Graph: Spreadsheet &gt; Sheet &gt; Range</p>
+<p>Next, let&#39;s understand SpreadsheetApp class. Visit <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app" target="_blank">SpreadsheetApp reference</a> and see <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet" target="_blank">getActiveSheet</a> method section. You can access the Spreadsheet you created to use this method.</p>
+<p>Run this method below. You need to allow the authentication just like in Gmail.</p>
+<pre><code>function saveMessages() {
+  Logger.log(SpreadsheetApp.getActiveSheet().getName());
+}
+</code></pre>
+<p><img alt="Logging Spreadsheet tab name" src="img/e795ba69053654fc.png"><img alt="Spreadsheet tab name" src="img/cefdc34f0f07c135.png"><br>You can see the Spreadsheet tab name in the log viewer. You need to access <a href="https://developers.google.com/apps-script/reference/spreadsheet/range" target="_blank">Range</a> class to insert data into the sheet. Use <a href="https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues" target="_blank">Range.setValues()</a> to insert messages.</p>
+<pre><code>function saveMessages() {
+  var data = [
+    [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
+    [&#39;d&#39;, &#39;e&#39;, &#39;f&#39;],
+  ];
+  SpreadsheetApp
+    .getActiveSheet()
+    .getRange(&#34;A1:C2&#34;)
+    .setValues(data);
+}
+</code></pre>
+<p><img alt="Range.setValues" src="img/d845168e2d88f825.png"><br>Run this method and See the Spreadsheet. You can see the value is inserted into the sheet. Note that the argument must be a two-dimensional array.</p>
+<p>Then, update this method to set data as argument of this method. We&#39;d like to insert 5 type of values, so we set the last column to &#34;E&#34;.</p>
+<pre><code>function saveMessages(data) {
+  SpreadsheetApp
+    .getActiveSheet()
+    .getRange(&#34;A1:E&#34; + data.length)
+    .setValues(data);
+}
+</code></pre>
+<p>Add test method and Run it.</p>
+<pre><code>function test() {
+  var data = [
+    [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;],
+    [&#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;j&#39;],
+    [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;],
+    [&#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;],
+  ];
+  saveMessages(data);
+}
+</code></pre>
+<p><img alt="set data as argument" src="img/398f7f8a7668eb9a.png"><br>Done! Now, you can delete test method. We will call <code>saveMessages function</code> from <code>main function</code> from the next section.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Save emails to Spreadsheet" duration="0">
+        <p>Update main function to call <code>saveMessages</code> function. Make messages variable as two-dimensional array.</p>
+<pre><code>function main() {
+  var searchText = &#39;&#39;;
+  var threads = GmailApp.search(searchText, 0, 5);
+  var messages = [];
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    // single cell characters limit
+    if (message.getPlainBody().length &gt; 50000) {
+      return;
+    }
+    messages.push([
+      message.getSubject(),
+      message.getFrom(),
+      message.getTo(),
+      message.getPlainBody(),
+      message.getDate(),
+    ]);
+  });
+  saveMessages(messages);
+}
+
+function saveMessages(data) {
+  SpreadsheetApp
+    .getActiveSheet()
+    .getRange(&#34;A1:E&#34; + data.length)
+    .setValues(data);
+}
+</code></pre>
+<p>Run <code>main</code> function and see the Spreadsheet.</p>
+<p class="image-container"><img alt="save gmail messages to Spreadsheet" src="img/9cfdb1ebbc26bba5.png"></p>
+<p>You can see the messages data in Spreadsheet! Although, it is better that the first row is filled column name. Replace 4th row as below and run the script.</p>
+<pre><code>  var messages = [[&#39;Subject&#39;, &#39;From&#39;, &#39;To&#39;, &#39;Body&#39;, &#39;Date&#39;]];
+</code></pre>
+<p class="image-container"><img alt="add column names" src="img/a3981b72cd4c5644.png"></p>
+<p>We can understand the column means well. Now, we succeeded to make the application that can connect Gmail and Spreadsheet, and it is only -30 lines of code.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Custom Menu of Spreadsheet" duration="0">
+        <p>The application we made works well, but we can make it more convenient. We will add custom menu on Spreadsheet. Add the <code>onOpen</code> function below and Run it. The name <code>onOpen</code> is reserved and will be called when the Spreadsheet is opened. You can confirm in the <a href="https://developers.google.com/apps-script/guides/triggers#onopene" target="_blank">document</a>.</p>
+<pre><code>function onOpen() {
+  SpreadsheetApp
+    .getActiveSpreadsheet()
+    .addMenu(&#39;Gmail&#39;, [
+      {name: &#39;Fetch&#39;, functionName: &#39;main&#39;},
+    ]);
+}
+</code></pre>
+<p class="image-container"><img alt="Spreadsheet custom menu" src="img/fbab786db5ca97e2.png"></p>
+<p>See the Spreadsheet. The custom menu will be displayed. Click <strong>Gmail</strong> &gt; <strong>Fetch</strong>.</p>
+<p>It&#39;s better that it can be operated to reset the sheet values. Add <code>clearSheet</code> function and add menu.</p>
+<pre><code>function onOpen() {
+  SpreadsheetApp
+    .getActiveSpreadsheet()
+    .addMenu(&#39;Gmail&#39;, [
+      {name: &#39;Fetch&#39;, functionName: &#39;main&#39;},
+      {name: &#39;Clear sheet&#39;, functionName: &#39;clearSheet&#39;},
+    ]);
+}
+
+function clearSheet() {
+  SpreadsheetApp
+    .getActiveSheet()
+    .clear();
+}
+</code></pre>
+<p>You can see <strong>Clear sheet</strong> sub menu and run it.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Automation" duration="0">
+        <p>You can also configure automation to this project using <a href="https://developers.google.com/apps-script/guides/triggers/installable" target="_blank">Trigger</a>. Let&#39;s try setting <a href="https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers" target="_blank">Time-driven trigger</a> to run the <code>main</code> function once a minute.</p>
+<p>Follow below.</p>
+<p><img alt="Current project’s triggers" src="img/c28e85e048b97d46.png"><br>Select <strong>Edit</strong> &gt; <strong>Current project&#39;s trigger</strong></p>
+<p><img alt="Add triggers" src="img/488d87649109eafc.png"><br>Select <strong>Add Trigger</strong></p>
+<p><img alt="Trigger settings" src="img/f31c6fb6f3893336.png"><br>Then it will be displayed the popup of trigger settings. Select as screenshot and Click Save.</p>
+<p><img alt="Trigger is created" src="img/b09bb924d0f862f9.png"><br>Then the trigger is created. Click the dot icon.</p>
+<p><img alt="Select executions menu" src="img/2af35ddff6272349.png"><br>Select <strong>Executions</strong>.</p>
+<p><img alt="Executions" src="img/df9ecee0b6fd9d5f.png"><br>You can see that function is called once a minute. If you caught new message, you can keep up-to-date.</p>
+<p><img alt="Delete trigger" src="img/ebf01e761d3f8374.png"><br>You can delete trigger to select the dot icon and <strong>Delete trigger</strong>.</p>
+<p><img alt="Triggers" src="img/b49b0a3ad3e4f14b.png"><br>Google Apps Script has many types of triggers. You can improve the projects more convenient.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Congrats!" duration="0">
+        <p>Congrats! You finished this codelab. You can see the final project code below.</p>
+<pre><code>function onOpen() {
+  SpreadsheetApp
+    .getActiveSpreadsheet()
+    .addMenu(&#39;Gmail&#39;, [
+      {name: &#39;Fetch&#39;, functionName: &#39;main&#39;},
+      {name: &#39;Clear sheet&#39;, functionName: &#39;clearSheet&#39;},
+    ]);
+}
+
+function main() {
+  var searchText = &#39;&#39;;
+  var threads = GmailApp.search(searchText, 0, 500);
+  var messages = [[&#39;Subject&#39;, &#39;From&#39;, &#39;To&#39;, &#39;Body&#39;, &#39;Date&#39;]];
+  threads.forEach(function (thread) {
+    var message = thread.getMessages()[0];
+    // single cell characters limit
+    if (message.getPlainBody().length &gt; 50000) {
+      return;
+    }
+    messages.push([
+      message.getSubject(),
+      message.getFrom(),
+      message.getTo(),
+      message.getPlainBody(),
+      message.getDate(),
+    ]);
+  });
+  saveMessages(messages);
+}
+
+function saveMessages(data) {
+  clearSheet();
+  SpreadsheetApp
+    .getActiveSheet()
+    .getRange(&#34;A1:E&#34; + data.length)
+    .setValues(data);
+}
+
+function clearSheet() {
+  SpreadsheetApp
+    .getActiveSheet()
+    .clear();
+}
+</code></pre>
+<h2 is-upgraded>Next Action</h2>
+<p>You can improve this project. I&#39;ll show you some examples.</p>
+<ul>
+<li>Retrieve Over 500 Gmail threads (Using for statement)</li>
+<li>Not overwrite but add the messages</li>
+<li>Visualize the data using <a href="https://datastudio.google.com" target="_blank">Data Studio</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

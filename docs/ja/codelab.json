@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2019-11-08T14:12:00+09:00",
+  "id": "ja",
+  "duration": 0,
+  "title": "Apps Script Hands-on",
+  "summary": "Apps Script Hands-on",
+  "source": "codelab-ja.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "apps-script",
+    "gsuite",
+    "javascript"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "https://github.com/tanabee/gas-codelab/issues",
+  "ga": "UA-141719032-2",
+  "url": "ja"
+}
