@@ -96,7 +96,7 @@ We can also use `console.log()`, but we use `Logger.log()` in this Hands-on beca
 
 ## GmailApp class
 
-Next, let's understand GmailApp class. Confirm GmailApp classes and methods in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can see GmailApp classes (e.g. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and methods (e.g. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) 
+Next, see the GmailApp class. Confirm GmailApp classes and methods in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can see the classes (e.g. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and the methods (e.g. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) related to Gmail.
 
 ![GmailApp reference](img/reference-gmailapp.png)
 
@@ -119,7 +119,7 @@ If you would like to apply search filters, you can assign value to searchText. Y
 Click **Run** button.
 
 ![Authorization popup](img/authorization-required.png)
-Then an authentication popup will be shown. You need to allow this project to access Gmail resources. Click **Review Permissions**.
+Then an authorization popup will be shown. You need to allow this project to access Gmail resources. Click **Review Permissions**.
 
 ![Choose a account](img/choose-account.png)
 Choose an account that you are using in this codelab.
@@ -128,11 +128,11 @@ Choose an account that you are using in this codelab.
 ![Application verification advanced](img/verify-app-advanced.png)
 To verify this app, click **Advanced** and click the bottom link **Go to ...**. If it doesn't be displayed, skip this step.
 
-![Allow authentication](img/allow-auth.png)
+![Allow authorization](img/allow-auth.png)
 Then the scope you need to allow is displayed. Click **Allow** button. It will go back to Script editor and run the script.
 
-![Allow authentication](img/gmail-threads.png)
-See the logs. Then you can see Array of GmailThread. You succeeded to retrieve emails for only 5 lines of code! Because of this popup authentication flow, you don't need to implement authentication codes and you can make it easier than ever.
+![Allow authorization](img/gmail-threads.png)
+See the logs. Then you can see Array of GmailThread. You succeeded to retrieve emails and output the logs for only 5 lines of code! Because of this popup authorization flow, you don't need to implement authorization codes and you can make it easier than ever.
 
 ## Parse Gmail messages
 
@@ -186,7 +186,7 @@ Run the script and See the logs. You succeeded to retrieve Gmail message values!
 
 Next, let's understand SpreadsheetApp class. Visit [SpreadsheetApp reference](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app) and see [getActiveSheet](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet) method section. You can access the Spreadsheet you created to use this method.
 
-Run this method below. You need to allow the authentication just like in Gmail.
+Run this method below. You need to allow the authorization just like in Gmail.
 
 ```JavaScript
 function saveMessages() {

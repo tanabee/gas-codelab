@@ -74,48 +74,48 @@
       </google-codelab-step>
     
       <google-codelab-step label="スクリプトの実行" duration="0">
-        <p>Copy the script below and paste to the Script editor, and click <strong>Run</strong> button.</p>
+        <p>下記のコードをコピーしてスクリプトエディタに貼り付けてください。その後 <strong>Run</strong> ボタンをクリックします。</p>
 <pre><code>function main() {
   Logger.log(&#39;Hello Google Apps Script!&#39;);
 }
 </code></pre>
 <p class="image-container"><img alt="Run script" src="img/d9d39332483e1626.png"></p>
-<p><code>Logger.log()</code> is logging function in Google Apps Script.</p>
-<p><img alt="View the script logs" src="img/340da3e798aac65a.png"><br>You can view logs when you select <strong>View</strong> &gt; <strong>Logs</strong> in the menu.</p>
-<p><img alt="log viewer" src="img/19ffc24655f971b.png"><br>We can find the text <code>Hello Google Apps Script!</code> in Log Viewer.</p>
-<p>We can also use <code>console.log()</code>, but we use <code>Logger.log()</code> in this Hands-on because you need an additional process to use <code>console.log()</code>.</p>
+<p><code>Logger.log()</code> 関数は Google Apps Script のログ出力関数です。</p>
+<p><img alt="View the script logs" src="img/340da3e798aac65a.png"><strong>View</strong> &gt; <strong>Logs</strong> を選択すると出力されたログを確認できます。</p>
+<p><img alt="log viewer" src="img/19ffc24655f971b.png"><code>Hello Google Apps Script!</code> と出力されているのが確認できました。</p>
+<p><code>console.log()</code> 関数を使うこともできますが、<code>console.log()</code> 関数を利用するためには別の設定が必要になるため、この Codelab では <code>Logger.log()</code> 関数を利用します。</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="GmailApp class" duration="0">
-        <p>Next, let&#39;s understand GmailApp class. Confirm GmailApp classes and methods in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can see GmailApp classes (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and methods (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>)</p>
+      <google-codelab-step label="GmailApp クラス" duration="0">
+        <p>次に、 GmailApp クラスを見てみます。GmailApp クラスとメソッドについては<a href="https://developers.google.com/apps-script/reference/" target="_blank">公式リファレンス</a> から確認できます。<a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp</a> のドキュメントを見てみます。Gmail に関連するクラス (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) やメソッド (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>) が確認できます。</p>
 <p class="image-container"><img alt="GmailApp reference" src="img/e0328ecf0ef098ab.png"></p>
-<p>We use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a> method for retrieving emails in this time.</p>
+<p>今回は <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">Gmail.search</a> を使ってメール一覧を取得します。</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Retrieve Gmail threads" duration="0">
-        <p>Let&#39;s implement the script. Use <code>GmailApp.search</code> method and retrieve Gmail threads.</p>
+      <google-codelab-step label="GmailThead の取得" duration="0">
+        <p>ではスクリプトを実装していきます。<a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">Gmail.search</a> メソッドを使って Gmail のスレッド一覧を取得します。</p>
 <pre><code>function main() {
   var searchText = &#39;&#39;;// You can set value.
   var threads = GmailApp.search(searchText, 0, 5);
   Logger.log(threads);
 }
 </code></pre>
-<p>If you would like to apply search filters, you can assign value to searchText. You can confirm search operators <a href="https://support.google.com/mail/answer/7190?hl=en" target="_blank">here</a>.</p>
-<p>Click <strong>Run</strong> button.</p>
-<p><img alt="Authorization popup" src="img/1a57d3b6918ab32b.png"><br>Then an authentication popup will be shown. You need to allow this project to access Gmail resources. Click <strong>Review Permissions</strong>.</p>
-<p><img alt="Choose a account" src="img/9e8f390a572f4bee.png"><br>Choose an account that you are using in this codelab.</p>
-<p><img alt="Application verification" src="img/560aec6856abd7cf.png"><img alt="Application verification advanced" src="img/d2ad75b68cfc9af3.png"><br>To verify this app, click <strong>Advanced</strong> and click the bottom link <strong>Go to ...</strong>. If it doesn&#39;t be displayed, skip this step.</p>
-<p><img alt="Allow authentication" src="img/540547e167502a58.png"><br>Then the scope you need to allow is displayed. Click <strong>Allow</strong> button. It will go back to Script editor and run the script.</p>
-<p><img alt="Allow authentication" src="img/5be1979211c8f557.png"><br>See the logs. Then you can see Array of GmailThread. You succeeded to retrieve emails for only 5 lines of code! Because of this popup authentication flow, you don&#39;t need to implement authentication codes and you can make it easier than ever.</p>
+<p>特定のメーリスなど、検索条件を設定したい場合には searchText に値を代入してください。公式サポートページに<a href="https://support.google.com/mail/answer/7190?hl=ja" target="_blank">検索演算子</a>についてまとめられています。</p>
+<p><strong>Run</strong> ボタンをクリックして実行します。</p>
+<p><img alt="Authorization popup" src="img/1a57d3b6918ab32b.png"><br>このスクリプトに Gmail の操作を認可するため、ポップアップが表示されます。Gmail リソースへのアクセスを認可する必要があります。 <strong>Review Permissions</strong> をクリックします。</p>
+<p><img alt="Choose an account" src="img/9e8f390a572f4bee.png"><br>この Codelab で使っているアカウントを選択します。</p>
+<p><img alt="Application verification" src="img/560aec6856abd7cf.png"><img alt="Application verification advanced" src="img/d2ad75b68cfc9af3.png"><br>このアプリケーションを確認するために、 <strong>Advanced</strong> を選択し <strong>Go to ...</strong> と書かれたリンクをクリックします。もし、この画面が表示されない場合には、この手順はスキップしてください。</p>
+<p><img alt="Allow authentication" src="img/540547e167502a58.png"><br>このアプリケーションに与える必要のあるスコープが表示されます。 <strong>Allow</strong> ボタンをクリック後、スクリプトエディタに戻ってスクリプトが実行されます。</p>
+<p><img alt="Allow authentication" src="img/5be1979211c8f557.png"><br>ログを見てみましょう。GmailThread の配列が出力されています。たった 5 行のコードでメールの一覧を取得して出力することができました！この認可のポップアップのフローのために、通常実装するのが大変な認証周りのコードを書く必要がなくなるため、非常に簡単にアプリケーション連携ができるのです。</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Parse Gmail messages" duration="0">
+      <google-codelab-step label="GmailMessage のパース" duration="0">
         <p>In the previous section, we could retrieve Gmail threads. We&#39;d like to retrieve the message subject, body, from, to, and date in this time. So, we need to get messages from <code>GmailThread</code>.</p>
 <p><img alt="GmailThread.getMessages reference" src="img/a0af6ab48051acaa.png"><br>Visit Apps Script reference. GmailThread class has <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages" target="_blank">getMessages()</a> method and it returns Array of GmailMessage. Click <strong>GmailMessagge</strong> link and see the methods.</p>
 <p><img alt="GmailMessage reference" src="img/a636968464c90ec8.png"><br>it has getSubject, getBody, getFrom, getTo, getDate and many retrieving methods. We can get values we want using <code>GmailThread.getMessages()</code>.</p>

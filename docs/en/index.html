@@ -88,7 +88,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="GmailApp class" duration="0">
-        <p>Next, let&#39;s understand GmailApp class. Confirm GmailApp classes and methods in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can see GmailApp classes (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and methods (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>)</p>
+        <p>Next, see the GmailApp class. Confirm GmailApp classes and methods in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can see the classes (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and the methods (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>) related to Gmail.</p>
 <p class="image-container"><img alt="GmailApp reference" src="img/e0328ecf0ef098ab.png"></p>
 <p>We use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a> method for retrieving emails in this time.</p>
 
@@ -105,11 +105,11 @@
 </code></pre>
 <p>If you would like to apply search filters, you can assign value to searchText. You can confirm search operators <a href="https://support.google.com/mail/answer/7190?hl=en" target="_blank">here</a>.</p>
 <p>Click <strong>Run</strong> button.</p>
-<p><img alt="Authorization popup" src="img/1a57d3b6918ab32b.png"><br>Then an authentication popup will be shown. You need to allow this project to access Gmail resources. Click <strong>Review Permissions</strong>.</p>
+<p><img alt="Authorization popup" src="img/1a57d3b6918ab32b.png"><br>Then an authorization popup will be shown. You need to allow this project to access Gmail resources. Click <strong>Review Permissions</strong>.</p>
 <p><img alt="Choose a account" src="img/9e8f390a572f4bee.png"><br>Choose an account that you are using in this codelab.</p>
 <p><img alt="Application verification" src="img/560aec6856abd7cf.png"><img alt="Application verification advanced" src="img/d2ad75b68cfc9af3.png"><br>To verify this app, click <strong>Advanced</strong> and click the bottom link <strong>Go to ...</strong>. If it doesn&#39;t be displayed, skip this step.</p>
-<p><img alt="Allow authentication" src="img/540547e167502a58.png"><br>Then the scope you need to allow is displayed. Click <strong>Allow</strong> button. It will go back to Script editor and run the script.</p>
-<p><img alt="Allow authentication" src="img/5be1979211c8f557.png"><br>See the logs. Then you can see Array of GmailThread. You succeeded to retrieve emails for only 5 lines of code! Because of this popup authentication flow, you don&#39;t need to implement authentication codes and you can make it easier than ever.</p>
+<p><img alt="Allow authorization" src="img/540547e167502a58.png"><br>Then the scope you need to allow is displayed. Click <strong>Allow</strong> button. It will go back to Script editor and run the script.</p>
+<p><img alt="Allow authorization" src="img/5be1979211c8f557.png"><br>See the logs. Then you can see Array of GmailThread. You succeeded to retrieve emails and output the logs for only 5 lines of code! Because of this popup authorization flow, you don&#39;t need to implement authorization codes and you can make it easier than ever.</p>
 
 
       </google-codelab-step>
@@ -151,7 +151,7 @@
       <google-codelab-step label="SpreadsheetApp class" duration="0">
         <p>// TODO: Graph: Spreadsheet &gt; Sheet &gt; Range</p>
 <p>Next, let&#39;s understand SpreadsheetApp class. Visit <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app" target="_blank">SpreadsheetApp reference</a> and see <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet" target="_blank">getActiveSheet</a> method section. You can access the Spreadsheet you created to use this method.</p>
-<p>Run this method below. You need to allow the authentication just like in Gmail.</p>
+<p>Run this method below. You need to allow the authorization just like in Gmail.</p>
 <pre><code>function saveMessages() {
   Logger.log(SpreadsheetApp.getActiveSheet().getName());
 }

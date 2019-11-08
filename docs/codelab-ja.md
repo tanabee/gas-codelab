@@ -75,7 +75,7 @@ Apps Script のプロジェクトを作成しましょう。まず [drive.google
 
 ## スクリプトの実行
 
-Copy the script below and paste to the Script editor, and click **Run** button.
+下記のコードをコピーしてスクリプトエディタに貼り付けてください。その後 **Run** ボタンをクリックします。
 
 ```JavaScript
 function main() {
@@ -85,27 +85,27 @@ function main() {
 
 ![Run script](img/run-script.png)
 
-`Logger.log()` is logging function in Google Apps Script.
+`Logger.log()` 関数は Google Apps Script のログ出力関数です。
 
 ![View the script logs](img/view-logs.png)
-You can view logs when you select **View** > **Logs** in the menu.
+**View** > **Logs** を選択すると出力されたログを確認できます。
 
 ![log viewer](img/log-viewer.png)
-We can find the text `Hello Google Apps Script!` in Log Viewer.
+`Hello Google Apps Script!` と出力されているのが確認できました。
 
-We can also use `console.log()`, but we use `Logger.log()` in this Hands-on because you need an additional process to use `console.log()`.
+`console.log()` 関数を使うこともできますが、`console.log()` 関数を利用するためには別の設定が必要になるため、この Codelab では `Logger.log()` 関数を利用します。
 
-## GmailApp class
+## GmailApp クラス
 
-Next, let's understand GmailApp class. Confirm GmailApp classes and methods in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can see GmailApp classes (e.g. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and methods (e.g. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) 
+次に、 GmailApp クラスを見てみます。GmailApp クラスとメソッドについては[公式リファレンス](https://developers.google.com/apps-script/reference/) から確認できます。[GmailApp](https://developers.google.com/apps-script/reference/gmail/gmail-app) のドキュメントを見てみます。Gmail に関連するクラス (e.g. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) やメソッド (e.g. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) が確認できます。
 
 ![GmailApp reference](img/reference-gmailapp.png)
 
-We use [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max) method for retrieving emails in this time.
+今回は [Gmail.search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max) を使ってメール一覧を取得します。
 
-## Retrieve Gmail threads
+## GmailThead の取得
 
-Let's implement the script. Use `GmailApp.search` method and retrieve Gmail threads.
+ではスクリプトを実装していきます。[Gmail.search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max) メソッドを使って Gmail のスレッド一覧を取得します。
 
 ```JavaScript
 function main() {
@@ -115,27 +115,27 @@ function main() {
 }
 ```
 
-If you would like to apply search filters, you can assign value to searchText. You can confirm search operators [here](https://support.google.com/mail/answer/7190?hl=en).
+特定のメーリスなど、検索条件を設定したい場合には searchText に値を代入してください。公式サポートページに[検索演算子](https://support.google.com/mail/answer/7190?hl=ja)についてまとめられています。
 
-Click **Run** button.
+**Run** ボタンをクリックして実行します。
 
 ![Authorization popup](img/authorization-required.png)
-Then an authentication popup will be shown. You need to allow this project to access Gmail resources. Click **Review Permissions**.
+このスクリプトに Gmail の操作を認可するため、ポップアップが表示されます。Gmail リソースへのアクセスを認可する必要があります。 **Review Permissions** をクリックします。
 
-![Choose a account](img/choose-account.png)
-Choose an account that you are using in this codelab.
+![Choose an account](img/choose-account.png)
+この Codelab で使っているアカウントを選択します。
 
 ![Application verification](img/verify-app.png)
 ![Application verification advanced](img/verify-app-advanced.png)
-To verify this app, click **Advanced** and click the bottom link **Go to ...**. If it doesn't be displayed, skip this step.
+このアプリケーションを確認するために、 **Advanced** を選択し **Go to ...** と書かれたリンクをクリックします。もし、この画面が表示されない場合には、この手順はスキップしてください。
 
 ![Allow authentication](img/allow-auth.png)
-Then the scope you need to allow is displayed. Click **Allow** button. It will go back to Script editor and run the script.
+このアプリケーションに与える必要のあるスコープが表示されます。 **Allow** ボタンをクリック後、スクリプトエディタに戻ってスクリプトが実行されます。
 
 ![Allow authentication](img/gmail-threads.png)
-See the logs. Then you can see Array of GmailThread. You succeeded to retrieve emails for only 5 lines of code! Because of this popup authentication flow, you don't need to implement authentication codes and you can make it easier than ever.
+ログを見てみましょう。GmailThread の配列が出力されています。たった 5 行のコードでメールの一覧を取得して出力することができました！この認可のポップアップのフローのために、通常実装するのが大変な認証周りのコードを書く必要がなくなるため、非常に簡単にアプリケーション連携ができるのです。
 
-## Parse Gmail messages
+## GmailMessage のパース
 
 In the previous section, we could retrieve Gmail threads. We'd like to retrieve the message subject, body, from, to, and date in this time. So, we need to get messages from `GmailThread`.
 
