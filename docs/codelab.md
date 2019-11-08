@@ -11,7 +11,7 @@ feedback link: https://github.com/tanabee/gas-codelab/issues
 
 ## Intro
 
-In this codelab, you can make a application that exports Gmail messages to Google Spreadsheet.
+In this codelab, you can make a application that exports Gmail messages to Google Spreadsheet using Google Apps Script.
 ![Output](img/output.png)
 
 ### Target
@@ -21,12 +21,12 @@ In this codelab, you can make a application that exports Gmail messages to Googl
 
 ### Use case
 
-- Analysis of the user's inquiries
+- Analysis of the user inquiries to specific mailing list or email addresses
 - Integrate with a system that doesn't provide REST API and provides email notifications
 
 ## Preparation
 
-You need own Gmail or G Suite account. Please create Gmail account if you don't have.
+You need own Gmail or G Suite account. Please [create Gmail account](https://accounts.google.com/signup) if you don't have.
 
 Negative
 : If you use Gmail for the first time, you need to follow below
@@ -46,7 +46,7 @@ Select **Run** button.
 
 ### 4. Confirm your Gmail
 
-Open [Gmail](https://mail.google.com) in your browser and confirm to receiv emails.
+Open [Gmail](https://mail.google.com) in your browser and confirm to receive emails. It's completed preparation.
 
 ## Create project
 
@@ -59,16 +59,16 @@ Click **New**
 Click **Google Sheets** and Spreadsheet file will be created.
 
 ![Rename Spreadsheet file](img/create-spreadsheet-file.png)
-Click project name area, and input project name. (e.g. gmail-to-spreadsheet)
+Click file name area, and input file name. (e.g. gmail-to-spreadsheet)
 
 ![Select Script editor menu](img/select-script-editor.png)
-Select **Tools** > **Script editor** menu, and Google Apps Script file will be created.
+Select **Tools** > **Script editor** menu, and Google Apps Script project will be created.
 
 ![Rename Google Apps Script project](img/rename-gas-project.png)
 Click project name area, and input project name. (e.g. gmail-to-spreadsheet)
 
 ![Input Google Apps Script project name](img/input-project-name.png)
-After inputting project name, Click OK and it will be saved. Then a toast appears. the project will be saved when the toast disappears.
+After inputting project name, Click OK and it will be saved. Then a toast appears. The project will complete to be saved when the toast disappears.
 
 Now, we can run the script! We will run the script in the next section.
 

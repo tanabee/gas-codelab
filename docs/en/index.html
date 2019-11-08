@@ -28,20 +28,23 @@
                   feedback-link="https://github.com/tanabee/gas-codelab/issues">
     
       <google-codelab-step label="Intro" duration="0">
-        <p>In this codelab, you can make a application that exports Gmail messages to Google Spreadsheet.<br><img alt="Output" src="img/6ec36db583a97561.png"></p>
+        <p>In this codelab, you can make a application that exports Gmail messages to Google Spreadsheet using Google Apps Script.<br><img alt="Output" src="img/6ec36db583a97561.png"></p>
 <h2 is-upgraded>Target</h2>
 <ul>
 <li>Beginner of Apps Script</li>
 <li>Have experience of JavaScript</li>
 </ul>
-<h2 is-upgraded>Usecase</h2>
-<p>// TODO</p>
+<h2 is-upgraded>Use case</h2>
+<ul>
+<li>Analysis of the user inquiries to specific mailing list or email addresses</li>
+<li>Integrate with a system that doesn&#39;t provide REST API and provides email notifications</li>
+</ul>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Preparation" duration="0">
-        <p>You need own Gmail or G Suite account. Please create Gmail account if you don&#39;t have.</p>
+        <p>You need own Gmail or G Suite account. Please <a href="https://accounts.google.com/signup" target="_blank">create Gmail account</a> if you don&#39;t have.</p>
 <aside class="warning"><p>If you use Gmail for the first time, you need to follow below</p>
 </aside>
 <h2 is-upgraded>1. Open mail-to-me application</h2>
@@ -51,7 +54,7 @@
 <h2 is-upgraded>3. Run mail-to-me</h2>
 <p>Select <strong>Run</strong> button.</p>
 <h2 is-upgraded>4. Confirm your Gmail</h2>
-<p>Open <a href="https://mail.google.com" target="_blank">Gmail</a> in your browser and confirm to receiv emails.</p>
+<p>Open <a href="https://mail.google.com" target="_blank">Gmail</a> in your browser and confirm to receive emails. It&#39;s completed preparation.</p>
 
 
       </google-codelab-step>
@@ -60,10 +63,10 @@
         <p>Let&#39;s create a Apps Script project. First, visit <a href="https://drive.google.com" target="_blank">drive.google.com</a> and create a Spreadsheet file.</p>
 <p><img alt="Create a new drive file" src="img/20cf609cb24e5367.png"><br>Click <strong>New</strong></p>
 <p><img alt="Create a new Spreadsheet file" src="img/8cffacf23c92b025.png"><br>Click <strong>Google Sheets</strong> and Spreadsheet file will be created.</p>
-<p><img alt="Rename Spreadsheet file" src="img/8cffacf23c92b025.png"><br>Click project name area, and input project name. (e.g. gmail-to-spreadsheet)</p>
-<p><img alt="Select Script editor menu" src="img/788bb99d22ce17be.png"><br>Select <strong>Tools</strong> &gt; <strong>Script editor</strong> menu, and Google Apps Script file will be created.</p>
+<p><img alt="Rename Spreadsheet file" src="img/8cffacf23c92b025.png"><br>Click file name area, and input file name. (e.g. gmail-to-spreadsheet)</p>
+<p><img alt="Select Script editor menu" src="img/788bb99d22ce17be.png"><br>Select <strong>Tools</strong> &gt; <strong>Script editor</strong> menu, and Google Apps Script project will be created.</p>
 <p><img alt="Rename Google Apps Script project" src="img/b39d9ba12ad5e311.png"><br>Click project name area, and input project name. (e.g. gmail-to-spreadsheet)</p>
-<p><img alt="Input Google Apps Script project name" src="img/f1c2de0caf46b50e.png"><br>After inputting project name, Click OK and it will be saved. Then a toast appears. the project will be saved when the toast disappears.</p>
+<p><img alt="Input Google Apps Script project name" src="img/f1c2de0caf46b50e.png"><br>After inputting project name, Click OK and it will be saved. Then a toast appears. The project will complete to be saved when the toast disappears.</p>
 <p>Now, we can run the script! We will run the script in the next section.</p>
 
 
@@ -198,7 +201,8 @@
   var messages = [];
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
-    if (message.getPlainBody().length &gt; 10000) {
+    // single cell characters limit
+    if (message.getPlainBody().length &gt; 50000) {
       return;
     }
     messages.push([
@@ -279,7 +283,8 @@ function clearSheet() {
       </google-codelab-step>
     
       <google-codelab-step label="Congrats!" duration="0">
-        <pre><code>function onOpen() {
+        <p>Congrats! You finished this codelab. You can see the final project code below.</p>
+<pre><code>function onOpen() {
   SpreadsheetApp
     .getActiveSpreadsheet()
     .addMenu(&#39;Gmail&#39;, [
@@ -294,7 +299,8 @@ function main() {
   var messages = [[&#39;Subject&#39;, &#39;From&#39;, &#39;To&#39;, &#39;Body&#39;, &#39;Date&#39;]];
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
-    if (message.getPlainBody().length &gt; 10000) {
+    // single cell characters limit
+    if (message.getPlainBody().length &gt; 50000) {
       return;
     }
     messages.push([
