@@ -19,9 +19,10 @@ In this codelab, you can make a application that exports Gmail messages to Googl
 - Beginner of Apps Script
 - Have experience of JavaScript
 
-### Usecase
+### Use case
 
-// TODO
+- Analysis of the user's inquiries
+- Integrate with a system that doesn't provide REST API and provides email notifications
 
 ## Preparation
 
@@ -252,7 +253,8 @@ function main() {
   var messages = [];
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
-    if (message.getPlainBody().length > 10000) {
+    // single cell characters limit
+    if (message.getPlainBody().length > 50000) {
       return;
     }
     messages.push([
@@ -359,6 +361,8 @@ Google Apps Script has many types of triggers. You can improve the projects more
 
 ## Congrats!
 
+Congrats! You finished this codelab. You can see the final project code below.
+
 ```JavaScript
 function onOpen() {
   SpreadsheetApp
@@ -375,7 +379,8 @@ function main() {
   var messages = [['Subject', 'From', 'To', 'Body', 'Date']];
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
-    if (message.getPlainBody().length > 10000) {
+    // single cell characters limit
+    if (message.getPlainBody().length > 50000) {
       return;
     }
     messages.push([
