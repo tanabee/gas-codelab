@@ -342,7 +342,7 @@ Select **Edit** > **Current project's trigger**
 Select **Add Trigger**
 
 ![Trigger settings](img/trigger-settings.png)
-Then it will be displayed the popup of trigger settings. Select as screenshot and Click Save.
+Then it will be displayed the popup of trigger settings. Select as screenshot and Click **Save**.
 
 ![Trigger is created](img/trigger-is-created.png)
 Then the trigger is created. Click the dot icon.
@@ -351,17 +351,17 @@ Then the trigger is created. Click the dot icon.
 Select **Executions**.
 
 ![Executions](img/executions.png)
-You can see that function is called once a minute. If you caught new message, you can keep up-to-date.
+You can see that `main` function is executed once a minute. If you caught new message, you can keep up-to-date.
 
 ![Delete trigger](img/delete-trigger.png)
 You can delete trigger to select the dot icon and **Delete trigger**.
 
 ![Triggers](img/triggers.png)
-Google Apps Script has many types of triggers. You can improve the projects more convenient.
+Google Apps Script has many types of triggers. You can improve the projects more convenient to use triggers.
 
 ## Congrats!
 
-Congrats! You finished this codelab. You can see the final project code below.
+Congrats! You finished this codelab. You can see the final project code below. You can also get code at [tanabee/gas-codelab](https://github.com/tanabee/gas-codelab) in GitHub.
 
 ```JavaScript
 function onOpen() {
@@ -414,5 +414,5 @@ function clearSheet() {
 You can improve this project. I'll show you some examples.
 
 - Retrieve Over 500 Gmail threads (Using for statement)
-- Not overwrite but add the messages
+- Not overwrite but add the messages to Spreadsheet
 - Visualize the data using [Data Studio](https://datastudio.google.com)

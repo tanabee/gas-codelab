@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>Apps Script Hands-on</title>
+  <title>Apps Script ハンズオン</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
@@ -23,7 +23,7 @@
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
   <google-codelab codelab-gaid="UA-141719032-2"
                   id="ja"
-                  title="Apps Script Hands-on"
+                  title="Apps Script ハンズオン"
                   environment="web"
                   feedback-link="https://github.com/tanabee/gas-codelab/issues">
     
@@ -269,22 +269,23 @@ function clearSheet() {
       </google-codelab-step>
     
       <google-codelab-step label="自動化" duration="0">
-        <p>You can also configure automation to this project using <a href="https://developers.google.com/apps-script/guides/triggers/installable" target="_blank">Trigger</a>. Let&#39;s try setting <a href="https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers" target="_blank">Time-driven trigger</a> to run the <code>main</code> function once a minute.</p>
-<p>Follow below.</p>
-<p><img alt="Current project’s triggers" src="img/c28e85e048b97d46.png"><br>Select <strong>Edit</strong> &gt; <strong>Current project&#39;s trigger</strong></p>
-<p><img alt="Add triggers" src="img/488d87649109eafc.png"><br>Select <strong>Add Trigger</strong></p>
-<p><img alt="Trigger settings" src="img/f31c6fb6f3893336.png"><br>Then it will be displayed the popup of trigger settings. Select as screenshot and Click Save.</p>
-<p><img alt="Trigger is created" src="img/b09bb924d0f862f9.png"><br>Then the trigger is created. Click the dot icon.</p>
-<p><img alt="Select executions menu" src="img/2af35ddff6272349.png"><br>Select <strong>Executions</strong>.</p>
-<p><img alt="Executions" src="img/df9ecee0b6fd9d5f.png"><br>You can see that function is called once a minute. If you caught new message, you can keep up-to-date.</p>
-<p><img alt="Delete trigger" src="img/ebf01e761d3f8374.png"><br>You can delete trigger to select the dot icon and <strong>Delete trigger</strong>.</p>
-<p><img alt="Triggers" src="img/b49b0a3ad3e4f14b.png"><br>Google Apps Script has many types of triggers. You can improve the projects more convenient.</p>
+        <p><a href="https://developers.google.com/apps-script/guides/triggers/installable" target="_blank">Trigger</a> を使って自動化の設定をすることも可能です。 <a href="https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers" target="_blank">Time-driven trigger</a> を設定して <code>main</code> 関数を 1 分おきに実行してみましょう。</p>
+<p>以下に沿って進めます。</p>
+<p><img alt="Current project’s triggers" src="img/c28e85e048b97d46.png"><strong>Edit</strong> &gt; <strong>Current project&#39;s trigger</strong> を選択します</p>
+<p><img alt="Add triggers" src="img/488d87649109eafc.png"><strong>Add Trigger</strong> を選択します</p>
+<p><img alt="Trigger settings" src="img/f31c6fb6f3893336.png"><br>ポップアップが表示されるので Trigger の設定を行います。上の画像の通り設定して <strong>Save</strong> ボタンを選択します。</p>
+<p><img alt="Trigger is created" src="img/b09bb924d0f862f9.png"><br>トリガーが作成されました！ドットアイコンを選択します。</p>
+<p><img alt="Select executions menu" src="img/2af35ddff6272349.png"><strong>Executions</strong> を選択します。</p>
+<p class="image-container"><img alt="Executions" src="img/df9ecee0b6fd9d5f.png"></p>
+<p><code>main</code> 関数が 1 分おきに実行されているのが確認できます。新しいメッセージを受信した際でも最新の状態を保つことができます。</p>
+<p><img alt="Delete trigger" src="img/ebf01e761d3f8374.png"><br>ドットアイコン &gt; <strong>Delete trigger</strong> を選択することで Trigger を削除できます。</p>
+<p><img alt="Triggers" src="img/b49b0a3ad3e4f14b.png"><br>Google Apps Script には様々な種類の Trigger が用意されています。 Trigger を使うことでプロジェクトをより便利にすることができます。</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Congrats!" duration="0">
-        <p>Congrats! You finished this codelab. You can see the final project code below.</p>
+        <p>おめでとうございます！この Codelab は以上で終了です。最終的なコードは以下で確認できます。また <a href="https://github.com/tanabee/gas-codelab" target="_blank">tanabee/gas-codelab</a> の GitHub にも上がっています。</p>
 <pre><code>function onOpen() {
   SpreadsheetApp
     .getActiveSpreadsheet()
@@ -330,11 +331,11 @@ function clearSheet() {
 }
 </code></pre>
 <h2 is-upgraded>Next Action</h2>
-<p>You can improve this project. I&#39;ll show you some examples.</p>
+<p>このプロジェクトをより便利にするアイデアを載せておきます。</p>
 <ul>
-<li>Retrieve Over 500 Gmail threads (Using for statement)</li>
-<li>Not overwrite but add the messages</li>
-<li>Visualize the data using <a href="https://datastudio.google.com" target="_blank">Data Studio</a></li>
+<li>500 件以上の Gmail メッセージの取得 (for 文を使って)</li>
+<li>Spreadsheet への保存を上書きでなく追加する形式にする</li>
+<li><a href="https://datastudio.google.com" target="_blank">Data Studio</a> を使った見える化</li>
 </ul>
 
 

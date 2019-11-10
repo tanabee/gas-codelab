@@ -7,7 +7,7 @@ status: Draft
 analytics account: UA-141719032-2
 feedback link: https://github.com/tanabee/gas-codelab/issues
 
-# Apps Script Hands-on
+# Apps Script ハンズオン
 
 ## Intro
 
@@ -332,37 +332,38 @@ function clearSheet() {
 
 ## 自動化
 
-You can also configure automation to this project using [Trigger](https://developers.google.com/apps-script/guides/triggers/installable). Let's try setting [Time-driven trigger](https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers) to run the `main` function once a minute.
+[Trigger](https://developers.google.com/apps-script/guides/triggers/installable) を使って自動化の設定をすることも可能です。 [Time-driven trigger](https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers) を設定して `main` 関数を 1 分おきに実行してみましょう。
 
-Follow below.
+以下に沿って進めます。
 
 ![Current project's triggers](img/current-project-triggers.png)
-Select **Edit** > **Current project's trigger**
+**Edit** > **Current project's trigger** を選択します
 
 ![Add triggers](img/add-trigger.png)
-Select **Add Trigger**
+**Add Trigger** を選択します
 
 ![Trigger settings](img/trigger-settings.png)
-Then it will be displayed the popup of trigger settings. Select as screenshot and Click Save.
+ポップアップが表示されるので Trigger の設定を行います。上の画像の通り設定して **Save** ボタンを選択します。
 
 ![Trigger is created](img/trigger-is-created.png)
-Then the trigger is created. Click the dot icon.
+トリガーが作成されました！ドットアイコンを選択します。
 
 ![Select executions menu](img/select-executions.png)
-Select **Executions**.
+**Executions** を選択します。
 
 ![Executions](img/executions.png)
-You can see that function is called once a minute. If you caught new message, you can keep up-to-date.
+
+`main` 関数が 1 分おきに実行されているのが確認できます。新しいメッセージを受信した際でも最新の状態を保つことができます。
 
 ![Delete trigger](img/delete-trigger.png)
-You can delete trigger to select the dot icon and **Delete trigger**.
+ドットアイコン > **Delete trigger** を選択することで Trigger を削除できます。
 
 ![Triggers](img/triggers.png)
-Google Apps Script has many types of triggers. You can improve the projects more convenient.
+Google Apps Script には様々な種類の Trigger が用意されています。 Trigger を使うことでプロジェクトをより便利にすることができます。
 
 ## Congrats!
 
-Congrats! You finished this codelab. You can see the final project code below.
+おめでとうございます！この Codelab は以上で終了です。最終的なコードは以下で確認できます。また [tanabee/gas-codelab](https://github.com/tanabee/gas-codelab) の GitHub にも上がっています。
 
 ```JavaScript
 function onOpen() {
@@ -412,8 +413,8 @@ function clearSheet() {
 
 ### Next Action
 
-You can improve this project. I'll show you some examples.
+このプロジェクトをより便利にするアイデアを載せておきます。
 
-- Retrieve Over 500 Gmail threads (Using for statement)
-- Not overwrite but add the messages
-- Visualize the data using [Data Studio](https://datastudio.google.com)
+- 500 件以上の Gmail メッセージの取得 (for 文を使って)
+- Spreadsheet への保存を上書きでなく追加する形式にする
+- [Data Studio](https://datastudio.google.com) を使った見える化
