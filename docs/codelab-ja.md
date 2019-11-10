@@ -39,11 +39,11 @@ Negative
 
 ### 2. コピーを作成
 
-**File** > **Make a Copy** を選択。
+**ファイル** > **コピーを作成** を選択。
 
 ### 3. mail-to-me の実行
 
-**Run** ボタンをクリック。
+**実行** ボタンをクリック。
 
 ### 4. Gmail を確認
 
@@ -54,22 +54,22 @@ Negative
 Apps Script のプロジェクトを作成しましょう。まず [drive.google.com](https://drive.google.com) にアクセスし、スプレッドシートファイルを作成します。
 
 ![Create a new drive file](img/ja/create-drive-file.png)
-**New** をクリック
+**新規** をクリック
 
 ![Create a new Spreadsheet file](img/ja/create-spreadsheet-file.png)
-**Google Sheets** を選択するとスプレッドシートファイルが作成されます。
+**Google スプレッドシート** を選択するとスプレッドシートファイルが作成されます。
 
 ![Rename Spreadsheet file](img/ja/rename-spreadsheet-file.png)
 ファイル名を選択し、ファイル名（gmail-to-spreadsheet など）を入力します。
 
 ![Select Script editor menu](img/ja/select-script-editor.png)
-**Tools** > **Script editor** メニューを選択すると Google Apps Script プロジェクトが作成されます。
+**ツール** > **スクリプトエディタ** メニューを選択すると Google Apps Script プロジェクトが作成されます。
 
 ![Rename Google Apps Script project](img/ja/rename-gas-project.png)
 プロジェクト名を選択し、プロジェクト名（gmail-to-spreadsheet など）を入力します。
 
 ![Input Google Apps Script project name](img/ja/input-project-name.png)
-プロジェクト名を入力して OK ボタンをクリックするとプロジェクトが保存されます。トーストが表示されてから、非表示になったところで保存が完了します。
+プロジェクト名を入力して **OK** ボタンをクリックするとプロジェクトが保存されます。トーストが表示されてから、非表示になったところで保存が完了します。
 
 これでスクリプトを実行できるようになりました。次のセクションでスクリプトを実行していきます。
 
@@ -88,7 +88,7 @@ function main() {
 `Logger.log()` 関数は Google Apps Script のログ出力関数です。
 
 ![View the script logs](img/ja/view-logs.png)
-**View** > **Logs** を選択すると出力されたログを確認できます。
+**表示** > **ログ** を選択すると出力されたログを確認できます。
 
 ![log viewer](img/ja/log-viewer.png)
 `Hello Google Apps Script!` と出力されているのが確認できました。
@@ -117,20 +117,20 @@ function main() {
 
 特定のメーリスなど、検索条件を設定したい場合には searchText に値を代入してください。公式サポートページに[検索演算子](https://support.google.com/mail/answer/7190?hl=ja)についてまとめられています。
 
-**Run** ボタンをクリックして実行します。
+**実行** ボタンをクリックして実行します。
 
 ![Authorization popup](img/ja/authorization-required.png)
-このスクリプトに Gmail の操作を認可するため、ポップアップが表示されます。Gmail リソースへのアクセスを認可する必要があります。 **Review Permissions** をクリックします。
+このスクリプトに Gmail の操作を認可するため、ポップアップが表示されます。Gmail リソースへのアクセスを認可する必要があります。 **許可を確認** をクリックします。
 
 ![Choose an account](img/ja/choose-account.png)
 この Codelab で使っているアカウントを選択します。
 
 ![Application verification](img/ja/verify-app.png)
 ![Application verification advanced](img/ja/verify-app-advanced.png)
-このアプリケーションを確認するために、 **Advanced** を選択し **Go to ...** と書かれたリンクをクリックします。もし、この画面が表示されない場合には、この手順はスキップしてください。
+このアプリケーションを確認するために、 **詳細** を選択し **... (安全ではないページ) に移動** と書かれたリンクをクリックします。もし、この画面が表示されない場合には、この手順はスキップしてください。
 
 ![Allow authentication](img/ja/allow-auth.png)
-このアプリケーションに与える必要のあるスコープが表示されます。 **Allow** ボタンをクリック後、スクリプトエディタに戻ってスクリプトが実行されます。
+このアプリケーションに与える必要のあるスコープが表示されます。 **許可** ボタンをクリック後、スクリプトエディタに戻ってスクリプトが実行されます。
 
 ![Allow authentication](img/ja/gmail-threads.png)
 ログを見てみましょう。GmailThread の配列が出力されています。たった 5 行のコードでメールの一覧を取得して出力することができました！この認可のポップアップのフローのために、通常実装するのが大変な認証周りのコードを書く必要がなくなるため、非常に簡単にアプリケーション連携ができるのです。
@@ -332,34 +332,34 @@ function clearSheet() {
 
 ## 自動化
 
-[Trigger](https://developers.google.com/apps-script/guides/triggers/installable) を使って自動化の設定をすることも可能です。 [Time-driven trigger](https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers) を設定して `main` 関数を 1 分おきに実行してみましょう。
+[トリガー](https://developers.google.com/apps-script/guides/triggers/installable) を使って自動化の設定をすることも可能です。 [Time-driven trigger](https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers) を設定して `main` 関数を 1 分おきに実行してみましょう。
 
 以下に沿って進めます。
 
 ![Current project's triggers](img/ja/current-project-triggers.png)
-**Edit** > **Current project's trigger** を選択します
+**編集** > **現在のプロジェクトのトリガー** を選択します
 
 ![Add triggers](img/ja/add-trigger.png)
-**Add Trigger** を選択します
+**トリガーを追加** を選択します
 
 ![Trigger settings](img/ja/trigger-settings.png)
-ポップアップが表示されるので Trigger の設定を行います。上の画像の通り設定して **Save** ボタンを選択します。
+ポップアップが表示されるのでトリガーの設定を行います。上の画像の通り設定して **保存** ボタンを選択します。
 
 ![Trigger is created](img/ja/trigger-is-created.png)
 トリガーが作成されました！ドットアイコンを選択します。
 
 ![Select executions menu](img/ja/select-executions.png)
-**Executions** を選択します。
+**実行数** を選択します。
 
 ![Executions](img/ja/executions.png)
 
 `main` 関数が 1 分おきに実行されているのが確認できます。新しいメッセージを受信した際でも最新の状態を保つことができます。
 
 ![Delete trigger](img/ja/delete-trigger.png)
-ドットアイコン > **Delete trigger** を選択することで Trigger を削除できます。
+ドットアイコン > **トリガーの削除** を選択することでトリガーを削除できます。
 
 ![Triggers](img/en/triggers.png)
-Google Apps Script には様々な種類の Trigger が用意されています。 Trigger を使うことでプロジェクトをより便利にすることができます。
+Google Apps Script には様々な種類のトリガーが用意されています。トリガーを使うことでプロジェクトをより便利にすることができます。
 
 ## Congrats!
 
