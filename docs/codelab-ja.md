@@ -140,12 +140,12 @@ function main() {
 直前のセクションで Gmail のスレッド一覧を取得できました。今回はメッセージの件名、本文、送信元、送信先、日時を取得します。そのため、GmailThread からそれに紐づくメッセージを取得します。
 
 ![GmailThread.getMessages reference](img/reference-getmessages.png)
-Visit Apps Script reference. GmailThread class has [getMessages()](https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages) method and it returns Array of GmailMessage. Click **GmailMessagge** link and see the methods.
+Apps Script のリファレンスを見てみましょう。 GmailThread クラスには [getMessages()](https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages) メソッドが用意されており GmailMessage の配列を返します。 **GmailMessage** のリンクをクリックしてそのメソッドを確認しましょう。
 
 ![GmailMessage reference](img/reference-gmailmessage.png)
-it has getSubject, getBody, getFrom, getTo, getDate and many retrieving methods. We can get values we want using `GmailThread.getMessages()`.
+GmailMessage クラスには getSubject, getBody, getFrom, getTo, getDate など多数の取得系メソッドが用意されています。 `GmailThread.getMessages()` を用いて求める値が取得できそうです。
 
-In this time, we use the first message of the threads. Retrieve message and show logs.
+今回はスレッド内の最初のメッセージを使います。メッセージを取得してログを見てみましょう。
 
 ```JavaScript
 function main() {
@@ -159,9 +159,9 @@ function main() {
 ```
 
 ![GmailMessage log](img/gmail-messages.png)
-You can see the text **GmailMessage** in log viewer.
+**GmailMessage** というテキストが表示されます。
 
-Finaly, get values to call methods.
+最後に、取得系のメソッドを叩いて値を取得します。
 
 ```JavaScript
 function main() {
@@ -179,15 +179,15 @@ function main() {
 ```
 
 ![Get Gmail message values](img/get-message-values.png)
-Run the script and See the logs. You succeeded to retrieve Gmail message values! From Next section, we will insert these values to Spreadsheet.
+スクリプトを実行してログを見てみます。Gmail メッセージの値を取得できました。次のセッションからは、これらの値を Spreadsheet に保存していきます。
 
 ## SpreadsheetApp class
 
 // TODO: Graph: Spreadsheet > Sheet > Range 
 
-Next, let's understand SpreadsheetApp class. Visit [SpreadsheetApp reference](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app) and see [getActiveSheet](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet) method section. You can access the Spreadsheet you created to use this method.
+次に、 SpreadsheetApp クラスについて理解します。[SpreadsheetApp reference](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app) にアクセスし、[getActiveSheet](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet) のセクションを確認します。このメソッドを使うことで作成したスプレッドシートにアクセスすることができます。
 
-Run this method below. You need to allow the authentication just like in Gmail.
+下記のメソッドを実行します。Gmail の時と同様に認証の許可が必要です。
 
 ```JavaScript
 function saveMessages() {
@@ -197,7 +197,7 @@ function saveMessages() {
 
 ![Logging Spreadsheet tab name](img/log-getactivesheet.png)
 ![Spreadsheet tab name](img/spreadsheet-tabname.png)
-You can see the Spreadsheet tab name in the log viewer. You need to access [Range](https://developers.google.com/apps-script/reference/spreadsheet/range) class to insert data into the sheet. Use [Range.setValues()](https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues) to insert messages.
+ログビュアーでスプレッドシートのタブ名が表示されます。 Spreadsheet にデータを保存するためには [Range](https://developers.google.com/apps-script/reference/spreadsheet/range) クラスにアクセスし[Range.setValues()](https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues) を叩く必要があります。
 
 ```JavaScript
 function saveMessages() {
@@ -213,9 +213,9 @@ function saveMessages() {
 ```
 
 ![Range.setValues](img/range-setvalues.png)
-Run this method and See the Spreadsheet. You can see the value is inserted into the sheet. Note that the argument must be a two-dimensional array.
+`saveMessages` を実行し Spreadsheet を見てみると値が挿入されていることが確認できます。ここで引数に指定したデータが 2 次元配列であることに注意してください。
 
-Then, update this method to set data as argument of this method. We'd like to insert 5 type of values, so we set the last column to "E".
+ここで、データを引数で渡せるように関数を編集します。今回は 5 つのタイプの値を保存するため、列 "E" は固定とします。
 
 ```JavaScript
 function saveMessages(data) {
@@ -226,7 +226,7 @@ function saveMessages(data) {
 }
 ```
 
-Add test method and Run it.
+外から叩くためのテストとして、 `test` 関数を実装し、実行してみます。
 
 ```JavaScript
 function test() {
@@ -241,7 +241,7 @@ function test() {
 ```
 
 ![set data as argument](img/data-argument.png)
-Done! Now, you can delete test method. We will call `saveMessages function` from `main function` from the next section.
+無事に `saveMessages` 関数を叩けて Spreadsheet に値が挿入されました。テストできたので test 関数を削除します。次のセクションでは `main` 関数から `saveMessages` 関数を叩いて Gmail のメッセージ一覧を保存します。
 
 ## Save emails to Spreadsheet
 

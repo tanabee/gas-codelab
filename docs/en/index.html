@@ -168,8 +168,8 @@
     .setValues(data);
 }
 </code></pre>
-<p><img alt="Range.setValues" src="img/d845168e2d88f825.png"><br>Run this method and See the Spreadsheet. You can see the value is inserted into the sheet. Note that the argument must be a two-dimensional array.</p>
-<p>Then, update this method to set data as argument of this method. We&#39;d like to insert 5 type of values, so we set the last column to &#34;E&#34;.</p>
+<p><img alt="Range.setValues" src="img/d845168e2d88f825.png"><br>Run <code>saveMessages</code> and See the Spreadsheet. Then, You can see the value is inserted into the sheet. Note that the argument must be a two-dimensional array.</p>
+<p>Then, update this function to set data as argument of this method. We&#39;d like to insert 5 type of values, so we set the last column to &#34;E&#34;.</p>
 <pre><code>function saveMessages(data) {
   SpreadsheetApp
     .getActiveSheet()
@@ -177,7 +177,7 @@
     .setValues(data);
 }
 </code></pre>
-<p>Add test method and Run it.</p>
+<p>Add test function and Run it.</p>
 <pre><code>function test() {
   var data = [
     [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;],
@@ -188,7 +188,7 @@
   saveMessages(data);
 }
 </code></pre>
-<p><img alt="set data as argument" src="img/398f7f8a7668eb9a.png"><br>Done! Now, you can delete test method. We will call <code>saveMessages function</code> from <code>main function</code> from the next section.</p>
+<p><img alt="set data as argument" src="img/398f7f8a7668eb9a.png"><br>Done! Now, you can delete test method. We will call <code>saveMessages</code> function from <code>main</code> function from the next section.</p>
 
 
       </google-codelab-step>
