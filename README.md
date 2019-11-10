@@ -1,7 +1,9 @@
 ## About
 
-This is Google Apps Script documentation.
-https://tanabee.github.io/gas-codelab/en/
+This is Google Apps Script Hands-on documentation. You can learn below.
+
+* English: https://tanabee.github.io/gas-codelab/en/
+* Japanese: https://tanabee.github.io/gas-codelab/ja/
 
 ## Directories
 
