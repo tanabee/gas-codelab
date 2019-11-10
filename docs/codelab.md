@@ -415,4 +415,5 @@ You can improve this project. I'll show you some examples.
 
 - Retrieve Over 500 Gmail threads (Using for statement)
 - Not overwrite but add the messages to Spreadsheet
+- Parse specific formatted message body and save the elements
 - Visualize the data using [Data Studio](https://datastudio.google.com)

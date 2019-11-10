@@ -1,5 +1,5 @@
 author: Yuki Tanabe
-summary: Apps Script Hands-on
+summary: Apps Script ハンズオン
 id: ja
 categories: apps-script,gsuite,javascript
 environments: Web
@@ -417,4 +417,5 @@ function clearSheet() {
 
 - 500 件以上の Gmail メッセージの取得 (for 文を使って)
 - Spreadsheet への保存を上書きでなく追加する形式にする
+- フォームの送信結果など固定フォーマットの本文を解析して保存する
 - [Data Studio](https://datastudio.google.com) を使った見える化
