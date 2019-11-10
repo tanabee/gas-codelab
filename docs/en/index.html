@@ -194,7 +194,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Save emails to Spreadsheet" duration="0">
-        <p>Update main function to call <code>saveMessages</code> function. Make messages variable as two-dimensional array.</p>
+        <p>Update <code>main</code> function to call <code>saveMessages</code> function. Make <code>messages</code> variable as two-dimensional array.</p>
 <pre><code>function main() {
   var searchText = &#39;&#39;;
   var threads = GmailApp.search(searchText, 0, 5);
@@ -225,7 +225,7 @@ function saveMessages(data) {
 </code></pre>
 <p>Run <code>main</code> function and see the Spreadsheet.</p>
 <p class="image-container"><img alt="save gmail messages to Spreadsheet" src="img/9cfdb1ebbc26bba5.png"></p>
-<p>You can see the messages data in Spreadsheet! Although, it is better that the first row is filled column name. Replace 4th row as below and run the script.</p>
+<p>You can see the messages data in Spreadsheet! Although, it is better that the first row is filled column name to understand these columns easier. Replace 4th row as below and run the script.</p>
 <pre><code>  var messages = [[&#39;Subject&#39;, &#39;From&#39;, &#39;To&#39;, &#39;Body&#39;, &#39;Date&#39;]];
 </code></pre>
 <p class="image-container"><img alt="add column names" src="img/a3981b72cd4c5644.png"></p>
@@ -235,7 +235,7 @@ function saveMessages(data) {
       </google-codelab-step>
     
       <google-codelab-step label="Custom Menu of Spreadsheet" duration="0">
-        <p>The application we made works well, but we can make it more convenient. We will add custom menu on Spreadsheet. Add the <code>onOpen</code> function below and Run it. The name <code>onOpen</code> is reserved and will be called when the Spreadsheet is opened. You can confirm in the <a href="https://developers.google.com/apps-script/guides/triggers#onopene" target="_blank">document</a>.</p>
+        <p>The application we made works well, but we can make it more convenient. We will add custom menu on Spreadsheet. Add the <code>onOpen</code> function below and Run it. The name <code>onOpen</code> is reserved and will be called when the Spreadsheet is opened. You can confirm the details in the <a href="https://developers.google.com/apps-script/guides/triggers#onopene" target="_blank">official document</a>.</p>
 <pre><code>function onOpen() {
   SpreadsheetApp
     .getActiveSpreadsheet()

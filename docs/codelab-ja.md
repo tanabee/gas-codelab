@@ -181,7 +181,7 @@ function main() {
 ![Get Gmail message values](img/get-message-values.png)
 スクリプトを実行してログを見てみます。Gmail メッセージの値を取得できました。次のセッションからは、これらの値を Spreadsheet に保存していきます。
 
-## SpreadsheetApp class
+## SpreadsheetApp クラス
 
 // TODO: Graph: Spreadsheet > Sheet > Range 
 
@@ -243,9 +243,9 @@ function test() {
 ![set data as argument](img/data-argument.png)
 無事に `saveMessages` 関数を叩けて Spreadsheet に値が挿入されました。テストできたので test 関数を削除します。次のセクションでは `main` 関数から `saveMessages` 関数を叩いて Gmail のメッセージ一覧を保存します。
 
-## Save emails to Spreadsheet
+## メッセージを Spreadsheet に保存
 
-Update main function to call `saveMessages` function. Make messages variable as two-dimensional array.
+`saveMessages` 関数を叩けるように `main` 関数を更新します。 `messages` の値を 2 次元配列になるようにします。
 
 ```JavaScript
 function main() {
@@ -277,11 +277,11 @@ function saveMessages(data) {
 }
 ```
 
-Run `main` function and see the Spreadsheet.
+`main` 関数を実行し、Spreadsheet を確認します。
 
 ![save gmail messages to Spreadsheet](img/save-gmail-messages.png)
 
-You can see the messages data in Spreadsheet! Although, it is better that the first row is filled column name. Replace 4th row as below and run the script.
+Spreadsheet で Gmail メッセージのデータを確認できました。それぞれの列が何を示すのか理解しやすくするために、最初の列に列名を指定します。コードの 4 行目で messages を定義している行を以下に書き換えて実行します。
 
 ```JavaScript
   var messages = [['Subject', 'From', 'To', 'Body', 'Date']];
@@ -289,11 +289,11 @@ You can see the messages data in Spreadsheet! Although, it is better that the fi
 
 ![add column names](img/add-column-names.png)
 
-We can understand the column means well. Now, we succeeded to make the application that can connect Gmail and Spreadsheet, and it is only -30 lines of code.
+列の意味がわかりやすくなりました。30 行に満たないコードで Gmail と Spreadsheet を連携するアプリケーションを作成することができました！
 
-## Custom Menu of Spreadsheet
+## Spreadsheet のカスタムメニュー
 
-The application we made works well, but we can make it more convenient. We will add custom menu on Spreadsheet. Add the `onOpen` function below and Run it. The name `onOpen` is reserved and will be called when the Spreadsheet is opened. You can confirm in the [document](https://developers.google.com/apps-script/guides/triggers#onopene).
+これまで作ったアプリケーションで十分要件を満たしますが、これをもっと使いやすくすることができます。 Spreadsheet にカスタムメニューを追加し、それを選択することで Gmail からメッセージ一覧を取得できるようにします。下記の `onOpen` 関数を追加し実行します。 `onOpen` という関数名は予約されており、Spreadsheet が開かれるタイミングで呼ばれます。詳しくは [公式ドキュメント](https://developers.google.com/apps-script/guides/triggers#onopene) で確認できます。
 
 ```JavaScript
 function onOpen() {
@@ -307,9 +307,9 @@ function onOpen() {
 
 ![Spreadsheet custom menu](img/spreadsheet-custom-menu.png)
 
-See the Spreadsheet. The custom menu will be displayed. Click **Gmail** > **Fetch**.
+Spreadsheet を見てみましょう。カスタムメニューが表示されます。 **Gmail** > **Fetch** を選択します。
 
-It's better that it can be operated to reset the sheet values. Add `clearSheet` function and add menu.
+Spreadsheet の値をリセットできるとなおよいでしょう。 `clearSheet` 関数を追加してメニューに追加します。
 
 ```JavaScript
 function onOpen() {
@@ -328,9 +328,9 @@ function clearSheet() {
 }
 ```
 
-You can see **Clear sheet** sub menu and run it.
+**Clear sheet** サブメニューが追加されるので実行してみましょう。
 
-## Automation
+## 自動化
 
 You can also configure automation to this project using [Trigger](https://developers.google.com/apps-script/guides/triggers/installable). Let's try setting [Time-driven trigger](https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers) to run the `main` function once a minute.
 

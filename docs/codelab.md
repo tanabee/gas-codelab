@@ -244,7 +244,7 @@ Done! Now, you can delete test method. We will call `saveMessages` function from
 
 ## Save emails to Spreadsheet
 
-Update main function to call `saveMessages` function. Make messages variable as two-dimensional array.
+Update `main` function to call `saveMessages` function. Make `messages` variable as two-dimensional array.
 
 ```JavaScript
 function main() {
@@ -280,7 +280,7 @@ Run `main` function and see the Spreadsheet.
 
 ![save gmail messages to Spreadsheet](img/save-gmail-messages.png)
 
-You can see the messages data in Spreadsheet! Although, it is better that the first row is filled column name. Replace 4th row as below and run the script.
+You can see the messages data in Spreadsheet! Although, it is better that the first row is filled column name to understand these columns easier. Replace 4th row as below and run the script.
 
 ```JavaScript
   var messages = [['Subject', 'From', 'To', 'Body', 'Date']];
@@ -292,7 +292,7 @@ We can understand the column means well. Now, we succeeded to make the applicati
 
 ## Custom Menu of Spreadsheet
 
-The application we made works well, but we can make it more convenient. We will add custom menu on Spreadsheet. Add the `onOpen` function below and Run it. The name `onOpen` is reserved and will be called when the Spreadsheet is opened. You can confirm in the [document](https://developers.google.com/apps-script/guides/triggers#onopene).
+The application we made works well, but we can make it more convenient. We will add custom menu on Spreadsheet. Add the `onOpen` function below and Run it. The name `onOpen` is reserved and will be called when the Spreadsheet is opened. You can confirm the details in the [official document](https://developers.google.com/apps-script/guides/triggers#onopene).
 
 ```JavaScript
 function onOpen() {
