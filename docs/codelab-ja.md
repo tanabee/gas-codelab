@@ -9,7 +9,7 @@ feedback link: https://github.com/tanabee/gas-codelab/issues
 
 # Apps Script ハンズオン
 
-## Intro
+## 概要
 
 この Codelab では、 Google Apps Script を用いて Gmail のメッセージ一覧を Google Spreadsheet に抽出するアプリケーションを作成します。
 ![Output](img/output.png)
