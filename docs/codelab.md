@@ -58,7 +58,7 @@ Click **New**
 ![Create a new Spreadsheet file](img/en/create-spreadsheet-file.png)
 Click **Google Sheets** and Spreadsheet file will be created.
 
-![Rename Spreadsheet file](img/en/create-spreadsheet-file.png)
+![Rename Spreadsheet file](img/en/rename-spreadsheet-file.png)
 Click file name area, and input file name. (e.g. gmail-to-spreadsheet)
 
 ![Select Script editor menu](img/en/select-script-editor.png)

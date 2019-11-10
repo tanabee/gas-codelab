@@ -59,7 +59,7 @@ Apps Script のプロジェクトを作成しましょう。まず [drive.google
 ![Create a new Spreadsheet file](img/en/create-spreadsheet-file.png)
 **Google Sheets** を選択するとスプレッドシートファイルが作成されます。
 
-![Rename Spreadsheet file](img/en/create-spreadsheet-file.png)
+![Rename Spreadsheet file](img/en/rename-spreadsheet-file.png)
 ファイル名を選択し、ファイル名（gmail-to-spreadsheet など）を入力します。
 
 ![Select Script editor menu](img/en/select-script-editor.png)
