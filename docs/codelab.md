@@ -17,7 +17,7 @@ In this codelab, you can make a application that exports Gmail messages to Googl
 ### Target
 
 - Beginner of Apps Script
-- Have experience of JavaScript
+- Experts of JavaScript
 
 ### Use case
 
