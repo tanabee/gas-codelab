@@ -12,7 +12,7 @@ feedback link: https://github.com/tanabee/gas-codelab/issues
 ## 概要
 
 この Codelab では、 Google Apps Script を用いて Gmail のメッセージ一覧を Google Spreadsheet に抽出するアプリケーションを作成します。
-![Output](img/output.png)
+![Output](img/en/output.png)
 
 ### 対象者
 
@@ -53,22 +53,22 @@ Negative
 
 Apps Script のプロジェクトを作成しましょう。まず [drive.google.com](https://drive.google.com) にアクセスし、スプレッドシートファイルを作成します。
 
-![Create a new drive file](img/create-drive-file.png)
+![Create a new drive file](img/en/create-drive-file.png)
 **New** をクリック
 
-![Create a new Spreadsheet file](img/create-spreadsheet-file.png)
+![Create a new Spreadsheet file](img/en/create-spreadsheet-file.png)
 **Google Sheets** を選択するとスプレッドシートファイルが作成されます。
 
-![Rename Spreadsheet file](img/create-spreadsheet-file.png)
+![Rename Spreadsheet file](img/en/create-spreadsheet-file.png)
 ファイル名を選択し、ファイル名（gmail-to-spreadsheet など）を入力します。
 
-![Select Script editor menu](img/select-script-editor.png)
+![Select Script editor menu](img/en/select-script-editor.png)
 **Tools** > **Script editor** メニューを選択すると Google Apps Script プロジェクトが作成されます。
 
-![Rename Google Apps Script project](img/rename-gas-project.png)
+![Rename Google Apps Script project](img/en/rename-gas-project.png)
 プロジェクト名を選択し、プロジェクト名（gmail-to-spreadsheet など）を入力します。
 
-![Input Google Apps Script project name](img/input-project-name.png)
+![Input Google Apps Script project name](img/en/input-project-name.png)
 プロジェクト名を入力して OK ボタンをクリックするとプロジェクトが保存されます。トーストが表示されてから、非表示になったところで保存が完了します。
 
 これでスクリプトを実行できるようになりました。次のセクションでスクリプトを実行していきます。
@@ -83,14 +83,14 @@ function main() {
 }
 ```
 
-![Run script](img/run-script.png)
+![Run script](img/en/run-script.png)
 
 `Logger.log()` 関数は Google Apps Script のログ出力関数です。
 
-![View the script logs](img/view-logs.png)
+![View the script logs](img/en/view-logs.png)
 **View** > **Logs** を選択すると出力されたログを確認できます。
 
-![log viewer](img/log-viewer.png)
+![log viewer](img/en/log-viewer.png)
 `Hello Google Apps Script!` と出力されているのが確認できました。
 
 `console.log()` 関数を使うこともできますが、`console.log()` 関数を利用するためには別の設定が必要になるため、この Codelab では `Logger.log()` 関数を利用します。
@@ -99,7 +99,7 @@ function main() {
 
 次に、 GmailApp クラスを見てみます。GmailApp クラスとメソッドについては[公式リファレンス](https://developers.google.com/apps-script/reference/) から確認できます。[GmailApp](https://developers.google.com/apps-script/reference/gmail/gmail-app) のドキュメントを見てみます。Gmail に関連するクラス (e.g. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) やメソッド (e.g. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) が確認できます。
 
-![GmailApp reference](img/reference-gmailapp.png)
+![GmailApp reference](img/en/reference-gmailapp.png)
 
 今回は [Gmail.search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max) を使ってメール一覧を取得します。
 
@@ -119,30 +119,30 @@ function main() {
 
 **Run** ボタンをクリックして実行します。
 
-![Authorization popup](img/authorization-required.png)
+![Authorization popup](img/en/authorization-required.png)
 このスクリプトに Gmail の操作を認可するため、ポップアップが表示されます。Gmail リソースへのアクセスを認可する必要があります。 **Review Permissions** をクリックします。
 
-![Choose an account](img/choose-account.png)
+![Choose an account](img/en/choose-account.png)
 この Codelab で使っているアカウントを選択します。
 
-![Application verification](img/verify-app.png)
-![Application verification advanced](img/verify-app-advanced.png)
+![Application verification](img/en/verify-app.png)
+![Application verification advanced](img/en/verify-app-advanced.png)
 このアプリケーションを確認するために、 **Advanced** を選択し **Go to ...** と書かれたリンクをクリックします。もし、この画面が表示されない場合には、この手順はスキップしてください。
 
-![Allow authentication](img/allow-auth.png)
+![Allow authentication](img/en/allow-auth.png)
 このアプリケーションに与える必要のあるスコープが表示されます。 **Allow** ボタンをクリック後、スクリプトエディタに戻ってスクリプトが実行されます。
 
-![Allow authentication](img/gmail-threads.png)
+![Allow authentication](img/en/gmail-threads.png)
 ログを見てみましょう。GmailThread の配列が出力されています。たった 5 行のコードでメールの一覧を取得して出力することができました！この認可のポップアップのフローのために、通常実装するのが大変な認証周りのコードを書く必要がなくなるため、非常に簡単にアプリケーション連携ができるのです。
 
 ## GmailMessage のパース
 
 直前のセクションで Gmail のスレッド一覧を取得できました。今回はメッセージの件名、本文、送信元、送信先、日時を取得します。そのため、GmailThread からそれに紐づくメッセージを取得します。
 
-![GmailThread.getMessages reference](img/reference-getmessages.png)
+![GmailThread.getMessages reference](img/en/reference-getmessages.png)
 Apps Script のリファレンスを見てみましょう。 GmailThread クラスには [getMessages()](https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages) メソッドが用意されており GmailMessage の配列を返します。 **GmailMessage** のリンクをクリックしてそのメソッドを確認しましょう。
 
-![GmailMessage reference](img/reference-gmailmessage.png)
+![GmailMessage reference](img/en/reference-gmailmessage.png)
 GmailMessage クラスには getSubject, getBody, getFrom, getTo, getDate など多数の取得系メソッドが用意されています。 `GmailThread.getMessages()` を用いて求める値が取得できそうです。
 
 今回はスレッド内の最初のメッセージを使います。メッセージを取得してログを見てみましょう。
@@ -158,7 +158,7 @@ function main() {
 }
 ```
 
-![GmailMessage log](img/gmail-messages.png)
+![GmailMessage log](img/en/gmail-messages.png)
 **GmailMessage** というテキストが表示されます。
 
 最後に、取得系のメソッドを叩いて値を取得します。
@@ -178,7 +178,7 @@ function main() {
 }
 ```
 
-![Get Gmail message values](img/get-message-values.png)
+![Get Gmail message values](img/en/get-message-values.png)
 スクリプトを実行してログを見てみます。Gmail メッセージの値を取得できました。次のセッションからは、これらの値を Spreadsheet に保存していきます。
 
 ## SpreadsheetApp クラス
@@ -195,8 +195,8 @@ function saveMessages() {
 }
 ```
 
-![Logging Spreadsheet tab name](img/log-getactivesheet.png)
-![Spreadsheet tab name](img/spreadsheet-tabname.png)
+![Logging Spreadsheet tab name](img/en/log-getactivesheet.png)
+![Spreadsheet tab name](img/en/spreadsheet-tabname.png)
 ログビュアーでスプレッドシートのタブ名が表示されます。 Spreadsheet にデータを保存するためには [Range](https://developers.google.com/apps-script/reference/spreadsheet/range) クラスにアクセスし[Range.setValues()](https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues) を叩く必要があります。
 
 ```JavaScript
@@ -212,7 +212,7 @@ function saveMessages() {
 }
 ```
 
-![Range.setValues](img/range-setvalues.png)
+![Range.setValues](img/en/range-setvalues.png)
 `saveMessages` を実行し Spreadsheet を見てみると値が挿入されていることが確認できます。ここで引数に指定したデータが 2 次元配列であることに注意してください。
 
 ここで、データを引数で渡せるように関数を編集します。今回は 5 つのタイプの値を保存するため、列 "E" は固定とします。
@@ -240,7 +240,7 @@ function test() {
 }
 ```
 
-![set data as argument](img/data-argument.png)
+![set data as argument](img/en/data-argument.png)
 無事に `saveMessages` 関数を叩けて Spreadsheet に値が挿入されました。テストできたので test 関数を削除します。次のセクションでは `main` 関数から `saveMessages` 関数を叩いて Gmail のメッセージ一覧を保存します。
 
 ## メッセージを Spreadsheet に保存
@@ -279,7 +279,7 @@ function saveMessages(data) {
 
 `main` 関数を実行し、Spreadsheet を確認します。
 
-![save gmail messages to Spreadsheet](img/save-gmail-messages.png)
+![save gmail messages to Spreadsheet](img/en/save-gmail-messages.png)
 
 Spreadsheet で Gmail メッセージのデータを確認できました。それぞれの列が何を示すのか理解しやすくするために、最初の列に列名を指定します。コードの 4 行目で messages を定義している行を以下に書き換えて実行します。
 
@@ -287,7 +287,7 @@ Spreadsheet で Gmail メッセージのデータを確認できました。そ�
   var messages = [['Subject', 'From', 'To', 'Body', 'Date']];
 ```
 
-![add column names](img/add-column-names.png)
+![add column names](img/en/add-column-names.png)
 
 列の意味がわかりやすくなりました。30 行に満たないコードで Gmail と Spreadsheet を連携するアプリケーションを作成することができました！
 
@@ -305,7 +305,7 @@ function onOpen() {
 }
 ```
 
-![Spreadsheet custom menu](img/spreadsheet-custom-menu.png)
+![Spreadsheet custom menu](img/en/spreadsheet-custom-menu.png)
 
 Spreadsheet を見てみましょう。カスタムメニューが表示されます。 **Gmail** > **Fetch** を選択します。
 
@@ -336,29 +336,29 @@ function clearSheet() {
 
 以下に沿って進めます。
 
-![Current project's triggers](img/current-project-triggers.png)
+![Current project's triggers](img/en/current-project-triggers.png)
 **Edit** > **Current project's trigger** を選択します
 
-![Add triggers](img/add-trigger.png)
+![Add triggers](img/en/add-trigger.png)
 **Add Trigger** を選択します
 
-![Trigger settings](img/trigger-settings.png)
+![Trigger settings](img/en/trigger-settings.png)
 ポップアップが表示されるので Trigger の設定を行います。上の画像の通り設定して **Save** ボタンを選択します。
 
-![Trigger is created](img/trigger-is-created.png)
+![Trigger is created](img/en/trigger-is-created.png)
 トリガーが作成されました！ドットアイコンを選択します。
 
-![Select executions menu](img/select-executions.png)
+![Select executions menu](img/en/select-executions.png)
 **Executions** を選択します。
 
-![Executions](img/executions.png)
+![Executions](img/en/executions.png)
 
 `main` 関数が 1 分おきに実行されているのが確認できます。新しいメッセージを受信した際でも最新の状態を保つことができます。
 
-![Delete trigger](img/delete-trigger.png)
+![Delete trigger](img/en/delete-trigger.png)
 ドットアイコン > **Delete trigger** を選択することで Trigger を削除できます。
 
-![Triggers](img/triggers.png)
+![Triggers](img/en/triggers.png)
 Google Apps Script には様々な種類の Trigger が用意されています。 Trigger を使うことでプロジェクトをより便利にすることができます。
 
 ## Congrats!
