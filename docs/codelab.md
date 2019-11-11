@@ -182,9 +182,10 @@ Run the script and See the logs. You succeeded to retrieve Gmail message values!
 
 ## SpreadsheetApp class
 
-// TODO: Graph: Spreadsheet > Sheet > Range 
-
 Next, let's understand SpreadsheetApp class. Visit [SpreadsheetApp reference](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app) and see [getActiveSheet](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet) method section. You can access the Spreadsheet you created to use this method.
+
+![Spreadsheet classes](img/en/spreadsheet-classes.png)
+SpreadsheetApp has hierarchical structured classes. ( Spreadsheet > Sheet > Range )
 
 Run this method below. You need to allow the authorization just like in Gmail.
 

@@ -149,8 +149,8 @@
       </google-codelab-step>
     
       <google-codelab-step label="SpreadsheetApp class" duration="0">
-        <p>// TODO: Graph: Spreadsheet &gt; Sheet &gt; Range</p>
-<p>Next, let&#39;s understand SpreadsheetApp class. Visit <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app" target="_blank">SpreadsheetApp reference</a> and see <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet" target="_blank">getActiveSheet</a> method section. You can access the Spreadsheet you created to use this method.</p>
+        <p>Next, let&#39;s understand SpreadsheetApp class. Visit <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app" target="_blank">SpreadsheetApp reference</a> and see <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet" target="_blank">getActiveSheet</a> method section. You can access the Spreadsheet you created to use this method.</p>
+<p><img alt="Spreadsheet classes" src="img/1d40728a1fec15aa.png"><br>SpreadsheetApp has hierarchical structured classes. ( Spreadsheet &gt; Sheet &gt; Range )</p>
 <p>Run this method below. You need to allow the authorization just like in Gmail.</p>
 <pre><code>function saveMessages() {
   Logger.log(SpreadsheetApp.getActiveSheet().getName());

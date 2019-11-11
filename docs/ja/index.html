@@ -150,8 +150,8 @@
       </google-codelab-step>
     
       <google-codelab-step label="SpreadsheetApp クラス" duration="0">
-        <p>// TODO: Graph: Spreadsheet &gt; Sheet &gt; Range</p>
-<p>次に、 SpreadsheetApp クラスについて理解します。<a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app" target="_blank">SpreadsheetApp reference</a> にアクセスし、<a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet" target="_blank">getActiveSheet</a> のセクションを確認します。このメソッドを使うことで作成したスプレッドシートにアクセスすることができます。</p>
+        <p>次に、 SpreadsheetApp クラスについて理解します。<a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app" target="_blank">SpreadsheetApp reference</a> にアクセスし、<a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet" target="_blank">getActiveSheet</a> のセクションを確認します。このメソッドを使うことで作成したスプレッドシートにアクセスすることができます。</p>
+<p><img alt="Spreadsheet classes" src="img/e0a8f7e41449b1b2.png"><br>SpreadsheetApp のクラス群は Spreadsheet &gt; Sheet &gt; Range という順に階層構造になっています。Spreadsheet に値を挿入する場合には Range クラスまで掘り下げてアクセスする必要があります。</p>
 <p>下記のメソッドを実行します。Gmail の時と同様に認証の許可が必要です。</p>
 <pre><code>function saveMessages() {
   Logger.log(SpreadsheetApp.getActiveSheet().getName());

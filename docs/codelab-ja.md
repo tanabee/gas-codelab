@@ -183,9 +183,10 @@ function main() {
 
 ## SpreadsheetApp クラス
 
-// TODO: Graph: Spreadsheet > Sheet > Range 
-
 次に、 SpreadsheetApp クラスについて理解します。[SpreadsheetApp reference](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app) にアクセスし、[getActiveSheet](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet) のセクションを確認します。このメソッドを使うことで作成したスプレッドシートにアクセスすることができます。
+
+![Spreadsheet classes](img/ja/spreadsheet-classes.png)
+SpreadsheetApp のクラス群は Spreadsheet > Sheet > Range という順に階層構造になっています。Spreadsheet に値を挿入する場合には Range クラスまで掘り下げてアクセスする必要があります。
 
 下記のメソッドを実行します。Gmail の時と同様に認証の許可が必要です。
 
