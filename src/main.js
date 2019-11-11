@@ -8,11 +8,13 @@ function onOpen() {
 }
 
 function main() {
-  var threads = GmailApp.getInboxThreads(0, 200);
+  var searchText = '';
+  var threads = GmailApp.search(searchText, 0, 500);
   var messages = [['Subject', 'From', 'To', 'Body', 'Date']];
   threads.forEach(function (thread) {
     var message = thread.getMessages()[0];
-    if (message.getPlainBody().length > 10000) {
+    // single cell characters limit
+    if (message.getPlainBody().length > 50000) {
       return;
     }
     messages.push([
@@ -23,11 +25,11 @@ function main() {
       message.getDate(),
     ]);
   });
-  insertSpreadSheet(messages);
+  saveMessages(messages);
 }
 
-function insertSpreadSheet(data) {
-	clearSheet();
+function saveMessages(data) {
+  clearSheet();
   SpreadsheetApp
     .getActiveSheet()
     .getRange("A1:E" + data.length)
