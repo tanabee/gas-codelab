@@ -19,5 +19,5 @@ https://github.com/googlecodelabs/tools/tree/master/claat
 
 ```sh
 cd docs
-claat export codelab.md
+claat export codelab*.md
 ```
