@@ -14,6 +14,10 @@ feedback link: https://github.com/tanabee/gas-codelab/issues
 In this codelab, you can make a application that exports Gmail messages to Google Spreadsheet using Google Apps Script.
 ![Output](img/en/output.png)
 
+### Source Code
+
+You can get complete source code at [tanabee/gas-codelab](https://github.com/tanabee/gas-codelab) in GitHub.
+
 ### Target
 
 - Beginner of Apps Script
