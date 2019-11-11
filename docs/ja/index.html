@@ -62,12 +62,12 @@
     
       <google-codelab-step label="プロジェクトの作成" duration="0">
         <p>Apps Script のプロジェクトを作成しましょう。まず <a href="https://drive.google.com" target="_blank">drive.google.com</a> にアクセスし、スプレッドシートファイルを作成します。</p>
-<p><img alt="Create a new drive file" src="img/428f26f8a21df01e.png"><strong>新規</strong> をクリック</p>
-<p><img alt="Create a new Spreadsheet file" src="img/c19dd6e2faa2540f.png"><strong>Google スプレッドシート</strong> を選択するとスプレッドシートファイルが作成されます。</p>
-<p><img alt="Rename Spreadsheet file" src="img/74d2acd5b958a2b3.png"><br>ファイル名を選択し、ファイル名（gmail-to-spreadsheet など）を入力します。</p>
-<p><img alt="Select Script editor menu" src="img/ed84f6ed6f7ab352.png"><strong>ツール</strong> &gt; <strong>スクリプトエディタ</strong> メニューを選択すると Google Apps Script プロジェクトが作成されます。</p>
-<p><img alt="Rename Google Apps Script project" src="img/af1a0ef96e644b5c.png"><br>プロジェクト名を選択し、プロジェクト名（gmail-to-spreadsheet など）を入力します。</p>
-<p><img alt="Input Google Apps Script project name" src="img/e3e79b46c4c400a4.png"><br>プロジェクト名を入力して <strong>OK</strong> ボタンをクリックするとプロジェクトが保存されます。トーストが表示されてから、非表示になったところで保存が完了します。</p>
+<p><img alt="Create a new drive file" src="img/8291c873e19d15f7.png"><strong>新規</strong> をクリック</p>
+<p><img alt="Create a new Spreadsheet file" src="img/ca7b0d3ddcb9e9ca.png"><strong>Google スプレッドシート</strong> を選択するとスプレッドシートファイルが作成されます。</p>
+<p><img alt="Rename Spreadsheet file" src="img/1efea22ed97a205f.png"><br>ファイル名を選択し、ファイル名（gmail-to-spreadsheet など）を入力します。</p>
+<p><img alt="Select Script editor menu" src="img/936213b00887de7.png"><strong>ツール</strong> &gt; <strong>スクリプトエディタ</strong> メニューを選択すると Google Apps Script プロジェクトが作成されます。</p>
+<p><img alt="Rename Google Apps Script project" src="img/966ff3ec6c04c81.png"><br>プロジェクト名を選択し、プロジェクト名（gmail-to-spreadsheet など）を入力します。</p>
+<p><img alt="Input Google Apps Script project name" src="img/ccbba41c937081be.png"><br>プロジェクト名を入力して <strong>OK</strong> ボタンをクリックするとプロジェクトが保存されます。トーストが表示されてから、非表示になったところで保存が完了します。</p>
 <p>これでスクリプトを実行できるようになりました。次のセクションでスクリプトを実行していきます。</p>
 
 
@@ -79,9 +79,9 @@
   Logger.log(&#39;Hello Google Apps Script!&#39;);
 }
 </code></pre>
-<p class="image-container"><img alt="Run script" src="img/c235b0bd44438d48.png"></p>
+<p class="image-container"><img alt="Run script" src="img/368e7cbccf4868a3.png"></p>
 <p><code>Logger.log()</code> 関数は Google Apps Script のログ出力関数です。</p>
-<p><img alt="View the script logs" src="img/d940187858f250cd.png"><strong>表示</strong> &gt; <strong>ログ</strong> を選択すると出力されたログを確認できます。</p>
+<p><img alt="View the script logs" src="img/1dbb79f070367c38.png"><strong>表示</strong> &gt; <strong>ログ</strong> を選択すると出力されたログを確認できます。</p>
 <p><img alt="log viewer" src="img/b2e5b4705789f369.png"><code>Hello Google Apps Script!</code> と出力されているのが確認できました。</p>
 <p><code>console.log()</code> 関数を使うこともできますが、<code>console.log()</code> 関数を利用するためには別の設定が必要になるため、この Codelab では <code>Logger.log()</code> 関数を利用します。</p>
 
@@ -106,10 +106,10 @@
 </code></pre>
 <p>特定のメーリスなど、検索条件を設定したい場合には searchText に値を代入してください。公式サポートページに<a href="https://support.google.com/mail/answer/7190?hl=ja" target="_blank">検索演算子</a>についてまとめられています。</p>
 <p><strong>実行</strong> ボタンをクリックして実行します。</p>
-<p><img alt="Authorization popup" src="img/11cad0e45260adb0.png"><br>このスクリプトに Gmail の操作を認可するため、ポップアップが表示されます。Gmail リソースへのアクセスを認可する必要があります。 <strong>許可を確認</strong> をクリックします。</p>
-<p><img alt="Choose an account" src="img/ee1a87025213ff87.png"><br>この Codelab で使っているアカウントを選択します。</p>
-<p><img alt="Application verification" src="img/e33c32478d78c2f1.png"><img alt="Application verification advanced" src="img/dcb5b2511ba59c79.png"><br>このアプリケーションを確認するために、 <strong>詳細</strong> を選択し <strong>... (安全ではないページ) に移動</strong> と書かれたリンクをクリックします。もし、この画面が表示されない場合には、この手順はスキップしてください。</p>
-<p><img alt="Allow authentication" src="img/4f6c92162de7b43c.png"><br>このアプリケーションに与える必要のあるスコープが表示されます。 <strong>許可</strong> ボタンをクリック後、スクリプトエディタに戻ってスクリプトが実行されます。</p>
+<p><img alt="Authorization popup" src="img/20f302b28ecf289c.png"><br>このスクリプトに Gmail の操作を認可するため、ポップアップが表示されます。Gmail リソースへのアクセスを認可する必要があります。 <strong>許可を確認</strong> をクリックします。</p>
+<p><img alt="Choose an account" src="img/13164585f2675a6.png"><br>この Codelab で使っているアカウントを選択します。</p>
+<p><img alt="Application verification" src="img/2a016a555a937a9a.png"><img alt="Application verification advanced" src="img/37f02d2d63232036.png"><br>このアプリケーションを確認するために、 <strong>詳細</strong> を選択し <strong>... (安全ではないページ) に移動</strong> と書かれたリンクをクリックします。もし、この画面が表示されない場合には、この手順はスキップしてください。</p>
+<p><img alt="Allow authentication" src="img/ec5629ce691ba91a.png"><br>このアプリケーションに与える必要のあるスコープが表示されます。 <strong>許可</strong> ボタンをクリック後、スクリプトエディタに戻ってスクリプトが実行されます。</p>
 <p><img alt="Allow authentication" src="img/f8bd7318c1072c0f.png"><br>ログを見てみましょう。GmailThread の配列が出力されています。たった 5 行のコードでメールの一覧を取得して出力することができました！この認可のポップアップのフローのために、通常実装するのが大変な認証周りのコードを書く必要がなくなるため、非常に簡単にアプリケーション連携ができるのです。</p>
 
 
@@ -157,7 +157,7 @@
   Logger.log(SpreadsheetApp.getActiveSheet().getName());
 }
 </code></pre>
-<p><img alt="Logging Spreadsheet tab name" src="img/d46c422d40810c92.png"><img alt="Spreadsheet tab name" src="img/4b3ab6c235382e36.png"><br>ログビュアーでスプレッドシートのタブ名が表示されます。 Spreadsheet にデータを保存するためには <a href="https://developers.google.com/apps-script/reference/spreadsheet/range" target="_blank">Range</a> クラスにアクセスし<a href="https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues" target="_blank">Range.setValues()</a> を叩く必要があります。</p>
+<p><img alt="Logging Spreadsheet tab name" src="img/d46c422d40810c92.png"><img alt="Spreadsheet tab name" src="img/e68cc280e2834ed5.png"><br>ログビュアーでスプレッドシートのタブ名が表示されます。 Spreadsheet にデータを保存するためには <a href="https://developers.google.com/apps-script/reference/spreadsheet/range" target="_blank">Range</a> クラスにアクセスし<a href="https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues" target="_blank">Range.setValues()</a> を叩く必要があります。</p>
 <pre><code>function saveMessages() {
   var data = [
     [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
@@ -245,7 +245,7 @@ function saveMessages(data) {
     ]);
 }
 </code></pre>
-<p class="image-container"><img alt="Spreadsheet custom menu" src="img/aa57bb7fa08cc6c.png"></p>
+<p class="image-container"><img alt="Spreadsheet custom menu" src="img/8e76d050d649064e.png"></p>
 <p>Spreadsheet を見てみましょう。カスタムメニューが表示されます。 <strong>Gmail</strong> &gt; <strong>Fetch</strong> を選択します。</p>
 <p>Spreadsheet の値をリセットできるとなおよいでしょう。 <code>clearSheet</code> 関数を追加してメニューに追加します。</p>
 <pre><code>function onOpen() {
@@ -271,14 +271,14 @@ function clearSheet() {
       <google-codelab-step label="自動化" duration="0">
         <p><a href="https://developers.google.com/apps-script/guides/triggers/installable" target="_blank">トリガー</a> を使って自動化の設定をすることも可能です。 <a href="https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers" target="_blank">Time-driven trigger</a> を設定して <code>main</code> 関数を 1 分おきに実行してみましょう。</p>
 <p>以下に沿って進めます。</p>
-<p><img alt="Current project’s triggers" src="img/e5829339eaa601cd.png"><strong>編集</strong> &gt; <strong>現在のプロジェクトのトリガー</strong> を選択します</p>
-<p><img alt="Add triggers" src="img/6103ac7ce7f74fe3.png"><strong>トリガーを追加</strong> を選択します</p>
-<p><img alt="Trigger settings" src="img/fee8f34c4ef457cc.png"><br>ポップアップが表示されるのでトリガーの設定を行います。上の画像の通り設定して <strong>保存</strong> ボタンを選択します。</p>
-<p><img alt="Trigger is created" src="img/3f4f9336e0e787.png"><br>トリガーが作成されました！ドットアイコンを選択します。</p>
-<p><img alt="Select executions menu" src="img/cc8140c74b6abd1a.png"><strong>実行数</strong> を選択します。</p>
+<p><img alt="Current project’s triggers" src="img/1486261eec2c4635.png"><strong>編集</strong> &gt; <strong>現在のプロジェクトのトリガー</strong> を選択します</p>
+<p><img alt="Add triggers" src="img/1d6d9dd902d2befa.png"><strong>トリガーを追加</strong> を選択します</p>
+<p><img alt="Trigger settings" src="img/377a8a8d488f64b9.png"><br>ポップアップが表示されるのでトリガーの設定を行います。上の画像の通り設定して <strong>保存</strong> ボタンを選択します。</p>
+<p><img alt="Trigger is created" src="img/d8de0148fd1ef40f.png"><br>トリガーが作成されました！ドットアイコンを選択します。</p>
+<p><img alt="Select executions menu" src="img/7167982c4b31f200.png"><strong>実行数</strong> を選択します。</p>
 <p class="image-container"><img alt="Executions" src="img/69b15d16e13a28ee.png"></p>
 <p><code>main</code> 関数が 1 分おきに実行されているのが確認できます。新しいメッセージを受信した際でも最新の状態を保つことができます。</p>
-<p><img alt="Delete trigger" src="img/15b7ced33634e97b.png"><br>ドットアイコン &gt; <strong>トリガーの削除</strong> を選択することでトリガーを削除できます。</p>
+<p><img alt="Delete trigger" src="img/ea392116df20cfdd.png"><br>ドットアイコン &gt; <strong>トリガーの削除</strong> を選択することでトリガーを削除できます。</p>
 <p><img alt="Triggers" src="img/b49b0a3ad3e4f14b.png"><br>Google Apps Script には様々な種類のトリガーが用意されています。トリガーを使うことでプロジェクトをより便利にすることができます。</p>
 
 
