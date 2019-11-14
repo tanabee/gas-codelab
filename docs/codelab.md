@@ -217,9 +217,9 @@ function saveMessages() {
 ```
 
 ![Range.setValues](img/en/range-setvalues.png)
-Run `saveMessages` and See the Spreadsheet. Then, You can see the value is inserted into the sheet. Note that the argument must be a two-dimensional array.
+Run `saveMessages` and see the Spreadsheet. Then, You can see the values inserted into the sheet. Note that the argument must be a two-dimensional array.
 
-Then, update this function to set data as argument of this method. We'd like to insert 5 type of values, so we set the last column to "E".
+Then, update this function to set data as argument of this method. We'd like to insert 5 types of values, so we set the last column to "E".
 
 ```JavaScript
 function saveMessages(data) {
@@ -285,7 +285,7 @@ Run `main` function and see the Spreadsheet.
 
 ![save gmail messages to Spreadsheet](img/en/save-gmail-messages.png)
 
-You can see the messages data in Spreadsheet! Although, it is better that the first row is filled column name to understand these columns easier. Replace 4th row as below and run the script.
+You can see the messages data in the Spreadsheet! Although, it is better that the first row is filled with column names to understand these columns easier. Replace 4th row of the code as below and run the script.
 
 ```JavaScript
   var messages = [['Subject', 'From', 'To', 'Body', 'Date']];
@@ -293,7 +293,7 @@ You can see the messages data in Spreadsheet! Although, it is better that the fi
 
 ![add column names](img/en/add-column-names.png)
 
-We can understand the column means well. Now, we succeeded to make the application that can connect Gmail and Spreadsheet, and it is only -30 lines of code.
+We can understand the meaning of the eash column well. Now, we succeeded to make the application that can connect Gmail and Spreadsheet, and it is less than 30 lines of code.
 
 ## Custom Menu of Spreadsheet
 
