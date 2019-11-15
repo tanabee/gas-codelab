@@ -10,6 +10,7 @@ feedback link: https://github.com/tanabee/gas-codelab/issues
 # Apps Script Hands-on
 
 ## Intro
+Duration: 0:01:00
 
 In this codelab, you can make a application that exports Gmail messages to Google Spreadsheet using Google Apps Script.
 ![Output](img/en/output.png)
@@ -29,6 +30,7 @@ You can get complete source code at [tanabee/gas-codelab](https://github.com/tan
 - Integrate Google Apps with a system that doesn't provide REST API and provides email notifications
 
 ## Preparation
+Duration: 0:01:00
 
 You need own Gmail or G Suite account. Please [create Gmail account](https://accounts.google.com/signup) if you don't have.
 
@@ -53,6 +55,7 @@ Select **Run** button.
 Open [Gmail](https://mail.google.com) in your browser and confirm to receive emails. It's completed preparation.
 
 ## Create project
+Duration: 0:02:00
 
 Let's create a Apps Script project. First, visit [drive.google.com](https://drive.google.com) and create a Spreadsheet file.
 
@@ -77,6 +80,7 @@ After inputting project name, Click OK and it will be saved. Then a toast appear
 Now, we can run the script! We will run the script in the next section.
 
 ## Run script
+Duration: 0:02:00
 
 Copy the script below and paste to the Script editor, and click **Run** button.
 
@@ -99,6 +103,7 @@ We can find the text `Hello Google Apps Script!` in Log Viewer.
 We can also use `console.log()`, but we use `Logger.log()` in this Hands-on because you need an additional process to use `console.log()`.
 
 ## GmailApp class
+Duration: 0:03:00
 
 Next, see the GmailApp class. Confirm GmailApp classes and methods in [official reference](https://developers.google.com/apps-script/reference/). See [GmailApp document](https://developers.google.com/apps-script/reference/gmail/gmail-app). You can see the classes (e.g. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) and the methods (e.g. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) related to Gmail.
 
@@ -107,6 +112,7 @@ Next, see the GmailApp class. Confirm GmailApp classes and methods in [official 
 We use [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max) method for retrieving emails in this time.
 
 ## Retrieve Gmail threads
+Duration: 0:03:00
 
 Let's implement the script. Use `GmailApp.search` method and retrieve Gmail threads.
 
@@ -139,6 +145,7 @@ Then the scope you need to allow is displayed. Click **Allow** button. It will g
 See the logs. Then you can see Array of GmailThread. You succeeded to retrieve emails and output the logs for only 5 lines of code! Because of this popup authorization flow, you don't need to implement authorization codes and you can make it easier than ever.
 
 ## Parse Gmail messages
+Duration: 0:03:00
 
 In the previous section, we could retrieve Gmail threads. We'd like to retrieve the message subject, body, from, to, and date in this time. So, we need to get messages from `GmailThread`.
 
@@ -185,6 +192,7 @@ function main() {
 Run the script and See the logs. You succeeded to retrieve Gmail message values! From Next section, we will insert these values to Spreadsheet.
 
 ## SpreadsheetApp class
+Duration: 0:03:00
 
 Next, let's understand SpreadsheetApp class. Visit [SpreadsheetApp reference](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app) and see [getActiveSheet](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet) method section. You can access the Spreadsheet you created to use this method.
 
@@ -248,6 +256,7 @@ function test() {
 Done! Now, you can delete test method. We will call `saveMessages` function from `main` function from the next section.
 
 ## Save emails to Spreadsheet
+Duration: 0:03:00
 
 Update `main` function to call `saveMessages` function. Make `messages` variable as two-dimensional array.
 
@@ -296,6 +305,7 @@ You can see the messages data in the Spreadsheet! Although, it is better that th
 We can understand the meaning of the eash column well. Now, we succeeded to make the application that can connect Gmail and Spreadsheet, and it is less than 30 lines of code.
 
 ## Custom Menu of Spreadsheet
+Duration: 0:03:00
 
 The application we made works well, but we can make it more convenient. We will add custom menu on Spreadsheet. Add the `onOpen` function below and Run it. The name `onOpen` is reserved and will be called when the Spreadsheet is opened. You can confirm the details in the [official document](https://developers.google.com/apps-script/guides/triggers#onopene).
 
@@ -335,6 +345,7 @@ function clearSheet() {
 You can see **Clear sheet** sub menu and run it.
 
 ## Automation
+Duration: 0:04:00
 
 You can also configure automation to this project using [Trigger](https://developers.google.com/apps-script/guides/triggers/installable). Let's try setting [Time-driven trigger](https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers) to run the `main` function once a minute.
 
@@ -365,6 +376,7 @@ You can delete trigger to select the three dots icon and **Delete trigger**.
 Google Apps Script has many types of triggers. You can improve the projects more convenient to use triggers.
 
 ## Congrats!
+Duration: 0:01:00
 
 Congrats! You finished this codelab. You can see the final project code below. You can also get code at [tanabee/gas-codelab](https://github.com/tanabee/gas-codelab) in GitHub.
 

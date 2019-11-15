@@ -27,7 +27,7 @@
                   environment="web"
                   feedback-link="https://github.com/tanabee/gas-codelab/issues">
     
-      <google-codelab-step label="Intro" duration="0">
+      <google-codelab-step label="Intro" duration="1">
         <p>In this codelab, you can make a application that exports Gmail messages to Google Spreadsheet using Google Apps Script.<br><img alt="Output" src="img/6ec36db583a97561.png"></p>
 <h2 is-upgraded>Source Code</h2>
 <p>You can get complete source code at <a href="https://github.com/tanabee/gas-codelab" target="_blank">tanabee/gas-codelab</a> in GitHub.</p>
@@ -45,7 +45,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Preparation" duration="0">
+      <google-codelab-step label="Preparation" duration="1">
         <p>You need own Gmail or G Suite account. Please <a href="https://accounts.google.com/signup" target="_blank">create Gmail account</a> if you don&#39;t have.</p>
 <aside class="warning"><p>If you use Gmail for the first time, you need to follow below</p>
 </aside>
@@ -61,7 +61,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Create project" duration="0">
+      <google-codelab-step label="Create project" duration="2">
         <p>Let&#39;s create a Apps Script project. First, visit <a href="https://drive.google.com" target="_blank">drive.google.com</a> and create a Spreadsheet file.</p>
 <p><img alt="Create a new drive file" src="img/20cf609cb24e5367.png"><br>Click <strong>New</strong></p>
 <p><img alt="Create a new Spreadsheet file" src="img/8cffacf23c92b025.png"><br>Click <strong>Google Sheets</strong> and Spreadsheet file will be created.</p>
@@ -74,7 +74,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Run script" duration="0">
+      <google-codelab-step label="Run script" duration="2">
         <p>Copy the script below and paste to the Script editor, and click <strong>Run</strong> button.</p>
 <pre><code>function main() {
   Logger.log(&#39;Hello Google Apps Script!&#39;);
@@ -89,7 +89,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="GmailApp class" duration="0">
+      <google-codelab-step label="GmailApp class" duration="3">
         <p>Next, see the GmailApp class. Confirm GmailApp classes and methods in <a href="https://developers.google.com/apps-script/reference/" target="_blank">official reference</a>. See <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app" target="_blank">GmailApp document</a>. You can see the classes (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-message" target="_blank">GmailMessage</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread" target="_blank">GmailThread</a> ) and the methods (e.g. <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a>, <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options" target="_blank">sendEmail</a>) related to Gmail.</p>
 <p class="image-container"><img alt="GmailApp reference" src="img/e0328ecf0ef098ab.png"></p>
 <p>We use <a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">search</a> method for retrieving emails in this time.</p>
@@ -97,7 +97,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Retrieve Gmail threads" duration="0">
+      <google-codelab-step label="Retrieve Gmail threads" duration="3">
         <p>Let&#39;s implement the script. Use <code>GmailApp.search</code> method and retrieve Gmail threads.</p>
 <pre><code>function main() {
   var searchText = &#39;&#39;;// You can set value.
@@ -116,7 +116,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Parse Gmail messages" duration="0">
+      <google-codelab-step label="Parse Gmail messages" duration="3">
         <p>In the previous section, we could retrieve Gmail threads. We&#39;d like to retrieve the message subject, body, from, to, and date in this time. So, we need to get messages from <code>GmailThread</code>.</p>
 <p><img alt="GmailThread.getMessages reference" src="img/a0af6ab48051acaa.png"><br>Visit Apps Script reference. GmailThread class has <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages" target="_blank">getMessages()</a> method and it returns Array of GmailMessage. Click <strong>GmailMessagge</strong> link and see the methods.</p>
 <p><img alt="GmailMessage reference" src="img/a636968464c90ec8.png"><br>it has getSubject, getBody, getFrom, getTo, getDate and many retrieving methods. We can get values we want using <code>GmailThread.getMessages()</code>.</p>
@@ -150,7 +150,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="SpreadsheetApp class" duration="0">
+      <google-codelab-step label="SpreadsheetApp class" duration="3">
         <p>Next, let&#39;s understand SpreadsheetApp class. Visit <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app" target="_blank">SpreadsheetApp reference</a> and see <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet" target="_blank">getActiveSheet</a> method section. You can access the Spreadsheet you created to use this method.</p>
 <p><img alt="Spreadsheet classes" src="img/1d40728a1fec15aa.png"><br>SpreadsheetApp has hierarchical structured classes. ( Spreadsheet &gt; Sheet &gt; Range )</p>
 <p>Run this method below. You need to allow the authorization just like in Gmail.</p>
@@ -195,7 +195,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Save emails to Spreadsheet" duration="0">
+      <google-codelab-step label="Save emails to Spreadsheet" duration="3">
         <p>Update <code>main</code> function to call <code>saveMessages</code> function. Make <code>messages</code> variable as two-dimensional array.</p>
 <pre><code>function main() {
   var searchText = &#39;&#39;;
@@ -236,7 +236,7 @@ function saveMessages(data) {
 
       </google-codelab-step>
     
-      <google-codelab-step label="Custom Menu of Spreadsheet" duration="0">
+      <google-codelab-step label="Custom Menu of Spreadsheet" duration="3">
         <p>The application we made works well, but we can make it more convenient. We will add custom menu on Spreadsheet. Add the <code>onOpen</code> function below and Run it. The name <code>onOpen</code> is reserved and will be called when the Spreadsheet is opened. You can confirm the details in the <a href="https://developers.google.com/apps-script/guides/triggers#onopene" target="_blank">official document</a>.</p>
 <pre><code>function onOpen() {
   SpreadsheetApp
@@ -269,7 +269,7 @@ function clearSheet() {
 
       </google-codelab-step>
     
-      <google-codelab-step label="Automation" duration="0">
+      <google-codelab-step label="Automation" duration="4">
         <p>You can also configure automation to this project using <a href="https://developers.google.com/apps-script/guides/triggers/installable" target="_blank">Trigger</a>. Let&#39;s try setting <a href="https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers" target="_blank">Time-driven trigger</a> to run the <code>main</code> function once a minute.</p>
 <p>Follow below.</p>
 <p><img alt="Current project’s triggers" src="img/c28e85e048b97d46.png"><br>Select <strong>Edit</strong> &gt; <strong>Current project&#39;s trigger</strong></p>
@@ -284,7 +284,7 @@ function clearSheet() {
 
       </google-codelab-step>
     
-      <google-codelab-step label="Congrats!" duration="0">
+      <google-codelab-step label="Congrats!" duration="1">
         <p>Congrats! You finished this codelab. You can see the final project code below. You can also get code at <a href="https://github.com/tanabee/gas-codelab" target="_blank">tanabee/gas-codelab</a> in GitHub.</p>
 <pre><code>function onOpen() {
   SpreadsheetApp
