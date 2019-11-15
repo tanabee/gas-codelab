@@ -308,6 +308,7 @@ Spreadsheet で Gmail メッセージのデータを確認できました。そ�
 列の意味がわかりやすくなりました。30 行に満たないコードで Gmail と Spreadsheet を連携するアプリケーションを作成することができました！
 
 ## Spreadsheet のカスタムメニュー
+Duration: 0:03:00
 
 これまで作ったアプリケーションで十分要件を満たしますが、これをもっと使いやすくすることができます。 Spreadsheet にカスタムメニューを追加し、それを選択することで Gmail からメッセージ一覧を取得できるようにします。下記の `onOpen` 関数を追加し実行します。 `onOpen` という関数名は予約されており、Spreadsheet が開かれるタイミングで呼ばれます。詳しくは [公式ドキュメント](https://developers.google.com/apps-script/guides/triggers#onopene) で確認できます。
 
@@ -347,7 +348,7 @@ function clearSheet() {
 **Clear sheet** サブメニューが追加されるので実行してみましょう。
 
 ## 自動化
-Duration: 0:04:00
+Duration: 0:05:00
 
 [トリガー](https://developers.google.com/apps-script/guides/triggers/installable) を使って自動化の設定をすることも可能です。 [Time-driven trigger](https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers) を設定して `main` 関数を 1 分おきに実行してみましょう。
 

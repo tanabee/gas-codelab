@@ -345,7 +345,7 @@ function clearSheet() {
 You can see **Clear sheet** sub menu and run it.
 
 ## Automation
-Duration: 0:04:00
+Duration: 0:05:00
 
 You can also configure automation to this project using [Trigger](https://developers.google.com/apps-script/guides/triggers/installable). Let's try setting [Time-driven trigger](https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers) to run the `main` function once a minute.
 

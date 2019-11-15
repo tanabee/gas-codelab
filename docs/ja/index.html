@@ -238,7 +238,7 @@ function saveMessages(data) {
 
       </google-codelab-step>
     
-      <google-codelab-step label="Spreadsheet のカスタムメニュー" duration="0">
+      <google-codelab-step label="Spreadsheet のカスタムメニュー" duration="3">
         <p>これまで作ったアプリケーションで十分要件を満たしますが、これをもっと使いやすくすることができます。 Spreadsheet にカスタムメニューを追加し、それを選択することで Gmail からメッセージ一覧を取得できるようにします。下記の <code>onOpen</code> 関数を追加し実行します。 <code>onOpen</code> という関数名は予約されており、Spreadsheet が開かれるタイミングで呼ばれます。詳しくは <a href="https://developers.google.com/apps-script/guides/triggers#onopene" target="_blank">公式ドキュメント</a> で確認できます。</p>
 <pre><code>function onOpen() {
   SpreadsheetApp
@@ -271,7 +271,7 @@ function clearSheet() {
 
       </google-codelab-step>
     
-      <google-codelab-step label="自動化" duration="4">
+      <google-codelab-step label="自動化" duration="5">
         <p><a href="https://developers.google.com/apps-script/guides/triggers/installable" target="_blank">トリガー</a> を使って自動化の設定をすることも可能です。 <a href="https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers" target="_blank">Time-driven trigger</a> を設定して <code>main</code> 関数を 1 分おきに実行してみましょう。</p>
 <p>以下に沿って進めます。</p>
 <p><img alt="Current project’s triggers" src="img/1486261eec2c4635.png"><strong>編集</strong> &gt; <strong>現在のプロジェクトのトリガー</strong> を選択します</p>
