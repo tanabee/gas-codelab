@@ -10,6 +10,7 @@ feedback link: https://github.com/tanabee/gas-codelab/issues
 # Apps Script ハンズオン
 
 ## 概要
+Duration: 0:01:00
 
 この Codelab では、 Google Apps Script を用いて Gmail のメッセージ一覧を Google Spreadsheet に抽出するアプリケーションを作成します。
 ![Output](img/en/output.png)
@@ -28,9 +29,10 @@ feedback link: https://github.com/tanabee/gas-codelab/issues
 この Codelab は以下のようなケースを想定しています。
 
 - 特定のメーリス、もしくはメールアドレスへのユーザーからの問い合わせの集計、分析
-- REST API は提供していないがメール通知機能を提供しているアプリケーションとのシステム連携
+- REST API は提供していないがメール通知機能を提供しているアプリケーションと Google Apps のシステム連携
 
 ## 準備
+Duration: 0:01:00
 
 Gmail もしくは G Suite のアカウントが必要です。もしまだアカウントがない場合には [Gmail アカウントを作成](https://accounts.google.com/signup)してください。
 
@@ -54,23 +56,24 @@ Negative
 [Gmail](https://mail.google.com) をブラウザで開き、メールが受信されていることを確認する。以上で準備は完了です。
 
 ## プロジェクトの作成
+Duration: 0:02:00
 
-Apps Script のプロジェクトを作成しましょう。まず [drive.google.com](https://drive.google.com) にアクセスし、スプレッドシートファイルを作成します。
+Apps Script のプロジェクトを作成します。まず [drive.google.com](https://drive.google.com) にアクセスし、スプレッドシートファイルを作成します。
 
 ![Create a new drive file](img/ja/create-drive-file.png)
 **新規** をクリック
 
 ![Create a new Spreadsheet file](img/ja/create-spreadsheet-file.png)
-**Google スプレッドシート** を選択するとスプレッドシートファイルが作成されます。
+**Google スプレッドシート** を選択。スプレッドシートファイルが作成されることを確認。
 
 ![Rename Spreadsheet file](img/ja/rename-spreadsheet-file.png)
-ファイル名を選択し、ファイル名（gmail-to-spreadsheet など）を入力します。
+ファイル名を選択し、名前（gmail-to-spreadsheet など）を入力します。
 
 ![Select Script editor menu](img/ja/select-script-editor.png)
-**ツール** > **スクリプトエディタ** メニューを選択すると Google Apps Script プロジェクトが作成されます。
+**ツール** > **スクリプトエディタ** を選択すると Google Apps Script プロジェクトが作成されます。
 
 ![Rename Google Apps Script project](img/ja/rename-gas-project.png)
-プロジェクト名を選択し、プロジェクト名（gmail-to-spreadsheet など）を入力します。
+プロジェクト名を選択し、名前（gmail-to-spreadsheet など）を入力します。
 
 ![Input Google Apps Script project name](img/ja/input-project-name.png)
 プロジェクト名を入力して **OK** ボタンをクリックするとプロジェクトが保存されます。トーストが表示されてから、非表示になったところで保存が完了します。
@@ -78,8 +81,9 @@ Apps Script のプロジェクトを作成しましょう。まず [drive.google
 これでスクリプトを実行できるようになりました。次のセクションでスクリプトを実行していきます。
 
 ## スクリプトの実行
+Duration: 0:02:00
 
-下記のコードをコピーしてスクリプトエディタに貼り付けてください。その後 **Run** ボタンをクリックします。
+既存のコードを削除して、下記のコードを実装します。
 
 ```JavaScript
 function main() {
@@ -87,9 +91,11 @@ function main() {
 }
 ```
 
+`Logger.log()` 関数は Google Apps Script のログ出力関数です。
+
 ![Run script](img/ja/run-script.png)
 
-`Logger.log()` 関数は Google Apps Script のログ出力関数です。
+**実行** ボタンをクリックします。
 
 ![View the script logs](img/ja/view-logs.png)
 **表示** > **ログ** を選択すると出力されたログを確認できます。
@@ -97,9 +103,10 @@ function main() {
 ![log viewer](img/ja/log-viewer.png)
 `Hello Google Apps Script!` と出力されているのが確認できました。
 
-`console.log()` 関数を使うこともできますが、`console.log()` 関数を利用するためには別の設定が必要になるため、この Codelab では `Logger.log()` 関数を利用します。
+通常の JavaScript と同様に `console.log()` 関数を使うこともできますが、`console.log()` 関数を利用するためには Google Cloud Platform のプロジェクトを作成する手続きを要するため、この Codelab では簡単のために `Logger.log()` 関数を利用します。
 
 ## GmailApp クラス
+Duration: 0:03:00
 
 次に、 GmailApp クラスを見てみます。GmailApp クラスとメソッドについては[公式リファレンス](https://developers.google.com/apps-script/reference/) から確認できます。[GmailApp](https://developers.google.com/apps-script/reference/gmail/gmail-app) のドキュメントを見てみます。Gmail に関連するクラス (e.g. [GmailMessage](https://developers.google.com/apps-script/reference/gmail/gmail-message), [GmailThread](https://developers.google.com/apps-script/reference/gmail/gmail-thread) ) やメソッド (e.g. [search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max), [sendEmail](https://developers.google.com/apps-script/reference/gmail/gmail-app#sendemailrecipient,-subject,-body,-options)) が確認できます。
 
@@ -108,6 +115,7 @@ function main() {
 今回は [Gmail.search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max) を使ってメール一覧を取得します。
 
 ## GmailThead の取得
+Duration: 0:03:00
 
 ではスクリプトを実装していきます。[Gmail.search](https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max) メソッドを使って Gmail のスレッド一覧を取得します。
 
@@ -140,6 +148,7 @@ function main() {
 ログを見てみましょう。GmailThread の配列が出力されています。たった 5 行のコードでメールの一覧を取得して出力することができました！この認可のポップアップのフローのために、通常実装するのが大変な認証周りのコードを書く必要がなくなるため、非常に簡単にアプリケーション連携ができるのです。
 
 ## GmailMessage のパース
+Duration: 0:03:00
 
 直前のセクションで Gmail のスレッド一覧を取得できました。今回はメッセージの件名、本文、送信元、送信先、日時を取得します。そのため、GmailThread からそれに紐づくメッセージを取得します。
 
@@ -186,6 +195,7 @@ function main() {
 スクリプトを実行してログを見てみます。Gmail メッセージの値を取得できました。次のセッションからは、これらの値を Spreadsheet に保存していきます。
 
 ## SpreadsheetApp クラス
+Duration: 0:03:00
 
 次に、 SpreadsheetApp クラスについて理解します。[SpreadsheetApp reference](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app) にアクセスし、[getActiveSheet](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet) のセクションを確認します。このメソッドを使うことで作成したスプレッドシートにアクセスすることができます。
 
@@ -249,6 +259,7 @@ function test() {
 無事に `saveMessages` 関数を叩けて Spreadsheet に値が挿入されました。テストできたので test 関数を削除します。次のセクションでは `main` 関数から `saveMessages` 関数を叩いて Gmail のメッセージ一覧を保存します。
 
 ## メッセージを Spreadsheet に保存
+Duration: 0:03:00
 
 `saveMessages` 関数を叩けるように `main` 関数を更新します。 `messages` の値を 2 次元配列になるようにします。
 
@@ -336,6 +347,7 @@ function clearSheet() {
 **Clear sheet** サブメニューが追加されるので実行してみましょう。
 
 ## 自動化
+Duration: 0:04:00
 
 [トリガー](https://developers.google.com/apps-script/guides/triggers/installable) を使って自動化の設定をすることも可能です。 [Time-driven trigger](https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers) を設定して `main` 関数を 1 分おきに実行してみましょう。
 
@@ -367,6 +379,7 @@ function clearSheet() {
 Google Apps Script には様々な種類のトリガーが用意されています。トリガーを使うことでプロジェクトをより便利にすることができます。
 
 ## Congrats!
+Duration: 0:01:00
 
 おめでとうございます！この Codelab は以上で終了です。最終的なコードは以下で確認できます。また [tanabee/gas-codelab](https://github.com/tanabee/gas-codelab) の GitHub にも上がっています。
 
