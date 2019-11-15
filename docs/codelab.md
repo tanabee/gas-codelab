@@ -25,8 +25,8 @@ You can get complete source code at [tanabee/gas-codelab](https://github.com/tan
 
 ### Use case
 
-- Analysis of the user inquiries to specific mailing list or email addresses
-- Integrate with a system that doesn't provide REST API and provides email notifications
+- Analysis of the user inquiries about specific websites sent to specific mailing list or email addresses
+- Integrate Google Apps with a system that doesn't provide REST API and provides email notifications
 
 ## Preparation
 
@@ -347,19 +347,19 @@ Select **Edit** > **Current project's trigger**
 Select **Add Trigger**
 
 ![Trigger settings](img/en/trigger-settings.png)
-Then it will be displayed the popup of trigger settings. Select as screenshot and Click **Save**.
+Then it will be displayed the popup of trigger settings. Select as screenshot above and Click **Save**.
 
 ![Trigger is created](img/en/trigger-is-created.png)
-Then the trigger is created. Click the dot icon.
+Then the trigger is created. Click the three dots icon.
 
 ![Select executions menu](img/en/select-executions.png)
 Select **Executions**.
 
 ![Executions](img/en/executions.png)
-You can see that `main` function is executed once a minute. If you caught new message, you can keep up-to-date.
+You can see that `main` function is executed once a minute. If you receive new Gmail messages, the spreadsheet can be refreshed as the latest status.
 
 ![Delete trigger](img/en/delete-trigger.png)
-You can delete trigger to select the dot icon and **Delete trigger**.
+You can delete trigger to select the three dots icon and **Delete trigger**.
 
 ![Triggers](img/en/triggers.png)
 Google Apps Script has many types of triggers. You can improve the projects more convenient to use triggers.
