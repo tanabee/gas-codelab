@@ -118,8 +118,8 @@
     
       <google-codelab-step label="Parse Gmail messages" duration="3">
         <p>In the previous section, we could retrieve Gmail threads. We&#39;d like to retrieve the message subject, body, from, to, and date in this time. So, we need to get messages from <code>GmailThread</code>.</p>
-<p><img alt="GmailThread.getMessages reference" src="img/a0af6ab48051acaa.png"><br>Visit Apps Script reference. GmailThread class has <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages" target="_blank">getMessages()</a> method and it returns Array of GmailMessage. Click <strong>GmailMessagge</strong> link and see the methods.</p>
-<p><img alt="GmailMessage reference" src="img/a636968464c90ec8.png"><br>it has getSubject, getBody, getFrom, getTo, getDate and many retrieving methods. We can get values we want using <code>GmailThread.getMessages()</code>.</p>
+<p><img alt="GmailThread.getMessages reference" src="img/60ba3649e88a74a1.png"><br>Visit Apps Script reference. GmailThread class has <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages" target="_blank">getMessages()</a> method and it returns Array of GmailMessage. Click <strong>GmailMessagge</strong> link and see the methods.</p>
+<p><img alt="GmailMessage reference" src="img/a636968464c90ec8.png"><br>it has getSubject, getBody, getFrom, getTo, getDate and many retrieving methods. We can get message values from result of <code>GmailThread.getMessages()</code>.</p>
 <p>In this time, we use the first message of the threads. Retrieve message and show logs.</p>
 <pre><code>function main() {
   var searchText = &#39;&#39;;
@@ -158,7 +158,9 @@
   Logger.log(SpreadsheetApp.getActiveSheet().getName());
 }
 </code></pre>
+<p><img alt="Change function" src="img/8b539e8359758b43.png"><br>Change the function to be executed to select above.</p>
 <p><img alt="Logging Spreadsheet tab name" src="img/e795ba69053654fc.png"><img alt="Spreadsheet tab name" src="img/cefdc34f0f07c135.png"><br>You can see the Spreadsheet tab name in the log viewer. You need to access <a href="https://developers.google.com/apps-script/reference/spreadsheet/range" target="_blank">Range</a> class to insert data into the sheet. Use <a href="https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues" target="_blank">Range.setValues()</a> to insert messages.</p>
+<p>Implement as below and run <code>saveMessages</code> function.</p>
 <pre><code>function saveMessages() {
   var data = [
     [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
@@ -170,7 +172,7 @@
     .setValues(data);
 }
 </code></pre>
-<p><img alt="Range.setValues" src="img/d845168e2d88f825.png"><br>Run <code>saveMessages</code> and see the Spreadsheet. Then, You can see the values inserted into the sheet. Note that the argument must be a two-dimensional array.</p>
+<p><img alt="Range.setValues" src="img/d845168e2d88f825.png"><br>See the Spreadsheet. Then, You can see the values inserted into the sheet. Note that the argument must be a two-dimensional array.</p>
 <p>Then, update this function to set data as argument of this method. We&#39;d like to insert 5 types of values, so we set the last column to &#34;E&#34;.</p>
 <pre><code>function saveMessages(data) {
   SpreadsheetApp
@@ -179,7 +181,7 @@
     .setValues(data);
 }
 </code></pre>
-<p>Add test function and Run it.</p>
+<p>Add <code>test</code> function and Run it.</p>
 <pre><code>function test() {
   var data = [
     [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;],
@@ -196,7 +198,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Save emails to Spreadsheet" duration="3">
-        <p>Update <code>main</code> function to call <code>saveMessages</code> function. Make <code>messages</code> variable as two-dimensional array.</p>
+        <p>Update <code>main</code> function to call <code>saveMessages</code> function. Make <code>messages</code> variable and insert GmailMessage into <code>messages</code> as two-dimensional array. After <code>threads.forEach</code> we call <code>saveMessages</code> function.</p>
 <pre><code>function main() {
   var searchText = &#39;&#39;;
   var threads = GmailApp.search(searchText, 0, 5);
@@ -264,7 +266,7 @@ function clearSheet() {
     .clear();
 }
 </code></pre>
-<p>You can see <strong>Clear sheet</strong> sub menu and run it.</p>
+<p><img alt="clear menu" src="img/4e77d8d7e47c1b5d.png"><br>You can see <strong>Clear sheet</strong> sub menu and run it.</p>
 
 
       </google-codelab-step>

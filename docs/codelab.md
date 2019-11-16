@@ -153,7 +153,7 @@ In the previous section, we could retrieve Gmail threads. We'd like to retrieve 
 Visit Apps Script reference. GmailThread class has [getMessages()](https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages) method and it returns Array of GmailMessage. Click **GmailMessagge** link and see the methods.
 
 ![GmailMessage reference](img/en/reference-gmailmessage.png)
-it has getSubject, getBody, getFrom, getTo, getDate and many retrieving methods. We can get values we want using `GmailThread.getMessages()`.
+it has getSubject, getBody, getFrom, getTo, getDate and many retrieving methods. We can get message values from result of `GmailThread.getMessages()`.
 
 In this time, we use the first message of the threads. Retrieve message and show logs.
 
@@ -207,9 +207,14 @@ function saveMessages() {
 }
 ```
 
+![Change function](img/en/change-function.png)
+Change the function to be executed to select above.
+
 ![Logging Spreadsheet tab name](img/en/log-getactivesheet.png)
 ![Spreadsheet tab name](img/en/spreadsheet-tabname.png)
 You can see the Spreadsheet tab name in the log viewer. You need to access [Range](https://developers.google.com/apps-script/reference/spreadsheet/range) class to insert data into the sheet. Use [Range.setValues()](https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues) to insert messages.
+
+Implement as below and run `saveMessages` function.
 
 ```JavaScript
 function saveMessages() {
@@ -225,7 +230,7 @@ function saveMessages() {
 ```
 
 ![Range.setValues](img/en/range-setvalues.png)
-Run `saveMessages` and see the Spreadsheet. Then, You can see the values inserted into the sheet. Note that the argument must be a two-dimensional array.
+See the Spreadsheet. Then, You can see the values inserted into the sheet. Note that the argument must be a two-dimensional array.
 
 Then, update this function to set data as argument of this method. We'd like to insert 5 types of values, so we set the last column to "E".
 
@@ -238,7 +243,7 @@ function saveMessages(data) {
 }
 ```
 
-Add test function and Run it.
+Add `test` function and Run it.
 
 ```JavaScript
 function test() {
@@ -258,7 +263,7 @@ Done! Now, you can delete test method. We will call `saveMessages` function from
 ## Save emails to Spreadsheet
 Duration: 0:03:00
 
-Update `main` function to call `saveMessages` function. Make `messages` variable as two-dimensional array.
+Update `main` function to call `saveMessages` function. Make `messages` variable and insert GmailMessage into `messages` as two-dimensional array. After `threads.forEach` we call `saveMessages` function.
 
 ```JavaScript
 function main() {
@@ -342,6 +347,7 @@ function clearSheet() {
 }
 ```
 
+![clear menu](img/en/clear-menu.png)
 You can see **Clear sheet** sub menu and run it.
 
 ## Automation

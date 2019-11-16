@@ -28,7 +28,7 @@ Duration: 0:01:00
 
 この Codelab は以下のようなケースを想定しています。
 
-- 特定のメーリス、もしくはメールアドレスへのユーザーからの問い合わせの集計、分析
+- 特定のメーリングリスト、もしくはメールアドレスへのユーザーからの問い合わせの集計、分析
 - REST API は提供していないがメール通知機能を提供しているアプリケーションと Google Apps のシステム連携
 
 ## 準備
@@ -64,7 +64,7 @@ Apps Script のプロジェクトを作成します。まず [drive.google.com](
 **新規** をクリック
 
 ![Create a new Spreadsheet file](img/ja/create-spreadsheet-file.png)
-**Google スプレッドシート** を選択。スプレッドシートファイルが作成されることを確認。
+**Google スプレッドシート** を選択。スプレッドシートファイルが作成されることを確認します。
 
 ![Rename Spreadsheet file](img/ja/rename-spreadsheet-file.png)
 ファイル名を選択し、名前（gmail-to-spreadsheet など）を入力します。
@@ -127,7 +127,7 @@ function main() {
 }
 ```
 
-特定のメーリスなど、検索条件を設定したい場合には searchText に値を代入してください。公式サポートページに[検索演算子](https://support.google.com/mail/answer/7190?hl=ja)についてまとめられています。
+送信元や件名、日時など、検索条件を設定したい場合には searchText に値をセットしてください。公式サポートページで[検索演算子](https://support.google.com/mail/answer/7190?hl=ja)についてまとめられています。
 
 **実行** ボタンをクリックして実行します。
 
@@ -145,7 +145,7 @@ function main() {
 このアプリケーションに与える必要のあるスコープが表示されます。 **許可** ボタンをクリック後、スクリプトエディタに戻ってスクリプトが実行されます。
 
 ![Allow authentication](img/ja/gmail-threads.png)
-ログを見てみましょう。GmailThread の配列が出力されています。たった 5 行のコードでメールの一覧を取得して出力することができました！この認可のポップアップのフローのために、通常実装するのが大変な認証周りのコードを書く必要がなくなるため、非常に簡単にアプリケーション連携ができるのです。
+ログを見てみましょう。GmailThread の配列が出力されています。たった 5 行のコードでメールの一覧を取得して出力することができました！この認可のフローのために、通常実装するのが大変な認証周りのコードを書く必要がなくなるため、非常に簡単にアプリケーション連携ができるのです。
 
 ## GmailMessage のパース
 Duration: 0:03:00
@@ -156,9 +156,9 @@ Duration: 0:03:00
 Apps Script のリファレンスを見てみましょう。 GmailThread クラスには [getMessages()](https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages) メソッドが用意されており GmailMessage の配列を返します。 **GmailMessage** のリンクをクリックしてそのメソッドを確認しましょう。
 
 ![GmailMessage reference](img/en/reference-gmailmessage.png)
-GmailMessage クラスには getSubject, getBody, getFrom, getTo, getDate など多数の取得系メソッドが用意されています。 `GmailThread.getMessages()` を用いて求める値が取得できそうです。
+GmailMessage クラスには `getSubject`, `getBody`, `getFrom`, `getTo`, `getDate` など多数の取得系メソッドが用意されています。 `GmailThread.getMessages()` の結果を用いて求める値が取得できそうです。
 
-今回はスレッド内の最初のメッセージを使います。メッセージを取得してログを見てみましょう。
+今回はスレッド内の最初のメッセージを使います。以下のコードを実装してメッセージを取得してログを見てみましょう。
 
 ```JavaScript
 function main() {
@@ -200,9 +200,9 @@ Duration: 0:03:00
 次に、 SpreadsheetApp クラスについて理解します。[SpreadsheetApp reference](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app) にアクセスし、[getActiveSheet](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet) のセクションを確認します。このメソッドを使うことで作成したスプレッドシートにアクセスすることができます。
 
 ![Spreadsheet classes](img/ja/spreadsheet-classes.png)
-SpreadsheetApp のクラス群は Spreadsheet > Sheet > Range という順に階層構造になっています。Spreadsheet に値を挿入する場合には Range クラスまで掘り下げてアクセスする必要があります。
+SpreadsheetApp のクラス群は Spreadsheet > Sheet > Range という順に階層構造になっています。`SpreadsheetApp.getActiveSheet()` の返り値は Sheet クラスなので、スプレッドシートに値を挿入する場合には Range クラスまで掘り下げてアクセスする必要があります。
 
-下記のメソッドを実行します。Gmail の時と同様に認証の許可が必要です。
+下記の関数を実行します。Gmail の時と同様に認証の許可が必要です。
 
 ```JavaScript
 function saveMessages() {
@@ -210,9 +210,14 @@ function saveMessages() {
 }
 ```
 
+![Change function](img/ja/change-function.png)
+実行する関数を変更する際には上の画像のように選択します。
+
 ![Logging Spreadsheet tab name](img/ja/log-getactivesheet.png)
 ![Spreadsheet tab name](img/ja/spreadsheet-tabname.png)
-ログビュアーでスプレッドシートのタブ名が表示されます。 Spreadsheet にデータを保存するためには [Range](https://developers.google.com/apps-script/reference/spreadsheet/range) クラスにアクセスし[Range.setValues()](https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues) を叩く必要があります。
+ログビュアーでスプレッドシートのタブ名が表示されます。 Spreadsheet にデータを保存するためには [Range](https://developers.google.com/apps-script/reference/spreadsheet/range) クラスにアクセスし[Range.setValues()](https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues) をたたく必要があります。
+
+以下を実装して `saveMessages` 関数を実行します。
 
 ```JavaScript
 function saveMessages() {
@@ -228,9 +233,9 @@ function saveMessages() {
 ```
 
 ![Range.setValues](img/ja/range-setvalues.png)
-`saveMessages` を実行し Spreadsheet を見てみると値が挿入されていることが確認できます。ここで引数に指定したデータが 2 次元配列であることに注意してください。
+スプレッドシートを見てみると値が挿入されていることが確認できます。ここで引数に指定したデータが 2 次元配列であることに注意してください。
 
-ここで、データを引数で渡せるように関数を編集します。今回は 5 つのタイプの値を保存するため、列 "E" は固定とします。
+さらに、データを引数で渡せるように関数を編集します。今回は 5 つのタイプの値を保存するため、列 "E" は固定とします。
 
 ```JavaScript
 function saveMessages(data) {
@@ -256,12 +261,12 @@ function test() {
 ```
 
 ![set data as argument](img/ja/data-argument.png)
-無事に `saveMessages` 関数を叩けて Spreadsheet に値が挿入されました。テストできたので test 関数を削除します。次のセクションでは `main` 関数から `saveMessages` 関数を叩いて Gmail のメッセージ一覧を保存します。
+`saveMessages` 関数を叩けて Spreadsheet に値が挿入されました。テストできたので test 関数を削除します。次のセクションでは `main` 関数から `saveMessages` 関数を叩いて Gmail のメッセージ一覧を保存します。
 
 ## メッセージを Spreadsheet に保存
 Duration: 0:03:00
 
-`saveMessages` 関数を叩けるように `main` 関数を更新します。 `messages` の値を 2 次元配列になるようにします。
+`saveMessages` 関数を叩けるように `main` 関数を更新します。新たに `messages` 変数を定義し 2 次元配列になるようにメッセージデータを格納します。すべてのスレッドのメッセージを抽出したら `saveMessages` 関数をコールして、スプレッドシートに保存します。
 
 ```JavaScript
 function main() {
@@ -293,7 +298,7 @@ function saveMessages(data) {
 }
 ```
 
-`main` 関数を実行し、Spreadsheet を確認します。
+`main` 関数を実行し、スプレッドシートを確認します。
 
 ![save gmail messages to Spreadsheet](img/ja/save-gmail-messages.png)
 
@@ -310,7 +315,7 @@ Spreadsheet で Gmail メッセージのデータを確認できました。そ�
 ## Spreadsheet のカスタムメニュー
 Duration: 0:03:00
 
-これまで作ったアプリケーションで十分要件を満たしますが、これをもっと使いやすくすることができます。 Spreadsheet にカスタムメニューを追加し、それを選択することで Gmail からメッセージ一覧を取得できるようにします。下記の `onOpen` 関数を追加し実行します。 `onOpen` という関数名は予約されており、Spreadsheet が開かれるタイミングで呼ばれます。詳しくは [公式ドキュメント](https://developers.google.com/apps-script/guides/triggers#onopene) で確認できます。
+これまで作ったアプリケーションで十分要件を満たしますが、これをより使いやすく改善することができます。 スプレッドシートにカスタムメニューを追加し、それを選択することで Gmail からメッセージ一覧を取得できるようにします。下記の `onOpen` 関数を追加し実行します。 `onOpen` という関数名は予約されており、スプレッドシートが開かれるタイミングで呼ばれます。詳しくは [公式ドキュメント](https://developers.google.com/apps-script/guides/triggers#onopene) で確認できます。
 
 ```JavaScript
 function onOpen() {
@@ -322,11 +327,13 @@ function onOpen() {
 }
 ```
 
+[SpreadsheetApp.getActiveSpreadsheet()](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivespreadsheet) と [Spreadsheet.addMenu](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#addmenuname,-submenus) を用いて実装します。
+
 ![Spreadsheet custom menu](img/ja/spreadsheet-custom-menu.png)
 
-Spreadsheet を見てみましょう。カスタムメニューが表示されます。 **Gmail** > **Fetch** を選択します。
+スプレッドシートを見てみましょう。カスタムメニューが表示されます。 **Gmail** > **Fetch** を選択します。
 
-Spreadsheet の値をリセットできるとなおよいでしょう。 `clearSheet` 関数を追加してメニューに追加します。
+スプレッドシートの値をリセットできるようにします。 `clearSheet` 関数を追加してメニューに追加します。
 
 ```JavaScript
 function onOpen() {
@@ -345,6 +352,7 @@ function clearSheet() {
 }
 ```
 
+![clear menu](img/ja/clear-menu.png)
 **Clear sheet** サブメニューが追加されるので実行してみましょう。
 
 ## 自動化
