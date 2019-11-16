@@ -326,6 +326,8 @@ function onOpen() {
 }
 ```
 
+Implement using [SpreadsheetApp.getActiveSpreadsheet()](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivespreadsheet) and [Spreadsheet.addMenu](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#addmenuname,-submenus).
+
 ![Spreadsheet custom menu](img/en/spreadsheet-custom-menu.png)
 
 See the Spreadsheet. The custom menu will be displayed. Click **Gmail** > **Fetch**.
