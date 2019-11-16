@@ -38,7 +38,7 @@ Duration: 0:01:00
 Gmail もしくは G Suite のアカウントが必要です。もしまだアカウントがない場合には [Gmail アカウントを作成](https://accounts.google.com/signup)してください。
 
 Negative
-: Gmail アカウントを作成した場合には、以下の手順に沿ってください。
+: Gmail アカウントを作成した場合には、受信済みのメールを用意するために以下の手順に沿ってください。
 
 ### 1. mail-to-me アプリケーションを開く
 
@@ -50,10 +50,11 @@ Negative
 
 ### 3. mail-to-me の実行
 
-**実行** ボタンをクリック。
+**実行** ボタンをクリック。Gmail を送信する権限をスクリプトに与えるため、ポップアップに従って許可を与えます。
 
 ### 4. Gmail を確認
 
+![mail-to-me application](img/ja/mail-to-me.png)
 [Gmail](https://mail.google.com) をブラウザで開き、メールが受信されていることを確認する。以上で準備は完了です。
 
 ## プロジェクトの作成

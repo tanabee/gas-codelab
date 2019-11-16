@@ -36,7 +36,7 @@ Duration: 0:01:00
 You need own Gmail or G Suite account. Please [create Gmail account](https://accounts.google.com/signup) if you don't have.
 
 Negative
-: If you use Gmail for the first time, you need to follow below
+: If you use Gmail for the first time, you need to follow below.
 
 ### 1. Open mail-to-me application
 
@@ -49,10 +49,11 @@ Select **File** > **Make a Copy**.
 
 ### 3. Run mail-to-me
 
-Select **Run** button.
+Select **Run** button. You need to allow this project to access Gmail resources.
 
 ### 4. Confirm your Gmail
 
+![mail-to-me application](img/en/mail-to-me.png)
 Open [Gmail](https://mail.google.com) in your browser and confirm to receive emails. It's completed preparation.
 
 ## Create project
