@@ -252,7 +252,7 @@ function saveMessages(data) {
 </code></pre>
 <p><a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivespreadsheet" target="_blank">SpreadsheetApp.getActiveSpreadsheet()</a> と <a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#addmenuname,-submenus" target="_blank">Spreadsheet.addMenu</a> を用いて実装します。</p>
 <p class="image-container"><img alt="Spreadsheet custom menu" src="img/8e76d050d649064e.png"></p>
-<p>スプレッドシートを見てみましょう。カスタムメニューが表示されます。 <strong>Gmail</strong> &gt; <strong>Fetch</strong> を選択します。</p>
+<p>スプレッドシートを見てみましょう。カスタムメニューが表示されます。 <strong>Gmail</strong> &gt; <strong>Fetch</strong> を選択するとメッセージが反映されます。これでスプレッドシートの UI から Apps Script の関数を実行することができるようになりました。</p>
 <p>スプレッドシートの値をリセットできるようにします。 <code>clearSheet</code> 関数を追加してメニューに追加します。</p>
 <pre><code>function onOpen() {
   SpreadsheetApp

@@ -330,7 +330,7 @@ Implement using [SpreadsheetApp.getActiveSpreadsheet()](https://developers.googl
 
 ![Spreadsheet custom menu](img/en/spreadsheet-custom-menu.png)
 
-See the Spreadsheet. The custom menu will be displayed. Click **Gmail** > **Fetch**.
+See the Spreadsheet. The custom menu will be displayed. Click **Gmail** > **Fetch** and update messages. Now, you can call Apps Script function from Spreadsheet UI.
 
 It's better that it can be operated to reset the sheet values. Add `clearSheet` function and add menu.
 

@@ -333,7 +333,7 @@ function onOpen() {
 
 ![Spreadsheet custom menu](img/ja/spreadsheet-custom-menu.png)
 
-スプレッドシートを見てみましょう。カスタムメニューが表示されます。 **Gmail** > **Fetch** を選択します。
+スプレッドシートを見てみましょう。カスタムメニューが表示されます。 **Gmail** > **Fetch** を選択するとメッセージが反映されます。これでスプレッドシートの UI から Apps Script の関数を実行することができるようになりました。
 
 スプレッドシートの値をリセットできるようにします。 `clearSheet` 関数を追加してメニューに追加します。
 
