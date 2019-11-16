@@ -161,7 +161,7 @@
 }
 </code></pre>
 <p><img alt="Change function" src="img/4816656765ed8a66.png"><br>実行する関数を変更する際には上の画像のように選択します。</p>
-<p><img alt="Logging Spreadsheet tab name" src="img/d46c422d40810c92.png"><img alt="Spreadsheet tab name" src="img/e68cc280e2834ed5.png"><br>ログビュアーでスプレッドシートのタブ名が表示されます。 Spreadsheet にデータを保存するためには <a href="https://developers.google.com/apps-script/reference/spreadsheet/range" target="_blank">Range</a> クラスにアクセスし<a href="https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues" target="_blank">Range.setValues()</a> をたたく必要があります。</p>
+<p><img alt="Logging Spreadsheet tab name" src="img/d46c422d40810c92.png"><img alt="Spreadsheet tab name" src="img/e68cc280e2834ed5.png"><br>ログビュアーでスプレッドシートのタブ名が表示されます。スプレッドシートにデータを保存するためには <a href="https://developers.google.com/apps-script/reference/spreadsheet/range" target="_blank">Range</a> クラスにアクセスし<a href="https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues" target="_blank">Range.setValues()</a> をたたく必要があります。</p>
 <p>以下を実装して <code>saveMessages</code> 関数を実行します。</p>
 <pre><code>function saveMessages() {
   var data = [
@@ -194,7 +194,7 @@
   saveMessages(data);
 }
 </code></pre>
-<p><img alt="set data as argument" src="img/28fcb20798be6434.png"><code>saveMessages</code> 関数を叩けて Spreadsheet に値が挿入されました。テストできたので test 関数を削除します。次のセクションでは <code>main</code> 関数から <code>saveMessages</code> 関数を叩いて Gmail のメッセージ一覧を保存します。</p>
+<p><img alt="set data as argument" src="img/28fcb20798be6434.png"><code>saveMessages</code> 関数を叩けてスプレッドシートに値が挿入されました。テストできたので test 関数を削除します。次のセクションでは <code>main</code> 関数から <code>saveMessages</code> 関数を叩いて Gmail のメッセージ一覧を保存します。</p>
 
 
       </google-codelab-step>
@@ -231,7 +231,7 @@ function saveMessages(data) {
 </code></pre>
 <p><code>main</code> 関数を実行し、スプレッドシートを確認します。</p>
 <p class="image-container"><img alt="save gmail messages to Spreadsheet" src="img/47c714be2b73c718.png"></p>
-<p>Spreadsheet で Gmail メッセージのデータを確認できました。それぞれの列が何を示すのか理解しやすくするために、最初の列に列名を指定します。コードの 4 行目で messages を定義している行を以下に書き換えて実行します。</p>
+<p>スプレッドシートで Gmail メッセージのデータを確認できました。それぞれの列が何を示すのか理解しやすくするために、最初の列に列名を指定します。コードの 4 行目で messages を定義している行を以下に書き換えて実行します。</p>
 <pre><code>  var messages = [[&#39;Subject&#39;, &#39;From&#39;, &#39;To&#39;, &#39;Body&#39;, &#39;Date&#39;]];
 </code></pre>
 <p class="image-container"><img alt="add column names" src="img/a83922846a813526.png"></p>
@@ -340,7 +340,7 @@ function clearSheet() {
 <p>このプロジェクトをより便利にするアイデアを載せておきます。</p>
 <ul>
 <li>500 件以上の Gmail メッセージの取得 (for 文を使って)</li>
-<li>Spreadsheet への保存を上書きでなく追加する形式にする (重複の考慮)</li>
+<li>スプレッドシートへの保存を上書きでなく追加する形式にする (重複の考慮)</li>
 <li>フォームの送信結果など固定フォーマットの本文をパースして保存する</li>
 <li><a href="https://datastudio.google.com" target="_blank">Data Studio</a> を使った見える化</li>
 </ul>

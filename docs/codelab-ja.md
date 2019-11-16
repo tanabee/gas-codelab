@@ -217,7 +217,7 @@ function saveMessages() {
 
 ![Logging Spreadsheet tab name](img/ja/log-getactivesheet.png)
 ![Spreadsheet tab name](img/ja/spreadsheet-tabname.png)
-ログビュアーでスプレッドシートのタブ名が表示されます。 Spreadsheet にデータを保存するためには [Range](https://developers.google.com/apps-script/reference/spreadsheet/range) クラスにアクセスし[Range.setValues()](https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues) をたたく必要があります。
+ログビュアーでスプレッドシートのタブ名が表示されます。スプレッドシートにデータを保存するためには [Range](https://developers.google.com/apps-script/reference/spreadsheet/range) クラスにアクセスし[Range.setValues()](https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues) をたたく必要があります。
 
 以下を実装して `saveMessages` 関数を実行します。
 
@@ -263,7 +263,7 @@ function test() {
 ```
 
 ![set data as argument](img/ja/data-argument.png)
-`saveMessages` 関数を叩けて Spreadsheet に値が挿入されました。テストできたので test 関数を削除します。次のセクションでは `main` 関数から `saveMessages` 関数を叩いて Gmail のメッセージ一覧を保存します。
+`saveMessages` 関数を叩けてスプレッドシートに値が挿入されました。テストできたので test 関数を削除します。次のセクションでは `main` 関数から `saveMessages` 関数を叩いて Gmail のメッセージ一覧を保存します。
 
 ## メッセージを Spreadsheet に保存
 Duration: 0:03:00
@@ -304,7 +304,7 @@ function saveMessages(data) {
 
 ![save gmail messages to Spreadsheet](img/ja/save-gmail-messages.png)
 
-Spreadsheet で Gmail メッセージのデータを確認できました。それぞれの列が何を示すのか理解しやすくするために、最初の列に列名を指定します。コードの 4 行目で messages を定義している行を以下に書き換えて実行します。
+スプレッドシートで Gmail メッセージのデータを確認できました。それぞれの列が何を示すのか理解しやすくするために、最初の列に列名を指定します。コードの 4 行目で messages を定義している行を以下に書き換えて実行します。
 
 ```JavaScript
   var messages = [['Subject', 'From', 'To', 'Body', 'Date']];
@@ -445,6 +445,6 @@ function clearSheet() {
 このプロジェクトをより便利にするアイデアを載せておきます。
 
 - 500 件以上の Gmail メッセージの取得 (for 文を使って)
-- Spreadsheet への保存を上書きでなく追加する形式にする (重複の考慮)
+- スプレッドシートへの保存を上書きでなく追加する形式にする (重複の考慮)
 - フォームの送信結果など固定フォーマットの本文をパースして保存する
 - [Data Studio](https://datastudio.google.com) を使った見える化
