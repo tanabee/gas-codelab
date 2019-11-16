@@ -269,13 +269,13 @@ function clearSheet() {
     .clear();
 }
 </code></pre>
-<p><img alt="clear menu" src="img/4f926a586d5738f0.png"><strong>Clear sheet</strong> サブメニューが追加されるので実行してみましょう。</p>
+<p><img alt="clear menu" src="img/1a680e5b081988fa.png"><strong>Clear sheet</strong> サブメニューが追加されるので実行してみましょう。スプレッドシートに挿入されたデータがなくなれば OK です。</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="自動化" duration="5">
-        <p><a href="https://developers.google.com/apps-script/guides/triggers/installable" target="_blank">トリガー</a> を使って自動化の設定をすることも可能です。 <a href="https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers" target="_blank">Time-driven trigger</a> を設定して <code>main</code> 関数を 1 分おきに実行してみましょう。</p>
+        <p>定期的に実行したい場合など、<a href="https://developers.google.com/apps-script/guides/triggers/installable" target="_blank">トリガー</a>を使って自動化の設定をすることも可能です。 <a href="https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers" target="_blank">Time-driven trigger</a> を設定して <code>main</code> 関数を 1 分おきに実行してみましょう。</p>
 <p>以下に沿って進めます。</p>
 <p><img alt="Current project’s triggers" src="img/1486261eec2c4635.png"><strong>編集</strong> &gt; <strong>現在のプロジェクトのトリガー</strong> を選択します</p>
 <p><img alt="Add triggers" src="img/1d6d9dd902d2befa.png"><strong>トリガーを追加</strong> を選択します</p>
@@ -284,8 +284,8 @@ function clearSheet() {
 <p><img alt="Select executions menu" src="img/7167982c4b31f200.png"><strong>実行数</strong> を選択します。</p>
 <p class="image-container"><img alt="Executions" src="img/69b15d16e13a28ee.png"></p>
 <p><code>main</code> 関数が 1 分おきに実行されているのが確認できます。新しいメッセージを受信した際でも最新の状態を保つことができます。</p>
-<p><img alt="Delete trigger" src="img/ea392116df20cfdd.png"><br>ドットアイコン &gt; <strong>トリガーの削除</strong> を選択することでトリガーを削除できます。</p>
-<p><img alt="Triggers" src="img/b49b0a3ad3e4f14b.png"><br>Google Apps Script には様々な種類のトリガーが用意されています。トリガーを使うことでプロジェクトをより便利にすることができます。</p>
+<p><img alt="Delete trigger" src="img/ea392116df20cfdd.png"><strong>ドットアイコン</strong> &gt; <strong>トリガーの削除</strong> を選択することでトリガーを削除できます。</p>
+<p><img alt="Triggers" src="img/b49b0a3ad3e4f14b.png"><br>Google Apps Script には<a href="https://developers.google.com/apps-script/guides/triggers" target="_blank">様々な種類のトリガー</a>が用意されています。トリガーを使うことでプロジェクトをより便利にすることができます。</p>
 
 
       </google-codelab-step>
@@ -340,8 +340,8 @@ function clearSheet() {
 <p>このプロジェクトをより便利にするアイデアを載せておきます。</p>
 <ul>
 <li>500 件以上の Gmail メッセージの取得 (for 文を使って)</li>
-<li>Spreadsheet への保存を上書きでなく追加する形式にする</li>
-<li>フォームの送信結果など固定フォーマットの本文を解析して保存する</li>
+<li>Spreadsheet への保存を上書きでなく追加する形式にする (重複の考慮)</li>
+<li>フォームの送信結果など固定フォーマットの本文をパースして保存する</li>
 <li><a href="https://datastudio.google.com" target="_blank">Data Studio</a> を使った見える化</li>
 </ul>
 

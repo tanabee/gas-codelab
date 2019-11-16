@@ -348,7 +348,7 @@ function clearSheet() {
 ```
 
 ![clear menu](img/en/clear-menu.png)
-You can see **Clear sheet** sub menu and run it.
+You can see **Clear sheet** sub menu and run it. The Spreadsheet data will be cleared.
 
 ## Automation
 Duration: 0:05:00
@@ -379,7 +379,7 @@ You can see that `main` function is executed once a minute. If you receive new G
 You can delete trigger to select the three dots icon and **Delete trigger**.
 
 ![Triggers](img/en/triggers.png)
-Google Apps Script has many types of triggers. You can improve the projects more convenient to use triggers.
+Google Apps Script has [many types of triggers](https://developers.google.com/apps-script/guides/triggers). You can improve the projects more convenient to use triggers.
 
 ## Congrats!
 Duration: 0:01:00
@@ -437,6 +437,6 @@ function clearSheet() {
 You can improve this project. I'll show you some examples.
 
 - Retrieve Over 500 Gmail threads (Using for statement)
-- Not overwrite but add the messages to Spreadsheet
+- Not overwrite but add the messages to Spreadsheet (Need to consider duplicate data)
 - Parse specific formatted message body and save the elements
 - Visualize the data using [Data Studio](https://datastudio.google.com)

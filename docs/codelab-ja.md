@@ -353,12 +353,12 @@ function clearSheet() {
 ```
 
 ![clear menu](img/ja/clear-menu.png)
-**Clear sheet** サブメニューが追加されるので実行してみましょう。
+**Clear sheet** サブメニューが追加されるので実行してみましょう。スプレッドシートに挿入されたデータがなくなれば OK です。
 
 ## 自動化
 Duration: 0:05:00
 
-[トリガー](https://developers.google.com/apps-script/guides/triggers/installable) を使って自動化の設定をすることも可能です。 [Time-driven trigger](https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers) を設定して `main` 関数を 1 分おきに実行してみましょう。
+定期的に実行したい場合など、[トリガー](https://developers.google.com/apps-script/guides/triggers/installable)を使って自動化の設定をすることも可能です。 [Time-driven trigger](https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers) を設定して `main` 関数を 1 分おきに実行してみましょう。
 
 以下に沿って進めます。
 
@@ -382,10 +382,10 @@ Duration: 0:05:00
 `main` 関数が 1 分おきに実行されているのが確認できます。新しいメッセージを受信した際でも最新の状態を保つことができます。
 
 ![Delete trigger](img/ja/delete-trigger.png)
-ドットアイコン > **トリガーの削除** を選択することでトリガーを削除できます。
+**ドットアイコン** > **トリガーの削除** を選択することでトリガーを削除できます。
 
 ![Triggers](img/en/triggers.png)
-Google Apps Script には様々な種類のトリガーが用意されています。トリガーを使うことでプロジェクトをより便利にすることができます。
+Google Apps Script には[様々な種類のトリガー](https://developers.google.com/apps-script/guides/triggers)が用意されています。トリガーを使うことでプロジェクトをより便利にすることができます。
 
 ## Congrats!
 Duration: 0:01:00
@@ -443,6 +443,6 @@ function clearSheet() {
 このプロジェクトをより便利にするアイデアを載せておきます。
 
 - 500 件以上の Gmail メッセージの取得 (for 文を使って)
-- Spreadsheet への保存を上書きでなく追加する形式にする
-- フォームの送信結果など固定フォーマットの本文を解析して保存する
+- Spreadsheet への保存を上書きでなく追加する形式にする (重複の考慮)
+- フォームの送信結果など固定フォーマットの本文をパースして保存する
 - [Data Studio](https://datastudio.google.com) を使った見える化
