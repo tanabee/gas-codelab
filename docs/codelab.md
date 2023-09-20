@@ -4,7 +4,7 @@ id: en
 categories: apps-script,gsuite,javascript
 environments: Web
 status: Published
-url: https://tanabee.github.io/gas-codelab/en/
+url: https://tanabee.dev/gas-codelab/en/
 analytics account: UA-141719032-2
 feedback link: https://github.com/tanabee/gas-codelab/issues
 

@@ -9,7 +9,7 @@
   <title>Apps Script ハンズオン</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
   <style>
     .success {
       color: #1e8e3e;
@@ -20,15 +20,16 @@
   </style>
 </head>
 <body>
-  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
   <google-codelab codelab-gaid="UA-141719032-2"
+                  codelab-ga4id=""
                   id="ja"
                   title="Apps Script ハンズオン"
                   environment="web"
                   feedback-link="https://github.com/tanabee/gas-codelab/issues">
     
       <google-codelab-step label="概要" duration="1">
-        <p>この Codelab では、 Google Apps Script を用いて Gmail のメッセージ一覧を Google Spreadsheet に抽出するアプリケーションを作成します。<br><img alt="Output" src="img/6ec36db583a97561.png"></p>
+        <p>この Codelab では、 Google Apps Script を用いて Gmail のメッセージ一覧を Google Spreadsheet に抽出するアプリケーションを作成します。 <img alt="Output" src="img/6ec36db583a97561.png"></p>
 <h2 is-upgraded>ソースコード</h2>
 <p>この Codelab の最終的なソースコードは GitHub の <a href="https://github.com/tanabee/gas-codelab" target="_blank">tanabee/gas-codelab</a> から取得できます。</p>
 <h2 is-upgraded>対象者</h2>
@@ -48,8 +49,7 @@
     
       <google-codelab-step label="準備" duration="1">
         <p>Gmail もしくは G Suite のアカウントが必要です。もしまだアカウントがない場合には <a href="https://accounts.google.com/signup" target="_blank">Gmail アカウントを作成</a>してください。</p>
-<aside class="warning"><p>Gmail アカウントを作成した場合には、受信済みのメールを用意するために以下の手順に沿ってください。</p>
-</aside>
+<p>Negative : Gmail アカウントを作成した場合には、受信済みのメールを用意するために以下の手順に沿ってください。</p>
 <h2 is-upgraded>1. mail-to-me アプリケーションを開く</h2>
 <p><a href="https://script.google.com/d/1p2B0NwXg3APMc-nh-fRWuMX6P_W5eQijsi4CVEHLOOq7_zJmQbWyZAWl/edit?usp=sharing" target="_blank">mail-to-me</a> アプリケーションをブラウザで開く。</p>
 <h2 is-upgraded>2. コピーを作成</h2>
@@ -66,10 +66,10 @@
         <p>Apps Script のプロジェクトを作成します。まず <a href="https://drive.google.com" target="_blank">drive.google.com</a> にアクセスし、スプレッドシートファイルを作成します。</p>
 <p><img alt="Create a new drive file" src="img/8291c873e19d15f7.png"><strong>新規</strong> をクリック</p>
 <p><img alt="Create a new Spreadsheet file" src="img/ca7b0d3ddcb9e9ca.png"><strong>Google スプレッドシート</strong> を選択。スプレッドシートファイルが作成されることを確認します。</p>
-<p><img alt="Rename Spreadsheet file" src="img/1efea22ed97a205f.png"><br>ファイル名を選択し、名前（gmail-to-spreadsheet など）を入力します。</p>
+<p><img alt="Rename Spreadsheet file" src="img/1efea22ed97a205f.png"> ファイル名を選択し、名前（gmail-to-spreadsheet など）を入力します。</p>
 <p><img alt="Select Script editor menu" src="img/936213b00887de7.png"><strong>ツール</strong> &gt; <strong>スクリプトエディタ</strong> を選択すると Google Apps Script プロジェクトが作成されます。</p>
-<p><img alt="Rename Google Apps Script project" src="img/966ff3ec6c04c81.png"><br>プロジェクト名を選択し、名前（gmail-to-spreadsheet など）を入力します。</p>
-<p><img alt="Input Google Apps Script project name" src="img/ccbba41c937081be.png"><br>プロジェクト名を入力して <strong>OK</strong> ボタンをクリックするとプロジェクトが保存されます。トーストが表示されてから、非表示になったところで保存が完了します。</p>
+<p><img alt="Rename Google Apps Script project" src="img/966ff3ec6c04c81.png"> プロジェクト名を選択し、名前（gmail-to-spreadsheet など）を入力します。</p>
+<p><img alt="Input Google Apps Script project name" src="img/ccbba41c937081be.png"> プロジェクト名を入力して <strong>OK</strong> ボタンをクリックするとプロジェクトが保存されます。トーストが表示されてから、非表示になったところで保存が完了します。</p>
 <p>これでスクリプトを実行できるようになりました。次のセクションでスクリプトを実行していきます。</p>
 
 
@@ -77,7 +77,7 @@
     
       <google-codelab-step label="スクリプトの実行" duration="2">
         <p>既存のコードを削除して、下記のコードを実装します。</p>
-<pre><code>function main() {
+<pre><code language="language-JavaScript" class="language-JavaScript">function main() {
   Logger.log(&#39;Hello Google Apps Script!&#39;);
 }
 </code></pre>
@@ -101,7 +101,7 @@
     
       <google-codelab-step label="GmailThead の取得" duration="3">
         <p>ではスクリプトを実装していきます。<a href="https://developers.google.com/apps-script/reference/gmail/gmail-app#searchquery,-start,-max" target="_blank">Gmail.search</a> メソッドを使って Gmail のスレッド一覧を取得します。</p>
-<pre><code>function main() {
+<pre><code language="language-JavaScript" class="language-JavaScript">function main() {
   var searchText = &#39;&#39;;// You can set value.
   var threads = GmailApp.search(searchText, 0, 5);
   Logger.log(threads);
@@ -109,21 +109,21 @@
 </code></pre>
 <p>送信元や件名、日時など、検索条件を設定したい場合には searchText に値をセットしてください。公式サポートページで<a href="https://support.google.com/mail/answer/7190?hl=ja" target="_blank">検索演算子</a>についてまとめられています。</p>
 <p><strong>実行</strong> ボタンをクリックして実行します。</p>
-<p><img alt="Authorization popup" src="img/20f302b28ecf289c.png"><br>このスクリプトに Gmail の操作を認可するため、ポップアップが表示されます。Gmail リソースへのアクセスを認可する必要があります。 <strong>許可を確認</strong> をクリックします。</p>
-<p><img alt="Choose an account" src="img/13164585f2675a6.png"><br>この Codelab で使っているアカウントを選択します。</p>
-<p><img alt="Application verification" src="img/2a016a555a937a9a.png"><img alt="Application verification advanced" src="img/37f02d2d63232036.png"><br>このアプリケーションを確認するために、 <strong>詳細</strong> を選択し <strong>... (安全ではないページ) に移動</strong> と書かれたリンクをクリックします。もし、この画面が表示されない場合には、この手順はスキップしてください。</p>
-<p><img alt="Allow authentication" src="img/ec5629ce691ba91a.png"><br>このアプリケーションに与える必要のあるスコープが表示されます。 <strong>許可</strong> ボタンをクリック後、スクリプトエディタに戻ってスクリプトが実行されます。</p>
-<p><img alt="Allow authentication" src="img/f8bd7318c1072c0f.png"><br>ログを見てみましょう。GmailThread の配列が出力されています。たった 5 行のコードでメールの一覧を取得して出力することができました！この認可のフローのために、通常実装するのが大変な認証周りのコードを書く必要がなくなるため、非常に簡単にアプリケーション連携ができるのです。</p>
+<p><img alt="Authorization popup" src="img/20f302b28ecf289c.png"> このスクリプトに Gmail の操作を認可するため、ポップアップが表示されます。Gmail リソースへのアクセスを認可する必要があります。 <strong>許可を確認</strong> をクリックします。</p>
+<p><img alt="Choose an account" src="img/13164585f2675a6.png"> この Codelab で使っているアカウントを選択します。</p>
+<p><img alt="Application verification" src="img/2a016a555a937a9a.png"><img alt="Application verification advanced" src="img/37f02d2d63232036.png"> このアプリケーションを確認するために、 <strong>詳細</strong> を選択し <strong>... (安全ではないページ) に移動</strong> と書かれたリンクをクリックします。もし、この画面が表示されない場合には、この手順はスキップしてください。</p>
+<p><img alt="Allow authentication" src="img/ec5629ce691ba91a.png"> このアプリケーションに与える必要のあるスコープが表示されます。 <strong>許可</strong> ボタンをクリック後、スクリプトエディタに戻ってスクリプトが実行されます。</p>
+<p><img alt="Allow authentication" src="img/f8bd7318c1072c0f.png"> ログを見てみましょう。GmailThread の配列が出力されています。たった 5 行のコードでメールの一覧を取得して出力することができました！この認可のフローのために、通常実装するのが大変な認証周りのコードを書く必要がなくなるため、非常に簡単にアプリケーション連携ができるのです。</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="GmailMessage のパース" duration="3">
         <p>直前のセクションで Gmail のスレッド一覧を取得できました。今回はメッセージの件名、本文、送信元、送信先、日時を取得します。そのため、GmailThread からそれに紐づくメッセージを取得します。</p>
-<p><img alt="GmailThread.getMessages reference" src="img/60ba3649e88a74a1.png"><br>Apps Script のリファレンスを見てみましょう。 GmailThread クラスには <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages" target="_blank">getMessages()</a> メソッドが用意されており GmailMessage の配列を返します。 <strong>GmailMessage</strong> のリンクをクリックしてそのメソッドを確認しましょう。</p>
-<p><img alt="GmailMessage reference" src="img/a636968464c90ec8.png"><br>GmailMessage クラスには <code>getSubject</code>, <code>getBody</code>, <code>getFrom</code>, <code>getTo</code>, <code>getDate</code> など多数の取得系メソッドが用意されています。 <code>GmailThread.getMessages()</code> の結果を用いて求める値が取得できそうです。</p>
+<p><img alt="GmailThread.getMessages reference" src="img/60ba3649e88a74a1.png"> Apps Script のリファレンスを見てみましょう。 GmailThread クラスには <a href="https://developers.google.com/apps-script/reference/gmail/gmail-thread#getmessages" target="_blank">getMessages()</a> メソッドが用意されており GmailMessage の配列を返します。 <strong>GmailMessage</strong> のリンクをクリックしてそのメソッドを確認しましょう。</p>
+<p><img alt="GmailMessage reference" src="img/a636968464c90ec8.png"> GmailMessage クラスには <code>getSubject</code>, <code>getBody</code>, <code>getFrom</code>, <code>getTo</code>, <code>getDate</code> など多数の取得系メソッドが用意されています。 <code>GmailThread.getMessages()</code> の結果を用いて求める値が取得できそうです。</p>
 <p>今回はスレッド内の最初のメッセージを使います。以下のコードを実装してメッセージを取得してログを見てみましょう。</p>
-<pre><code>function main() {
+<pre><code language="language-JavaScript" class="language-JavaScript">function main() {
   var searchText = &#39;&#39;;
   var threads = GmailApp.search(searchText, 0, 5);
   threads.forEach(function (thread) {
@@ -134,7 +134,7 @@
 </code></pre>
 <p><img alt="GmailMessage log" src="img/f55a19181dd5df06.png"><strong>GmailMessage</strong> というテキストが表示されます。</p>
 <p>最後に、取得系のメソッドを叩いて値を取得します。</p>
-<pre><code>function main() {
+<pre><code language="language-JavaScript" class="language-JavaScript">function main() {
   var searchText = &#39;&#39;;
   var threads = GmailApp.search(searchText, 0, 5);
   threads.forEach(function (thread) {
@@ -147,23 +147,23 @@
   });
 }
 </code></pre>
-<p><img alt="Get Gmail message values" src="img/ea874dbb31fa96ed.png"><br>スクリプトを実行してログを見てみます。Gmail メッセージの値を取得できました。次のセッションからは、これらの値を Spreadsheet に保存していきます。</p>
+<p><img alt="Get Gmail message values" src="img/ea874dbb31fa96ed.png"> スクリプトを実行してログを見てみます。Gmail メッセージの値を取得できました。次のセッションからは、これらの値を Spreadsheet に保存していきます。</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="SpreadsheetApp クラス" duration="3">
         <p>次に、 SpreadsheetApp クラスについて理解します。<a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app" target="_blank">SpreadsheetApp reference</a> にアクセスし、<a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getactivesheet" target="_blank">getActiveSheet</a> のセクションを確認します。このメソッドを使うことで作成したスプレッドシートにアクセスすることができます。</p>
-<p><img alt="Spreadsheet classes" src="img/e0a8f7e41449b1b2.png"><br>SpreadsheetApp のクラス群は Spreadsheet &gt; Sheet &gt; Range という順に階層構造になっています。<code>SpreadsheetApp.getActiveSheet()</code> の返り値は Sheet クラスなので、スプレッドシートに値を挿入する場合には Range クラスまで掘り下げてアクセスする必要があります。</p>
+<p><img alt="Spreadsheet classes" src="img/e0a8f7e41449b1b2.png"> SpreadsheetApp のクラス群は Spreadsheet &gt; Sheet &gt; Range という順に階層構造になっています。<code>SpreadsheetApp.getActiveSheet()</code> の返り値は Sheet クラスなので、スプレッドシートに値を挿入する場合には Range クラスまで掘り下げてアクセスする必要があります。</p>
 <p>下記の関数を実行します。Gmail の時と同様に認証の許可が必要です。</p>
-<pre><code>function saveMessages() {
+<pre><code language="language-JavaScript" class="language-JavaScript">function saveMessages() {
   Logger.log(SpreadsheetApp.getActiveSheet().getName());
 }
 </code></pre>
-<p><img alt="Change function" src="img/4816656765ed8a66.png"><br>実行する関数を変更する際には上の画像のように選択します。</p>
-<p><img alt="Logging Spreadsheet tab name" src="img/d46c422d40810c92.png"><img alt="Spreadsheet tab name" src="img/e68cc280e2834ed5.png"><br>ログビュアーでスプレッドシートのタブ名が表示されます。スプレッドシートにデータを保存するためには <a href="https://developers.google.com/apps-script/reference/spreadsheet/range" target="_blank">Range</a> クラスにアクセスし<a href="https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues" target="_blank">Range.setValues()</a> をたたく必要があります。</p>
+<p><img alt="Change function" src="img/4816656765ed8a66.png"> 実行する関数を変更する際には上の画像のように選択します。</p>
+<p><img alt="Logging Spreadsheet tab name" src="img/d46c422d40810c92.png"><img alt="Spreadsheet tab name" src="img/e68cc280e2834ed5.png"> ログビュアーでスプレッドシートのタブ名が表示されます。スプレッドシートにデータを保存するためには <a href="https://developers.google.com/apps-script/reference/spreadsheet/range" target="_blank">Range</a> クラスにアクセスし<a href="https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues" target="_blank">Range.setValues()</a> をたたく必要があります。</p>
 <p>以下を実装して <code>saveMessages</code> 関数を実行します。</p>
-<pre><code>function saveMessages() {
+<pre><code language="language-JavaScript" class="language-JavaScript">function saveMessages() {
   var data = [
     [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
     [&#39;d&#39;, &#39;e&#39;, &#39;f&#39;],
@@ -174,9 +174,9 @@
     .setValues(data);
 }
 </code></pre>
-<p><img alt="Range.setValues" src="img/de8b64f4f09b3363.png"><br>スプレッドシートを見てみると値が挿入されていることが確認できます。ここで引数に指定したデータが 2 次元配列であることに注意してください。</p>
+<p><img alt="Range.setValues" src="img/de8b64f4f09b3363.png"> スプレッドシートを見てみると値が挿入されていることが確認できます。ここで引数に指定したデータが 2 次元配列であることに注意してください。</p>
 <p>さらに、データを引数で渡せるように関数を編集します。今回は 5 つのタイプの値を保存するため、列 &#34;E&#34; は固定とします。</p>
-<pre><code>function saveMessages(data) {
+<pre><code language="language-JavaScript" class="language-JavaScript">function saveMessages(data) {
   SpreadsheetApp
     .getActiveSheet()
     .getRange(&#34;A1:E&#34; + data.length)
@@ -184,7 +184,7 @@
 }
 </code></pre>
 <p>外から叩くためのテストとして、 <code>test</code> 関数を実装し、実行してみます。</p>
-<pre><code>function test() {
+<pre><code language="language-JavaScript" class="language-JavaScript">function test() {
   var data = [
     [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;],
     [&#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;j&#39;],
@@ -201,7 +201,7 @@
     
       <google-codelab-step label="メッセージを Spreadsheet に保存" duration="3">
         <p><code>saveMessages</code> 関数を叩けるように <code>main</code> 関数を更新します。新たに <code>messages</code> 変数を定義し 2 次元配列になるようにメッセージデータを格納します。すべてのスレッドのメッセージを抽出したら <code>saveMessages</code> 関数をコールして、スプレッドシートに保存します。</p>
-<pre><code>function main() {
+<pre><code language="language-JavaScript" class="language-JavaScript">function main() {
   var searchText = &#39;&#39;;
   var threads = GmailApp.search(searchText, 0, 5);
   var messages = [];
@@ -232,7 +232,7 @@ function saveMessages(data) {
 <p><code>main</code> 関数を実行し、スプレッドシートを確認します。</p>
 <p class="image-container"><img alt="save gmail messages to Spreadsheet" src="img/47c714be2b73c718.png"></p>
 <p>スプレッドシートで Gmail メッセージのデータを確認できました。それぞれの列が何を示すのか理解しやすくするために、最初の列に列名を指定します。コードの 4 行目で messages を定義している行を以下に書き換えて実行します。</p>
-<pre><code>  var messages = [[&#39;Subject&#39;, &#39;From&#39;, &#39;To&#39;, &#39;Body&#39;, &#39;Date&#39;]];
+<pre><code language="language-JavaScript" class="language-JavaScript">  var messages = [[&#39;Subject&#39;, &#39;From&#39;, &#39;To&#39;, &#39;Body&#39;, &#39;Date&#39;]];
 </code></pre>
 <p class="image-container"><img alt="add column names" src="img/a83922846a813526.png"></p>
 <p>列の意味がわかりやすくなりました。30 行に満たないコードで Gmail と Spreadsheet を連携するアプリケーションを作成することができました！</p>
@@ -242,7 +242,7 @@ function saveMessages(data) {
     
       <google-codelab-step label="Spreadsheet のカスタムメニュー" duration="3">
         <p>これまで作ったアプリケーションで十分要件を満たしますが、これをより使いやすく改善することができます。 スプレッドシートにカスタムメニューを追加し、それを選択することで Gmail からメッセージ一覧を取得できるようにします。下記の <code>onOpen</code> 関数を追加し実行します。 <code>onOpen</code> という関数名は予約されており、スプレッドシートが開かれるタイミングで呼ばれます。詳しくは <a href="https://developers.google.com/apps-script/guides/triggers#onopene" target="_blank">公式ドキュメント</a> で確認できます。</p>
-<pre><code>function onOpen() {
+<pre><code language="language-JavaScript" class="language-JavaScript">function onOpen() {
   SpreadsheetApp
     .getActiveSpreadsheet()
     .addMenu(&#39;Gmail&#39;, [
@@ -254,7 +254,7 @@ function saveMessages(data) {
 <p class="image-container"><img alt="Spreadsheet custom menu" src="img/8e76d050d649064e.png"></p>
 <p>スプレッドシートを見てみましょう。カスタムメニューが表示されます。 <strong>Gmail</strong> &gt; <strong>Fetch</strong> を選択するとメッセージが反映されます。これでスプレッドシートの UI から Apps Script の関数を実行することができるようになりました。</p>
 <p>スプレッドシートの値をリセットできるようにします。 <code>clearSheet</code> 関数を追加してメニューに追加します。</p>
-<pre><code>function onOpen() {
+<pre><code language="language-JavaScript" class="language-JavaScript">function onOpen() {
   SpreadsheetApp
     .getActiveSpreadsheet()
     .addMenu(&#39;Gmail&#39;, [
@@ -277,22 +277,22 @@ function clearSheet() {
       <google-codelab-step label="自動化" duration="5">
         <p>定期的に実行したい場合など、<a href="https://developers.google.com/apps-script/guides/triggers/installable" target="_blank">トリガー</a>を使って自動化の設定をすることも可能です。 <a href="https://developers.google.com/apps-script/guides/triggers/installable#time-driven_triggers" target="_blank">Time-driven trigger</a> を設定して <code>main</code> 関数を 1 分おきに実行してみましょう。</p>
 <p>以下に沿って進めます。</p>
-<p><img alt="Current project’s triggers" src="img/1486261eec2c4635.png"><strong>編集</strong> &gt; <strong>現在のプロジェクトのトリガー</strong> を選択します</p>
+<p><img alt="Current project&amp;rsquo;s triggers" src="img/1486261eec2c4635.png"><strong>編集</strong> &gt; <strong>現在のプロジェクトのトリガー</strong> を選択します</p>
 <p><img alt="Add triggers" src="img/1d6d9dd902d2befa.png"><strong>トリガーを追加</strong> を選択します</p>
-<p><img alt="Trigger settings" src="img/377a8a8d488f64b9.png"><br>ポップアップが表示されるのでトリガーの設定を行います。上の画像の通り設定して <strong>保存</strong> ボタンを選択します。</p>
-<p><img alt="Trigger is created" src="img/d8de0148fd1ef40f.png"><br>トリガーが作成されました！ドットアイコンを選択します。</p>
+<p><img alt="Trigger settings" src="img/377a8a8d488f64b9.png"> ポップアップが表示されるのでトリガーの設定を行います。上の画像の通り設定して <strong>保存</strong> ボタンを選択します。</p>
+<p><img alt="Trigger is created" src="img/d8de0148fd1ef40f.png"> トリガーが作成されました！ドットアイコンを選択します。</p>
 <p><img alt="Select executions menu" src="img/7167982c4b31f200.png"><strong>実行数</strong> を選択します。</p>
 <p class="image-container"><img alt="Executions" src="img/69b15d16e13a28ee.png"></p>
 <p><code>main</code> 関数が 1 分おきに実行されているのが確認できます。新しいメッセージを受信した際でも最新の状態を保つことができます。</p>
 <p><img alt="Delete trigger" src="img/ea392116df20cfdd.png"><strong>ドットアイコン</strong> &gt; <strong>トリガーの削除</strong> を選択することでトリガーを削除できます。</p>
-<p><img alt="Triggers" src="img/b49b0a3ad3e4f14b.png"><br>Google Apps Script には<a href="https://developers.google.com/apps-script/guides/triggers" target="_blank">様々な種類のトリガー</a>が用意されています。トリガーを使うことでプロジェクトをより便利にすることができます。</p>
+<p><img alt="Triggers" src="img/b49b0a3ad3e4f14b.png"> Google Apps Script には<a href="https://developers.google.com/apps-script/guides/triggers" target="_blank">様々な種類のトリガー</a>が用意されています。トリガーを使うことでプロジェクトをより便利にすることができます。</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Congrats!" duration="1">
         <p>おめでとうございます！この Codelab は以上で終了です。最終的なコードは以下で確認できます。また <a href="https://github.com/tanabee/gas-codelab" target="_blank">tanabee/gas-codelab</a> の GitHub にも上がっています。</p>
-<pre><code>function onOpen() {
+<pre><code language="language-JavaScript" class="language-JavaScript">function onOpen() {
   SpreadsheetApp
     .getActiveSpreadsheet()
     .addMenu(&#39;Gmail&#39;, [
@@ -350,10 +350,11 @@ function clearSheet() {
     
   </google-codelab>
 
-  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
-  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
-  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
-  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
 
 </body>
 </html>
